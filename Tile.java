@@ -14,16 +14,16 @@ class Tile {
                     tileImage = ImageIO.read(Tile.class.getResource("blueTile.png"));
                     break;
                 case 1:
-                    tileImage = ImageIO.read(Tile.class.getResource("whiteTile.png"));
+                    tileImage = ImageIO.read(Tile.class.getResource("yellowTile.png"));
                     break;
                 case 2:
-                    tileImage = ImageIO.read(Tile.class.getResource("blackTile.png"));
-                    break;
-                case 3:
                     tileImage = ImageIO.read(Tile.class.getResource("redTile.png"));
                     break;
+                case 3:
+                    tileImage = ImageIO.read(Tile.class.getResource("blackTile.png"));
+                    break;
                 case 4:
-                    tileImage = ImageIO.read(Tile.class.getResource("yellowTile.png"));
+                    tileImage = ImageIO.read(Tile.class.getResource("whiteTile.png"));
                     break;
             }
         }
