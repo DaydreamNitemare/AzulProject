@@ -21,16 +21,16 @@ public class Floor
                 numBlue++;
                 break;
             case 1:
-                numWhite++;
+                numYellow++;
                 break;
             case 2:
-                numBlack++;
-                break;
-            case 3:
                 numRed++;
                 break;
+            case 3:
+                numBlack++;
+                break;
             case 4:
-                numYellow++;
+                numWhite++;
                 break;
         }
     }
@@ -46,19 +46,19 @@ public class Floor
                     p.addToHolder(new Tile(0));
                 break;
             case 1:
-                for(int i = 0; i < numWhite; i++)
+                for(int i = 0; i < numYellow; i++)
                     p.addToHolder(new Tile(1));
                 break;
             case 2:
-                for(int i = 0; i < numBlack; i++)
+                for(int i = 0; i < numRed; i++)
                     p.addToHolder(new Tile(2));
                 break;
             case 3:
-                for(int i = 0; i < numRed; i++)
+                for(int i = 0; i < numBlack; i++)
                     p.addToHolder(new Tile(3));
                 break;
             case 4:
-                for(int i = 0; i < numYellow; i++)
+                for(int i = 0; i < numWhite; i++)
                     p.addToHolder(new Tile(4));
                 break;
         }
@@ -92,6 +92,6 @@ public class Floor
      */
     public int[] getTileCount()
     {
-        return new int[]{numBlue, numWhite, numBlack, numRed, numYellow};
+        return new int[]{numBlue, numYellow, numRed, numBlack, numWhite};
     }
 }
