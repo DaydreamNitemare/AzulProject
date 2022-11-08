@@ -17,20 +17,10 @@ public class PArea {
         return area;
     }
 
-    /*
-    must be fixed to account for tiles that are already present in a row and for tiles to be placed in the provided
-    floor line if a row is to overflow.
-     */
-    public void setArea(int r, int cnt, int color, FloorLine fl)
+
+    public void setArea(int r, int color, int rowSpaces)
     {
-        for(int i = 0; i < area[r].length; i++)
-        {
-            if(cnt>0)
-            {
-                area[r][i]=color;
-                cnt--;
-            }
-        }
+        area[r][area[r].length - rowSpaces] = color;
     }
 
     public boolean rowIsEmpty(int row) //returns whether or not a given row is completely empty
@@ -42,6 +32,27 @@ public class PArea {
         }
 
         return true;
+    }
+
+    public ArrayList<Integer> getRowSpace(int row) //returns the colors present in a row (if any) and how many spaces are left in the row.
+    {
+        int count = 0;
+        int color = 5;
+
+        ArrayList<Integer> holder = new ArrayList<>();
+
+        for(int i = 0; i < area[row].length; i++)
+        {
+            if(area[row][i] == 5)
+                count++;
+            else
+                color = area[row][i];
+        }
+
+        holder.add(color);
+        holder.add(count);
+
+        return holder;
     }
 
 }
