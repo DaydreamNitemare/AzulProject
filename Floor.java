@@ -40,7 +40,7 @@ public class Floor
      */
     public void remove(Player p, int color)
     {
-        switch(t.getColor()) {
+        switch(color) {
             case 0:
                 for(int i = 0; i < numBlue; i++)
                     p.addToHolder(new Tile(0));
