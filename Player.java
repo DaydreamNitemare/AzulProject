@@ -41,13 +41,47 @@ public class Player {
         return fl;
     }
 
-    public void addToFloor(Tile t) //adds one tile to the players floor line
-    {
-        fl.add(t);
-    }
-
     public void addToHolder(Tile t) //adds the given tile to the players holder
     {
         holder.add(t);
+    }
+
+    public ArrayList<Integer> checkValidPlacements() //returns an ArrayList of all the valid placements for the players held tiles (including the floor line)
+    {
+        ArrayList<Integer> validRows = new ArrayList<Integer>();
+
+        for(int i = 0; i < 4; i++)
+        {
+            if((a.getRowSpace(i).get(0) == holder.get(0).getColor() || a.getRowSpace(i).get(0) == 5) && a.getRowSpace(i).get(1) > 0)
+                validRows.add(i);
+        }
+
+        validRows.add(5);
+        return validRows;
+    }
+
+    /*
+    This below sets the PArea with all of the tiles in the players holder. the integer "row" that is passed in
+    is the index for a valid row where a player can place tiles. the method will then place tiles in the players
+    PArea until the row fills or the holder runs out. If the row fills, the remaining tiles are placed into the
+    FloorLine.
+     */
+    public void setPArea(int row, Trash t)
+    {
+        if(row != 5)
+            for(int i = 0; i < holder.size(); i++)
+            {
+                if(a.getRowSpace(row).get(1) > 0)
+                    a.setArea(row, holder.get(0).getColor(), a.getRowSpace(row).get(1));
+                else
+                    fl.add(holder.get(0), t);
+
+                holder.remove(0);
+            }
+        else
+        {
+            for(int i = 0; i < holder.size(); i++)
+                fl.add(holder.remove(0), t);
+        }
     }
 }
