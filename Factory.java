@@ -18,7 +18,7 @@ public class Factory
     {
         for(int i = 0; i < 4; i++)
         {
-            if(tilesPresent.get(0).getColor == color)
+            if(tilesPresent.get(0).getColor() == color)
                 p.addToHolder(tilesPresent.remove(0));
             else
                 f.addTile(tilesPresent.remove(0));
