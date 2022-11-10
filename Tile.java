@@ -11,19 +11,19 @@ class Tile {
         try { //sets the BufferedImage that corresponds to the int value of the Tile
             switch (c) {
                 case 0:
-                    tileImage = ImageIO.read(Tile.class.getResource("blueTile.png"));
+                    tileImage = ImageIO.read(Tile.class.getResource("/images/blueTile.png"));
                     break;
                 case 1:
-                    tileImage = ImageIO.read(Tile.class.getResource("yellowTile.png"));
+                    tileImage = ImageIO.read(Tile.class.getResource("/images/yellowTile.png"));
                     break;
                 case 2:
-                    tileImage = ImageIO.read(Tile.class.getResource("redTile.png"));
+                    tileImage = ImageIO.read(Tile.class.getResource("/images/redTile.png"));
                     break;
                 case 3:
-                    tileImage = ImageIO.read(Tile.class.getResource("blackTile.png"));
+                    tileImage = ImageIO.read(Tile.class.getResource("/images/blackTile.png"));
                     break;
                 case 4:
-                    tileImage = ImageIO.read(Tile.class.getResource("whiteTile.png"));
+                    tileImage = ImageIO.read(Tile.class.getResource("/images/whiteTile.png"));
                     break;
             }
         }
