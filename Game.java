@@ -5,7 +5,7 @@ public class Game {
     int turnNum;
     Factory[] factories;
     Floor floor;
-    TileBag bag;
+    Bag bag;
 
     public Game()
     {
@@ -13,8 +13,9 @@ public class Game {
         int turnNum = 0;
         factories = new Factory[]{new Factory(), new Factory(), new Factory(), new Factory(), new Factory(), new Factory(), new Factory(), new Factory(), new Factory()};
         floor = new Floor();
-        bag = new TileBag();
+        bag = new Bag();
     }
+
     public Player getCurrentPlayer()
     {
         return players[turnNum];
@@ -30,10 +31,13 @@ public class Game {
         //will make this later
     }
 
+    /*
     public Player[] endGame()
     {
         //will make this later
     }
+    */
+
 
     public void deal()
     {
