@@ -1,6 +1,4 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -13,7 +11,7 @@ import javax.swing.*;
 //black 3
 //white 4
 
-public class MainFrame extends JFrame implements ActionListener, MouseListener {
+public class MainFrame extends JFrame implements MouseListener {
     final int WIDTH=1440; //width
     final int HEIGHT=1024; //height
 
@@ -32,9 +30,8 @@ public class MainFrame extends JFrame implements ActionListener, MouseListener {
         {
             //where all of the BufferedImage variables will be instantiated
 
-            startback= ImageIO.read(MainFrame.class.getResource("/images/startbackground.png"));
+            startback= ImageIO.read(MainFrame.class.getResource("/images/startBackground.png"));
             //icon=newImageIcon
-
 
         }
         catch (Exception E) {
@@ -42,34 +39,8 @@ public class MainFrame extends JFrame implements ActionListener, MouseListener {
             return;
         }
 
-        /************************ START BUTTON ************************/
-
-        start = new JButton(); //instantiates the button
-        //these next few lines make the button active but invisible. feel free to add an image or set opaque true to debug
-        start.setOpaque(false);
-        start.setFocusable(false);
-        start.setContentAreaFilled(false);
-        start.setBorderPainted(false);
-        //it's these 4 above
-        start.addActionListener(this); //adds an action listener
-        start.setBounds(0,0,200,100); //dimensions
-        //start.setIcon(); //the image present on the button
-        start.setVisible(false);
-        this.add(start); //adds the start button to the frame
         this.setVisible(true);
         addMouseListener(this);
-
-    }
-
-    /********************* ACTION PERFORMED METHOD *******************/
-
-    public void actionPerformed(ActionEvent e)
-    {
-        if(e.getSource() == start)
-        { //this will close the MainFrame and open a GameFrame when the start button is clicked
-            this.dispose();
-            //new GameFrame();
-        }
 
     }
 
@@ -78,24 +49,23 @@ public class MainFrame extends JFrame implements ActionListener, MouseListener {
     public void paint(Graphics g)
     {
         //whatever goes in here, shall go in here
-        g.drawImage(startback,0,0,getWidth(),getHeight(),null);
+
+        g.drawImage(startback,0, 0, this.getWidth(), this.getHeight(),null);
     }
 
+    /***************** MOUSE LISTENER ******************/
 
-    public void mousePressed(MouseEvent e) {}
-    public void mouseReleased(MouseEvent e) {}
-    public void mouseEntered(MouseEvent e) {}
-    public void mouseExited(MouseEvent e) {}
-    public void mouseClicked(MouseEvent e) {
+    public void mouseClicked(MouseEvent e)
+    {
         int x = e.getX();
         int y = e.getY();
-        System.out.println("oc is (" + x + "," + y + ")");
+        System.out.println("loc is (" + x + "," + y + ")");
 
         //start button mouselistener
-        if(x>550&&x<890&&y>690&&y<790){
+        if(x> 545 && x <895 && y> 595 && y <685){
             System.out.println("Start Game");
             this.dispose();
-            //new GameFrame();
+            new GameFrame();
         }
         //How to Play button mouselistener
         if(x>460&&x<700&&y>810&&y<870){
@@ -106,4 +76,9 @@ public class MainFrame extends JFrame implements ActionListener, MouseListener {
             System.out.println("Credits");
         }
     }
+
+    public void mousePressed(MouseEvent e) {}
+    public void mouseReleased(MouseEvent e) {}
+    public void mouseEntered(MouseEvent e) {}
+    public void mouseExited(MouseEvent e) {}
 }
