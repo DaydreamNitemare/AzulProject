@@ -5,32 +5,53 @@ public class Game {
     int turnNum;
     Factory[] factories;
     Floor floor;
-    int points;
-    boolean canDraw, canPlay;
-    boolean hasOneTile;
-    ArrayList<Tile> holder;
-    public Player getCurrentPlayer() {
-        return null;
+    TileBag bag;
+
+    public Game()
+    {
+        players = new Player[]{new Player("Player 1"), new Player("Player 2"), new Player("Player 3"), new Player("Player 4")};
+        int turnNum = 0;
+        factories = new Factory[]{new Factory(), new Factory(), new Factory(), new Factory(), new Factory(), new Factory(), new Factory(), new Factory(), new Factory()};
+        floor = new Floor();
+        bag = new TileBag();
     }
-    public void nextPlayer() {
-        
+    public Player getCurrentPlayer()
+    {
+        return players[turnNum];
     }
-    public void endRound() {
-        
+
+    public void nextPlayer()
+    {
+        //ashmeet make this
     }
-    public Player[] endGame() {
-        return null;
+
+    public void endRound()
+    {
+        //will make this later
     }
-    public void deal() {
-        
+
+    public Player[] endGame()
+    {
+        //will make this later
     }
-    public Factory[] getFactoryArea() {
-        return null;
+
+    public void deal()
+    {
+        //TileBag already has one but we will just call it here
     }
-    public Factory getFactory(int num) {
-        return null;
+
+    public Factory[] getFactoryArea()
+    {
+        return factories;
     }
-    public Floor getFactoryFloor() {
-        return null;
+
+    public Factory getFactory(int num)
+    {
+        return factories[num];
+    }
+
+    public Floor getFactoryFloor()
+    {
+        return floor;
     }
 }
