@@ -46,7 +46,8 @@ public class Player {
         holder.add(t);
     }
 
-    public ArrayList<Integer> checkValidPlacements() //returns an ArrayList of all the valid placements for the players held tiles (including the floor line)
+    //this below returns an ArrayList of all the valid placements for the players held tiles (including the floor line)
+    public ArrayList<Integer> checkValidPlacements()
     {
         ArrayList<Integer> validRows = new ArrayList<Integer>();
 
@@ -84,4 +85,10 @@ public class Player {
                 fl.add(holder.remove(0), t);
         }
     }
+
+    public void changeCanDraw(boolean x) {canDraw = x;}
+    public void changeCanPlay(boolean x) {canPlay = x;}
+    //these two above and the two below are self explanatory.
+    public boolean playerCanDraw(){return canDraw;}
+    public boolean playerCanPlay(){return canPlay;}
 }
