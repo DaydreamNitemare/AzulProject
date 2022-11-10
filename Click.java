@@ -10,4 +10,13 @@ public class Click {
         current=p;
     }
 
+    public boolean draw(){
+        boolean drawSuccessful =false;
+        //code (checks if player clicked in a valid spot, if yes, draw was successful)
+        if(xVal>f1t1XMin && xVal<f1t1Xax && yVal>f1t1YMin && yVal<f1t1YMax){
+
+        }
+        return drawSuccessful;
+    }
+
 }
