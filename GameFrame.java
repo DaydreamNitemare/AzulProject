@@ -31,7 +31,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
     {
         if(game.getCurrentPlayer().canDraw())
         {
-            Click c = new Click(e.getX(), e.getY(), game.getCurrentPlayer());
+            Click c = new Click(e.getX(), e.getY(), game.getCurrentPlayer(), game.getFactories());
             c.draw();
         }
 
