@@ -40,7 +40,7 @@ public class Game {
         //TileBag already has one but we will just call it here
     }
 
-    public Factory[] getFactoryArea()
+    public Factory[] getFactories()
     {
         return factories;
     }
