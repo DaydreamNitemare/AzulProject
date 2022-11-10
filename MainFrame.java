@@ -54,7 +54,7 @@ public class MainFrame extends JFrame implements ActionListener, MouseListener {
         start.addActionListener(this); //adds an action listener
         start.setBounds(0,0,200,100); //dimensions
         //start.setIcon(); //the image present on the button
-
+        start.setVisible(false);
         this.add(start); //adds the start button to the frame
         this.setVisible(true);
         addMouseListener(this);
