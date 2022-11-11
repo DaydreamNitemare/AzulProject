@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
-//add comment cuz test
+
 public class Bag {
     ArrayList<Tile> bag;
 
