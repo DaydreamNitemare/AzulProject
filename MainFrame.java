@@ -62,7 +62,7 @@ public class MainFrame extends JFrame implements MouseListener {
         System.out.println("loc is (" + x + "," + y + ")");
 
         //start button mouselistener
-        if(x> 545 && x <895 && y> 595 && y <685){
+        if(x> 545 && x <895 && y > 690 && y <795){
             System.out.println("Start Game");
             this.dispose();
             new GameFrame();
