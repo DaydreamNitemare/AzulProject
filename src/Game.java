@@ -23,7 +23,7 @@ public class Game {
 
     public void nextPlayer()
     {
-        //ashmeet make this
+        turnNum = (turnNum+1)%4;
     }
 
     public void endRound()

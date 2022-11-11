@@ -1,11 +1,12 @@
 import java.util.ArrayList;
 import java.util.Collections;
-//add comment cuz test
+
 public class Bag {
     ArrayList<Tile> bag;
 
     public Bag () { //constructor
         bag = new ArrayList<>();
+
         /*
         this section here gives the bag 20 of each color tile
         */
