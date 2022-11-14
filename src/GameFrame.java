@@ -27,7 +27,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
 
         try {
             //where all the BufferedImage variables will be instantiated
-            gameBack = ImageIO.read(MainFrame.class.getResource("/images/gameBackground.png"));
+            gameBack = ImageIO.read(GameFrame.class.getResource("/images/gameBackground.png"));
             icon = new ImageIcon(ImageIO.read(GameFrame.class.getResource("/images/azulIconImage.PNG")));
         } catch (Exception E) {
             System.out.println("Error with instantiating the images in GameFrame");
@@ -38,6 +38,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         this.setIconImage(icon.getImage());
 
         game = new Game();
+        game.deal();
 
         this.setVisible(true);
     }
@@ -46,68 +47,88 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
     ///game.getFactory(0).getTilesPresent().get(0).getImage()  (this is how to get each image)
     public void paint(Graphics g)
     {
-        //whatever goes in here, shall go in here
+        //background for the whole game
         g.drawImage(gameBack,0,30,getWidth(),getHeight() - 30,null);
+
+        /********************* FACTORIES ***********************/
+
         //factory 0
-        g.drawImage(black,535,42,49,49,null);
-        g.drawImage(black,584,42,49,49,null);
-        g.drawImage(black,535,91,49,49,null);
-        g.drawImage(black,584,91,49,49,null);
+        if(!game.getFactories()[0].isEmpty()) {
+            g.drawImage(game.getFactories()[0].getTile(0).getImage(), 535, 42, 49, 49, null);
+            g.drawImage(game.getFactories()[0].getTile(1).getImage(), 584, 42, 49, 49, null);
+            g.drawImage(game.getFactories()[0].getTile(2).getImage(), 535, 91, 49, 49, null);
+            g.drawImage(game.getFactories()[0].getTile(3).getImage(), 584, 91, 49, 49, null);
+        }
         //factory 1
-        g.drawImage(white,670,42,49,49,null);
-        g.drawImage(white,719,42,49,49,null);
-        g.drawImage(white,670,91,49,49,null);
-        g.drawImage(white,719,91,49,49,null);
+        if(!game.getFactories()[1].isEmpty()) {
+            g.drawImage(game.getFactories()[1].getTile(0).getImage(), 670, 42, 49, 49, null);
+            g.drawImage(game.getFactories()[1].getTile(1).getImage(), 719, 42, 49, 49, null);
+            g.drawImage(game.getFactories()[1].getTile(2).getImage(), 670, 91, 49, 49, null);
+            g.drawImage(game.getFactories()[1].getTile(3).getImage(), 719, 91, 49, 49, null);
+        }
         //factory 2
-        g.drawImage(red,807,42,49,49,null);
-        g.drawImage(red,856,42,49,49,null);
-        g.drawImage(red,807,91,49,49,null);
-        g.drawImage(red,856,91,49,49,null);
+        if(!game.getFactories()[2].isEmpty()) {
+            g.drawImage(game.getFactories()[2].getTile(0).getImage(), 807, 42, 49, 49, null);
+            g.drawImage(game.getFactories()[2].getTile(1).getImage(), 856, 42, 49, 49, null);
+            g.drawImage(game.getFactories()[2].getTile(2).getImage(), 807, 91, 49, 49, null);
+            g.drawImage(game.getFactories()[2].getTile(3).getImage(), 856, 91, 49, 49, null);
+        }
         //factory 3
-        g.drawImage(blue,463,164,49,49,null);
-        g.drawImage(blue,512,164,49,49,null);
-        g.drawImage(blue,463,213,49,49,null);
-        g.drawImage(blue,512,213,49,49,null);
+        if(!game.getFactories()[3].isEmpty()) {
+            g.drawImage(game.getFactories()[3].getTile(0).getImage(), 463, 164, 49, 49, null);
+            g.drawImage(game.getFactories()[3].getTile(1).getImage(), 512, 164, 49, 49, null);
+            g.drawImage(game.getFactories()[3].getTile(2).getImage(), 463, 213, 49, 49, null);
+            g.drawImage(game.getFactories()[3].getTile(3).getImage(), 512, 213, 49, 49, null);
+        }
         //factory 4
-        g.drawImage(yellow,670,164,49,49,null);
-        g.drawImage(yellow,719,164,49,49,null);
-        g.drawImage(yellow,670,213,49,49,null);
-        g.drawImage(yellow,719,213,49,49,null);
+        if(!game.getFactories()[4].isEmpty()) {
+            g.drawImage(game.getFactories()[4].getTile(0).getImage(), 670, 164, 49, 49, null);
+            g.drawImage(game.getFactories()[4].getTile(1).getImage(), 719, 164, 49, 49, null);
+            g.drawImage(game.getFactories()[4].getTile(2).getImage(), 670, 213, 49, 49, null);
+            g.drawImage(game.getFactories()[4].getTile(3).getImage(), 719, 213, 49, 49, null);
+        }
         //factory 5
-        g.drawImage(black,875,164,49,49,null);
-        g.drawImage(black,924,164,49,49,null);
-        g.drawImage(black,875,213,49,49,null);
-        g.drawImage(black,924,213,49,49,null);
+        if(!game.getFactories()[5].isEmpty()) {
+            g.drawImage(game.getFactories()[5].getTile(0).getImage(), 875, 164, 49, 49, null);
+            g.drawImage(game.getFactories()[5].getTile(1).getImage(), 924, 164, 49, 49, null);
+            g.drawImage(game.getFactories()[5].getTile(2).getImage(), 875, 213, 49, 49, null);
+            g.drawImage(game.getFactories()[5].getTile(3).getImage(), 924, 213, 49, 49, null);
+        }
         //factory 6
-        g.drawImage(white,535,283,49,49,null);
-        g.drawImage(white,584,283,49,49,null);
-        g.drawImage(white,535,332,49,49,null);
-        g.drawImage(white,584,332,49,49,null);
+        if(!game.getFactories()[6].isEmpty()) {
+            g.drawImage(game.getFactories()[6].getTile(0).getImage(), 535, 283, 49, 49, null);
+            g.drawImage(game.getFactories()[6].getTile(1).getImage(), 584, 283, 49, 49, null);
+            g.drawImage(game.getFactories()[6].getTile(2).getImage(), 535, 332, 49, 49, null);
+            g.drawImage(game.getFactories()[6].getTile(3).getImage(), 584, 332, 49, 49, null);
+        }
         //factory 7
-        g.drawImage(red,670,283,49,49,null);
-        g.drawImage(red,719,283,49,49,null);
-        g.drawImage(red,670,332,49,49,null);
-        g.drawImage(red,719,332,49,49,null);
+        if(!game.getFactories()[7].isEmpty()) {
+            g.drawImage(game.getFactories()[7].getTile(0).getImage(), 670, 283, 49, 49, null);
+            g.drawImage(game.getFactories()[7].getTile(1).getImage(), 719, 283, 49, 49, null);
+            g.drawImage(game.getFactories()[7].getTile(2).getImage(), 670, 332, 49, 49, null);
+            g.drawImage(game.getFactories()[7].getTile(3).getImage(), 719, 332, 49, 49, null);
+        }
         //factory 8
-        g.drawImage(blue,807,283,49,49,null);
-        g.drawImage(blue,856,283,49,49,null);
-        g.drawImage(blue,807,332,49,49,null);
-        g.drawImage(blue,856,332,49,49,null);
-        //
-        ////scrollpane
+        if(!game.getFactories()[8].isEmpty()) {
+            g.drawImage(game.getFactories()[8].getTile(0).getImage(), 807, 283, 49, 49, null);
+            g.drawImage(game.getFactories()[8].getTile(1).getImage(), 856, 283, 49, 49, null);
+            g.drawImage(game.getFactories()[8].getTile(2).getImage(), 807, 332, 49, 49, null);
+            g.drawImage(game.getFactories()[8].getTile(3).getImage(), 856, 332, 49, 49, null);
+        }
         //
 
-        //
-        //////main board
-        //
+
+        /********************* ACTUAL BOARD **************************/
+
         g.setColor(Color.BLACK);
         int addCol=0;
         int addRow=0;
         g.fillRect(441+addCol,430+addRow,28,28);  // 31 pixels right per point and 33 down for next row
         //one tile
         g.drawImage(one,437,728,49,49,null);
-        //
-        //////////tile area
+
+
+        /************************** WALL AREA ******************/
         // row 0
         //
         g.drawImage(black,750,621,49,49,null);
@@ -139,8 +160,10 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         g.drawImage(yellow,863,844,49,49,null);
         g.drawImage(yellow,919,844,49,49,null);
         g.drawImage(yellow,975,844,49,49,null);
-        //
-        ////////the wall
+
+
+        /************ PAREA ****************/
+
         //row 0
         //
         g.drawImage(black,665,621,49,49,null);
@@ -172,9 +195,12 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         g.drawImage(black,684,940,49,49,null);
         g.drawImage(black,746,940,49,49,null);
         g.drawImage(black,808,940,49,49,null);
-        //
-        ////top board
-        //
+
+
+        /**************** OTHER PLAYER BOARDS ******************/
+
+        //top board
+
         g.setColor(Color.BLACK);
         int addCol1,addRow1;
         addCol1=0;
@@ -414,7 +440,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
 
     public void actionPerformed(ActionEvent e) //really only necessary for the next player and submit buttons
     {
-        //dont forget to add ActionListeners for the JButtons and JRadioButtons
+        //don't forget to add ActionListeners for the JButtons and JRadioButtons
     }
 
 
@@ -427,18 +453,18 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
 
         System.out.println("loc of click is (" + x + " , " + y + ")");
 
-        /*
-        if(game.getCurrentPlayer().playerCanDraw())
+
+        if(game.getCurrentPlayer().canDraw())
         {
-            Click c = new Click(x, y, game.getCurrentPlayer());
-            while(!c.draw())
+            Click c = new Click(x, y, game);
+            while(!c.draw(game.getFactories()))
                 return;
-            game.getCurrentPlayer().changeCanDraw(false);
-            game.getCurrentPlayer().canPlay(true);
+            game.getCurrentPlayer().setCanDraw(false);
+            game.getCurrentPlayer().setCanPlay(true);
             //below here, write the code that will display the JRadioButtons to have the player choose the rows.
             //then, include a check to see if there are no more tiles to then end the round/game
           }
-        */
+
     }
 
     public void mousePressed(MouseEvent e){}
