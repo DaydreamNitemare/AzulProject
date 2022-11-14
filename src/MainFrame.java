@@ -25,19 +25,22 @@ public class MainFrame extends JFrame implements MouseListener {
         this.setResizable(false);
         this.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
+        this.setTitle("Azul Board Game");
 
         try
         {
             //where all of the BufferedImage variables will be instantiated
 
             startback= ImageIO.read(MainFrame.class.getResource("/images/startBackground.png"));
-            //icon=newImageIcon
+            icon = new ImageIcon(ImageIO.read(MainFrame.class.getResource("/images/azulIconImage.PNG")));
 
         }
         catch (Exception E) {
             System.out.println("Error with instantiating the images in MainFrame");
             return;
         }
+
+        this.setIconImage(icon.getImage());
 
         this.setVisible(true);
         addMouseListener(this);
