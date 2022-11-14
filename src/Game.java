@@ -27,14 +27,19 @@ public class Game {
 
     public void nextPlayer()
     {
-        //ashmeet make this
+        turnNum++;
+        turnNum %= 4;
+        currentPlayer = players[turnNum];
     }
 
     public void endRound()
     {
-        turnNum++;
-        //currentPlayer = players[];
-
+        for (int i = 0; i < players.length; i++) {
+            if (players[i].oneTile) {
+                turnNum = i;
+                currentPlayer = players[i];
+            }
+        }
         deal();
 
     }
