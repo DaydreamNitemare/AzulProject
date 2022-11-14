@@ -6,6 +6,7 @@ public class Bag {
 
     public Bag () { //constructor
         bag = new ArrayList<>();
+
         /*
         this section here gives the bag 20 of each color tile
         */

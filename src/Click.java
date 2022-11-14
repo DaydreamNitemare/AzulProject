@@ -41,9 +41,9 @@ public class Click {
             if(x>719 && y>91 && x<719+49&& y<91+49){
                 factories[0].removeTiles(current, factories[1].getTile(3).getColor(), g.getFactoryFloor());
             }
-            //PAUSE nah im done for today 
+            //PAUSE nah im done for today
 
-            
+
             drawSuccessful = true;
         }
         return drawSuccessful;

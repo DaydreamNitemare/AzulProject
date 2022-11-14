@@ -23,7 +23,7 @@ public class PArea {
         area[r][area[r].length - rowSpaces] = color;
     }
 
-    public boolean rowIsEmpty(int row) //returns regardless a given row is completely empty
+    public boolean rowIsEmpty(int row) //returns whether a given row is completely empty
     {
         for(int i = 0; i < area[row].length; i++)
         {
@@ -33,6 +33,18 @@ public class PArea {
 
         return true;
     }
+
+    public boolean rowIsFull(int row)
+    {
+        for(int i = 0; i < area[row].length; i++)
+        {
+            if(area[row][i] == 5)
+                return false;
+        }
+
+        return true;
+    }
+
 
     public ArrayList<Integer> getRowSpace(int row) //returns the colors present in a row (if any) and how many spaces are left in the row.
     {

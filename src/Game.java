@@ -6,18 +6,14 @@ public class Game {
     Factory[] factories;
     Floor floor;
     Bag bag;
-    Player currentPlayer;
-    Trash trash;
+
     public Game()
     {
-
         players = new Player[]{new Player("Player 1"), new Player("Player 2"), new Player("Player 3"), new Player("Player 4")};
-        currentPlayer = players[(int)(Math.random() * 3)];
         int turnNum = 0;
         factories = new Factory[]{new Factory(), new Factory(), new Factory(), new Factory(), new Factory(), new Factory(), new Factory(), new Factory(), new Factory()};
         floor = new Floor();
         bag = new Bag();
-        trash = new Trash();
     }
 
     public Player getCurrentPlayer()
@@ -27,21 +23,12 @@ public class Game {
 
     public void nextPlayer()
     {
-        turnNum++;
-        turnNum %= 4;
-        currentPlayer = players[turnNum];
+        turnNum = (turnNum+1)%4;
     }
 
     public void endRound()
     {
-        for (int i = 0; i < players.length; i++) {
-            if (players[i].oneTile) {
-                turnNum = i;
-                currentPlayer = players[i];
-            }
-        }
-        deal();
-
+        //will make this later
     }
 
     /*
@@ -54,9 +41,7 @@ public class Game {
 
     public void deal()
     {
-        for (int i = 0; i < 9; i++) {
-            bag.placeTiles(factories[i], trash );
-        }
+        //TileBag already has one but we will just call it here
     }
 
     public Factory[] getFactories()
