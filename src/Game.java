@@ -6,7 +6,7 @@ public class Game {
     Factory[] factories;
     Floor floor;
     Bag bag;
-
+    Trash trash;
     public Game()
     {
         players = new Player[]{new Player("Player 1"), new Player("Player 2"), new Player("Player 3"), new Player("Player 4")};
@@ -14,6 +14,7 @@ public class Game {
         factories = new Factory[]{new Factory(), new Factory(), new Factory(), new Factory(), new Factory(), new Factory(), new Factory(), new Factory(), new Factory()};
         floor = new Floor();
         bag = new Bag();
+        trash = new Trash();
     }
 
     public Player getCurrentPlayer()
@@ -41,7 +42,9 @@ public class Game {
 
     public void deal()
     {
-        //TileBag already has one but we will just call it here
+        for (int i = 0; i < 9; i++) {
+            bag.placeTiles(factories[i], trash );
+        }
     }
 
     public Factory[] getFactories()
