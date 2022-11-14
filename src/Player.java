@@ -21,7 +21,7 @@ public class Player {
         return points;
     }
 
-    public PArea getArea() //returns the players play area
+    public int[][] getArea() //returns the players play area
     {
         return a.getArea();
     }
