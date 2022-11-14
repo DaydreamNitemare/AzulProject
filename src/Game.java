@@ -6,10 +6,13 @@ public class Game {
     Factory[] factories;
     Floor floor;
     Bag bag;
+    Player currentPlayer;
     Trash trash;
     public Game()
     {
+
         players = new Player[]{new Player("Player 1"), new Player("Player 2"), new Player("Player 3"), new Player("Player 4")};
+        currentPlayer = players[(int)(Math.random() * 3)];
         int turnNum = 0;
         factories = new Factory[]{new Factory(), new Factory(), new Factory(), new Factory(), new Factory(), new Factory(), new Factory(), new Factory(), new Factory()};
         floor = new Floor();
@@ -29,7 +32,11 @@ public class Game {
 
     public void endRound()
     {
-        //will make this later
+        turnNum++;
+        //currentPlayer = players[];
+
+        deal();
+
     }
 
     /*
