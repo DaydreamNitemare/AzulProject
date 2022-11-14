@@ -54,4 +54,9 @@ public class Factory
     {
         return tilesPresent;
     }
+
+    public Tile getTile(int index)
+    {
+        return tilesPresent.get(index);
+    }
 }
