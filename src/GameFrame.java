@@ -23,6 +23,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
+        this.setTitle("Azul Board Game");
 
         try {
             //where all the BufferedImage variables will be instantiated
@@ -34,6 +35,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         }
 
         this.addMouseListener(this);
+        this.setIconImage(icon.getImage());
 
         game = new Game();
 
