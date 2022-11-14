@@ -23,7 +23,7 @@ public class Player {
 
     public PArea getArea() //returns the players play area
     {
-        return a;
+        return a.getArea();
     }
 
     public Wall getWall() //returns the players given wall area
