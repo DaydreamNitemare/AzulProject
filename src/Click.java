@@ -137,5 +137,4 @@ public class Click {
         }
         return drawSuccessful;
     }
-
 }
