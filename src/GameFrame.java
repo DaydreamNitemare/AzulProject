@@ -490,8 +490,6 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
 
     public void drawLog()
     {
-        System.out.println("this gets called");
-
         log = new JScrollPane();
         log.setBounds(0, 724, 300, 300);
         log.setOpaque(true);

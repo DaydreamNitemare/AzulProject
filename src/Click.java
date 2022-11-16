@@ -17,7 +17,6 @@ public class Click {
         if(x>535 && y>42 && x<535+49&& y<42+49){
             factories[0].removeTiles(current, factories[0].getTile(0).getColor(), game.getFactoryFloor());
             drawSuccessful = true;
-            System.out.println("this is hit right here");
         }
         if(x>584 && y>42 && x<584+49&& y<42+49){
             factories[0].removeTiles(current, factories[0].getTile(1).getColor(), game.getFactoryFloor());
