@@ -7,6 +7,13 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 
+/*
+I left this class off working on the log.
+It gets added when the frame first appears but disappears every time repaint is called, even though the drawLog()
+method is present inside paint. I need to fix this. After this issue is resolved, the JRadioButtons take 
+priority. 
+ */
+
 public class GameFrame extends JFrame implements ActionListener, MouseListener
 {
 
@@ -39,6 +46,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
 
         game = new Game();
         game.deal();
+        game.getCurrentPlayer().setCanDraw(true);
 
         this.setVisible(true);
     }
@@ -421,11 +429,11 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         //floor text
         //
         g.setFont(new Font("Comic Sans",Font.BOLD,43));
-        g.drawString("- 0",90,103);
-        g.drawString("- 0",90,161);
-        g.drawString("- 0",90,219);
-        g.drawString("- 0",90,277);
-        g.drawString("- 0",90,335);
+        g.drawString("- " + game.getFactoryFloor().getTileCount()[0],90,103);
+        g.drawString("- " + game.getFactoryFloor().getTileCount()[1],90,161);
+        g.drawString("- " + game.getFactoryFloor().getTileCount()[2],90,219);
+        g.drawString("- " + game.getFactoryFloor().getTileCount()[3],90,277);
+        g.drawString("- " + game.getFactoryFloor().getTileCount()[4],90,335);
         //
         //trash text
         //
@@ -434,6 +442,8 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         g.drawString("- 0",90,551);
         g.drawString("- 0",90,609);
         g.drawString("- 0",90,667);
+
+        drawLog();
     }
 
     /************************* ACTION PERFORMED ********************/
@@ -457,10 +467,16 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         if(game.getCurrentPlayer().canDraw())
         {
             Click c = new Click(x, y, game);
-            while(!c.draw(game.getFactories()))
+            boolean successful = c.draw(game.getFactories());
+
+            if(!successful)
                 return;
+
             game.getCurrentPlayer().setCanDraw(false);
             game.getCurrentPlayer().setCanPlay(true);
+
+            repaint();
+
             //below here, write the code that will display the JRadioButtons to have the player choose the rows.
             //then, include a check to see if there are no more tiles to then end the round/game
           }
@@ -471,4 +487,16 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
     public void mouseReleased(MouseEvent e) {}
     public void mouseEntered(MouseEvent e){}
     public void mouseExited(MouseEvent e) {}
+
+    public void drawLog()
+    {
+        System.out.println("this gets called");
+
+        log = new JScrollPane();
+        log.setBounds(0, 724, 300, 300);
+        log.setOpaque(true);
+        log.setForeground(Color.red);
+
+        this.add(log);
+    }
 }
