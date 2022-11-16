@@ -1,5 +1,4 @@
-public class AzulRunner
-{
+public class AzulRunner {
     public static void main(String [] args) {
         new MainFrame();
     }
