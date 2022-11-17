@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.TreeMap;
 
 /*
 I left this class off working on the log.
@@ -47,6 +49,8 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         game = new Game();
         game.deal();
         game.getCurrentPlayer().setCanDraw(true);
+
+        drawLog(game.getCurrentPlayer().getName() + " begins the round\n");
 
         this.setVisible(true);
     }
@@ -443,7 +447,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         g.drawString("- 0",90,609);
         g.drawString("- 0",90,667);
 
-        drawLog();
+        drawLog(logTxt.getText());
     }
 
     /************************* ACTION PERFORMED ********************/
@@ -467,10 +471,28 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         if(game.getCurrentPlayer().canDraw())
         {
             Click c = new Click(x, y, game);
-            boolean successful = c.draw(game.getFactories());
+            TreeMap<Boolean, int[]> temp = c.draw(game.getFactories());
+
+            boolean successful = temp.containsKey(true);
 
             if(!successful)
                 return;
+
+            ArrayList<Tile> tempHolder = game.getCurrentPlayer().getHolder();
+
+            logTxt.setText(logTxt.getText() + game.getCurrentPlayer().getName()
+                    + " got " + tempHolder.size() + " "
+                    + tempHolder.get(0).getColorName() + " \n");
+
+
+            for(int i = 0; i < 5; i++)
+            {
+                Tile t = new Tile(i);
+
+                if(temp.get(true)[i] != 0)
+                    logTxt.setText(logTxt.getText() + temp.get(true)[i] + " " + t.getColorName()
+                            + " tile(s) were/was put\ninto the factory floor\n");
+            }
 
             game.getCurrentPlayer().setCanDraw(false);
             game.getCurrentPlayer().setCanPlay(true);
@@ -483,18 +505,27 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
 
     }
 
+    public void drawLog(String s) //this method ensures the log remains on the frame after a repaint
+    {
+        //these 3 lines below instantiate the text area that will be a part of the scroll pane
+        //it can all be edited for convenience later.
+        logTxt = new JTextArea(s);
+        logTxt.setEditable(false);
+        logTxt.setFont(new Font("SansSerif", Font.PLAIN, 15));
+        //logTxt.setText("test 1"); this was just for testing
+
+
+        log = new JScrollPane(logTxt);
+        log.setBounds(3, 664, 200, 312);
+        log.setOpaque(true);
+
+        //these two add the log to the frame and display it
+        this.add(log);
+        this.setVisible(true); //don't know why I need this but it doesn't work if i don't have it so idk
+    }
+
     public void mousePressed(MouseEvent e){}
     public void mouseReleased(MouseEvent e) {}
     public void mouseEntered(MouseEvent e){}
     public void mouseExited(MouseEvent e) {}
-
-    public void drawLog()
-    {
-        log = new JScrollPane();
-        log.setBounds(0, 724, 300, 300);
-        log.setOpaque(true);
-        log.setForeground(Color.red);
-
-        this.add(log);
-    }
 }

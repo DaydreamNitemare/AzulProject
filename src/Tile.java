@@ -42,4 +42,23 @@ class Tile {
     {
         return color;
     }
+
+    public String getColorName()
+    {
+        switch(color)
+        {
+            case 0:
+                return "blue";
+            case 1:
+                return "yellow";
+            case 2:
+                return "red";
+            case 3:
+                return "black";
+            case 4:
+                return "white";
+        }
+
+        return "error in getColorName method of the Tile class";
+    }
 }
