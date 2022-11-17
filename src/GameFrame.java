@@ -491,7 +491,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
 
                 if(temp.get(true)[i] != 0)
                     logTxt.setText(logTxt.getText() + temp.get(true)[i] + " " + t.getColorName()
-                            + " tile(s) were/was put\ninto the factory floor\n");
+                            + " tile(s) were/was put into the factory floor\n");
             }
 
             game.getCurrentPlayer().setCanDraw(false);
@@ -513,11 +513,16 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         logTxt.setEditable(false);
         logTxt.setFont(new Font("SansSerif", Font.PLAIN, 15));
         //logTxt.setText("test 1"); this was just for testing
-
+        logTxt.setLineWrap(true);
+        logTxt.setEditable(false);
+        logTxt.setVisible(true);
 
         log = new JScrollPane(logTxt);
+        log.add(logTxt);
+        log.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        log.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
         log.setBounds(3, 664, 200, 312);
-        log.setOpaque(true);
 
         //these two add the log to the frame and display it
         this.add(log);
