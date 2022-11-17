@@ -494,9 +494,6 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
                             + " tile(s) were/was put into the factory floor\n");
             }
 
-            game.getCurrentPlayer().setCanDraw(false);
-            game.getCurrentPlayer().setCanPlay(true);
-
             repaint();
 
             //below here, write the code that will display the JRadioButtons to have the player choose the rows.
