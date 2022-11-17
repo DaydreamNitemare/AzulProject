@@ -13,7 +13,7 @@ public class Game {
 
         players = new Player[]{new Player("Player 1"), new Player("Player 2"), new Player("Player 3"), new Player("Player 4")};
         currentPlayer = players[(int)(Math.random() * 3)];
-        int turnNum = 0;
+        turnNum = (int)(Math.random() * 4);
         factories = new Factory[]{new Factory(), new Factory(), new Factory(), new Factory(), new Factory(), new Factory(), new Factory(), new Factory(), new Factory()};
         floor = new Floor();
         bag = new Bag();

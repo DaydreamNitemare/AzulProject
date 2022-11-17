@@ -14,17 +14,23 @@ public class Factory
     this below removes all of the tiles from a factory. It will give all of the Tiles of color "color"
     to Player "p" and the rest will go to Floor "f". It will then set the Factory to empty
      */
-    public void removeTiles(Player p, int color, Floor f)
+    public int[] removeTiles(Player p, int color, Floor f)
     {
+        int[] temp = {0, 0, 0, 0, 0};
+
         for(int i = 0; i < 4; i++)
         {
             if(tilesPresent.get(0).getColor() == color)
                 p.addToHolder(tilesPresent.remove(0));
-            else
+            else {
+                temp[tilesPresent.get(0).getColor()]++;
                 f.addTile(tilesPresent.remove(0));
+            }
         }
 
         empty = true;
+
+        return temp;
     }
 
     /*

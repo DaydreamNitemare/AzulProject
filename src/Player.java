@@ -23,6 +23,11 @@ public class Player {
         return points;
     }
 
+    public String getName()
+    {
+        return name;
+    }
+
     public PArea getArea() //returns the players play area
     {
         return a;
@@ -46,6 +51,11 @@ public class Player {
     public void addToHolder(Tile t) //adds the given tile to the players holder
     {
         holder.add(t);
+    }
+
+    public ArrayList<Tile> getHolder()
+    {
+        return holder;
     }
 
     //this below returns an ArrayList of all the valid placements for the players held tiles (including the floor line)
