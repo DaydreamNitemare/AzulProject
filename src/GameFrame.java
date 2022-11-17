@@ -515,7 +515,6 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         logTxt.setVisible(true);
 
         log = new JScrollPane(logTxt);
-        log.add(logTxt);
         log.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         log.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
