@@ -199,10 +199,10 @@ public class Click {
                 drawSuccessful=true;
             }
         }
-        //if(drawSuccessful) {
-            //current.setCanDraw(false);
-            //current.setCanPlay(true);
-        //}
+        if(drawSuccessful) {
+            current.setCanDraw(false);
+            current.setCanPlay(true);
+        }
 
         TreeMap<Boolean, int[]> temp = new TreeMap<>();
         temp.put(drawSuccessful, numThrownAway);
