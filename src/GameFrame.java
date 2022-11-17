@@ -482,7 +482,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
 
             logTxt.setText(logTxt.getText() + game.getCurrentPlayer().getName()
                     + " got " + tempHolder.size() + " "
-                    + tempHolder.get(0).getColorName() + " \n");
+                    + tempHolder.get(0).getColorName() + " tile(s)\n");
 
 
             for(int i = 0; i < 5; i++)
@@ -493,9 +493,6 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
                     logTxt.setText(logTxt.getText() + temp.get(true)[i] + " " + t.getColorName()
                             + " tile(s) were/was put into the factory floor\n");
             }
-
-            game.getCurrentPlayer().setCanDraw(false);
-            game.getCurrentPlayer().setCanPlay(true);
 
             repaint();
 

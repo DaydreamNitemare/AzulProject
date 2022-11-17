@@ -168,6 +168,42 @@ public class Click {
             numThrownAway = factories[8].removeTiles(current, factories[8].getTile(3).getColor(), game.getFactoryFloor());
             drawSuccessful = true;
         }
+        int[] lol = game.getFactoryFloor().getTileCount();
+        if(x>40 && x<90 && y>122 && y<170){
+            if(lol[1]!=0){
+                game.getFactoryFloor().remove(current, 0);
+                drawSuccessful=true;
+            }
+        }
+        if(x>40 && x<90 && y>65 && y<112){
+            if(lol[0]!=0){
+                game.getFactoryFloor().remove(current, 1);
+                drawSuccessful=true;
+            }
+        }
+        if(x>40 && x<90 && y>179 && y<225){
+            if(lol[2]!=0){
+                game.getFactoryFloor().remove(current, 2);
+                drawSuccessful=true;
+            }
+        }
+        if(x>40 && x<90 && y>235 && y<284){
+            if(lol[3]!=0){
+                game.getFactoryFloor().remove(current, 3);
+                drawSuccessful=true;
+            }
+        }
+        if(x>40 && x<90 && y>292 && y<340){
+            if(lol[4]!=0){
+                game.getFactoryFloor().remove(current, 4);
+                drawSuccessful=true;
+            }
+        }
+        //if(drawSuccessful) {
+            //current.setCanDraw(false);
+            //current.setCanPlay(true);
+        //}
+
         TreeMap<Boolean, int[]> temp = new TreeMap<>();
         temp.put(drawSuccessful, numThrownAway);
         return temp;
