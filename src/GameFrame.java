@@ -24,6 +24,8 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
     JButton nextButton, submitButton;
     JRadioButton row1, row2, row3, row4, row5, floorLineButton;
     ButtonGroup group;
+
+    JPanel logPanel;
     JScrollPane log;
     JTextArea logTxt;
     ImageIcon icon;
@@ -39,13 +41,6 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
             //where all the BufferedImage variables will be instantiated
             gameBack = ImageIO.read(GameFrame.class.getResource("/images/gameBackground.png"));
             icon = new ImageIcon(ImageIO.read(GameFrame.class.getResource("/images/azulIconImage.PNG")));
-            blue = ImageIO.read(MainFrame.class.getResource("/images/blueTile.png"));
-            yellow = ImageIO.read(MainFrame.class.getResource("/images/yellowTile.png"));
-            red = ImageIO.read(MainFrame.class.getResource("/images/redTile.png"));
-            black = ImageIO.read(MainFrame.class.getResource("/images/blackTile.png"));
-            white = ImageIO.read(MainFrame.class.getResource("/images/whiteTile.png"));
-            one = ImageIO.read(MainFrame.class.getResource("/images/oneTile.png"));
-
         } catch (Exception E) {
             System.out.println("Error with instantiating the images in GameFrame");
             return;
@@ -58,8 +53,14 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         game.deal();
         game.getCurrentPlayer().setCanDraw(true);
 
+        logPanel = new JPanel();
+        this.add(logPanel);
+
         drawLog(game.getCurrentPlayer().getName() + " begins the round\n\n");
 
+        //componentPanel = new JPanel();
+
+        //this.add(componentPanel);
         this.setVisible(true);
     }
 
@@ -530,15 +531,20 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
           }
 
     }
-
     public void drawLog(String s) //this method ensures the log remains on the frame after a repaint
     {
-        //these 3 lines below instantiate the text area that will be a part of the scroll pane
+        this.remove(logPanel);
+
+        logPanel = new JPanel();
+        logPanel.setBounds(3, 664, 200, 312);
+        logPanel.setPreferredSize(new Dimension(200, 312));
+        logPanel.setLayout(new FlowLayout());
+
+
         //it can all be edited for convenience later.
         logTxt = new JTextArea(s);
         logTxt.setEditable(false);
         logTxt.setFont(new Font("SansSerif", Font.PLAIN, 10));
-        //logTxt.setText("test 1"); this was just for testing
         logTxt.setLineWrap(true);
         logTxt.setEditable(false);
         logTxt.setVisible(true);
@@ -547,11 +553,12 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         log.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         log.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        log.setBounds(3, 664, 200, 312);
+        log.setPreferredSize(new Dimension(200, 312));
 
-        //these two add the log to the frame and display it
-        this.add(log);
-        this.setVisible(true); //don't know why I need this but it doesn't work if i don't have it so idk
+        logPanel.add(log);
+        logPanel.setVisible(true);
+
+        this.add(logPanel);
     }
 
     public void drawRadioButtons() {
