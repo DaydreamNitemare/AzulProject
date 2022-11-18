@@ -44,22 +44,27 @@ public class Floor
             case 0:
                 for(int i = 0; i < numBlue; i++)
                     p.addToHolder(new Tile(0));
+                    numBlue=0;
                 break;
             case 1:
                 for(int i = 0; i < numYellow; i++)
                     p.addToHolder(new Tile(1));
+                    numYellow=0;
                 break;
             case 2:
                 for(int i = 0; i < numRed; i++)
                     p.addToHolder(new Tile(2));
+                    numRed=0;
                 break;
             case 3:
                 for(int i = 0; i < numBlack; i++)
                     p.addToHolder(new Tile(3));
+                    numBlack=0;
                 break;
             case 4:
                 for(int i = 0; i < numWhite; i++)
                     p.addToHolder(new Tile(4));
+                    numWhite=0;
                 break;
         }
     }
