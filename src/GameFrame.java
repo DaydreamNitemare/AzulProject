@@ -39,6 +39,13 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
             //where all the BufferedImage variables will be instantiated
             gameBack = ImageIO.read(GameFrame.class.getResource("/images/gameBackground.png"));
             icon = new ImageIcon(ImageIO.read(GameFrame.class.getResource("/images/azulIconImage.PNG")));
+            blue = ImageIO.read(MainFrame.class.getResource("/images/blueTile.png"));
+            yellow = ImageIO.read(MainFrame.class.getResource("/images/yellowTile.png"));
+            red = ImageIO.read(MainFrame.class.getResource("/images/redTile.png"));
+            black = ImageIO.read(MainFrame.class.getResource("/images/blackTile.png"));
+            white = ImageIO.read(MainFrame.class.getResource("/images/whiteTile.png"));
+            one = ImageIO.read(MainFrame.class.getResource("/images/oneTile.png"));
+
         } catch (Exception E) {
             System.out.println("Error with instantiating the images in GameFrame");
             return;
@@ -136,7 +143,12 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         g.setColor(Color.BLACK);
         int addCol=0;
         int addRow=0;
-        g.fillRect(441+addCol,430+addRow,28,28);  // 31 pixels right per point and 33 down for next row
+        addCol=(game.getCurrentPlayer().getPoints()*31)%21;
+        addRow=game.getCurrentPlayer().getPoints();
+        if(game.getCurrentPlayer().getPoints()==0){
+            g.fillRect(440,397,28,28);
+            }
+        else g.fillRect(441+addCol,430+addRow,28,28);  // 31 pixels right per point and 33 down for next row
         //one tile
         g.drawImage(one,437,728,49,49,null);
 
@@ -218,7 +230,10 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         int addCol1,addRow1;
         addCol1=0;
         addRow1=0;
-        g.fillRect(1119+addCol1,47+addRow1,15,15);//add 15 for next column, add 17 for next row
+        if(game.getCurrentPlayer().getPoints()==0){         // need to add get other player method
+            g.fillRect(1118,30,15,15);
+        }
+        else g.fillRect(1118+addCol1,47+addRow1,15,15);//add 15 for next column, add 17 for next row
         //one tile
         g.drawImage(one,1118,201,25,25,null);
         //row 0
@@ -291,7 +306,10 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         int addCol2,addRow2;
         addCol2=0;
         addRow2=0;
-        g.fillRect(1119+addCol2,379+addRow2,15,15);//add 15 for next column, add 17 for next row
+        if(game.getCurrentPlayer().getPoints()==0){  //still need to add get other player method
+            g.fillRect(1118,361,15,15);
+        }
+        else g.fillRect(1118+addCol2,379+addRow2,15,15);//add 15 for next column, add 17 for next row
         //one tile
         g.drawImage(one,1118,533,25,25,null);
         //row 0
@@ -364,7 +382,10 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         int addCol3,addRow3;
         addCol3=0;
         addRow3=0;
-        g.fillRect(1119+addCol2,711+addRow3,15,15);//add 15 for next column, add 17 for next row
+        if(game.getCurrentPlayer().getPoints()==0){
+            g.fillRect(1117,693,15,15);
+        }
+        else g.fillRect(1119+addCol2,711+addRow3,15,15);//add 15 for next column, add 17 for next row
         //one tile
         g.drawImage(one,1118,863,25,25,null);
         //row 0
@@ -423,17 +444,18 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         //
         ////floor line
         //
-        g.drawImage(black,1116,982,25,25,null);
-        g.drawImage(black,1149,982,25,25,null);
-        g.drawImage(black,1182,982,25,25,null);
-        g.drawImage(black,1214,982,25,25,null);
-        g.drawImage(black,1247,982,25,25,null);
-        g.drawImage(black,1279,982,25,25,null);
-        g.drawImage(black,1312,982,25,25,null);
+        g.drawImage(black,1116,978,25,25,null);
+        g.drawImage(black,1149,978,25,25,null);
+        g.drawImage(black,1182,978,25,25,null);
+        g.drawImage(black,1214,978,25,25,null);
+        g.drawImage(black,1247,978,25,25,null);
+        g.drawImage(black,1279,978,25,25,null);
+        g.drawImage(black,1312,978,25,25,null);
         //
         //floor text
         //
         g.setFont(new Font("Comic Sans",Font.BOLD,43));
+
         g.drawString("- " + game.getFactoryFloor().getTileCount()[0],90,103);
         g.drawString("- " + game.getFactoryFloor().getTileCount()[1],90,161);
         g.drawString("- " + game.getFactoryFloor().getTileCount()[2],90,219);
@@ -442,12 +464,13 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         //
         //trash text
         //
-        g.drawString("- 0",90,435);
-        g.drawString("- 0",90,493);
-        g.drawString("- 0",90,551);
-        g.drawString("- 0",90,609);
-        g.drawString("- 0",90,667);
-
+        if(game.getTrashes().getTrash()!=null) {
+            g.drawString("- 0", 90, 424);
+            g.drawString("- 0", 90, 482);
+            g.drawString("- 0", 90, 540);
+            g.drawString("- 0", 90, 598);
+            g.drawString("- 0", 90, 656);
+        }
         drawLog(logTxt.getText());
 
         if(game.getCurrentPlayer().canPlay())
