@@ -22,7 +22,8 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
     Game game;
     BufferedImage gameBack,blue,yellow,red,black,white,one;
     JButton nextButton, submitButton;
-    JRadioButton selectionMenu;
+    JRadioButton row1, row2, row3, row4, row5, floorLineButton;
+    ButtonGroup group;
     JScrollPane log;
     JTextArea logTxt;
     ImageIcon icon;
@@ -50,7 +51,14 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         game.deal();
         game.getCurrentPlayer().setCanDraw(true);
 
-        drawLog(game.getCurrentPlayer().getName() + " begins the round\n");
+        row1 = new JRadioButton(); row2 = new JRadioButton(); row3 = new JRadioButton(); row4 = new JRadioButton();
+        row5 = new JRadioButton(); floorLineButton = new JRadioButton();
+
+        ButtonGroup group = new ButtonGroup();
+
+        group.add(row1); group.add(row2); group.add(row3); group.add(row4); group.add(row5); group.add(floorLineButton);
+
+        drawLog(game.getCurrentPlayer().getName() + " begins the round\n\n");
 
         this.setVisible(true);
     }
@@ -448,6 +456,9 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         g.drawString("- 0",90,667);
 
         drawLog(logTxt.getText());
+
+        if(game.getCurrentPlayer().canPlay())
+            drawRadioButtons();
     }
 
     /************************* ACTION PERFORMED ********************/
@@ -482,7 +493,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
 
             logTxt.setText(logTxt.getText() + game.getCurrentPlayer().getName()
                     + " got " + tempHolder.size() + " "
-                    + tempHolder.get(0).getColorName() + " tile(s)\n");
+                    + tempHolder.get(0).getColorName() + " tile(s)\n\n");
 
 
             for(int i = 0; i < 5; i++)
@@ -491,8 +502,10 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
 
                 if(temp.get(true)[i] != 0)
                     logTxt.setText(logTxt.getText() + temp.get(true)[i] + " " + t.getColorName()
-                            + " tile(s) were/was put into the factory floor\n");
+                            + " tile(s) were/was put into the factory floor\n\n");
             }
+
+            logTxt.setText(logTxt.getText() + "Please choose which row to place your tiles in\n\n");
 
             repaint();
 
@@ -508,7 +521,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         //it can all be edited for convenience later.
         logTxt = new JTextArea(s);
         logTxt.setEditable(false);
-        logTxt.setFont(new Font("SansSerif", Font.PLAIN, 15));
+        logTxt.setFont(new Font("SansSerif", Font.PLAIN, 10));
         //logTxt.setText("test 1"); this was just for testing
         logTxt.setLineWrap(true);
         logTxt.setEditable(false);
@@ -523,6 +536,40 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         //these two add the log to the frame and display it
         this.add(log);
         this.setVisible(true); //don't know why I need this but it doesn't work if i don't have it so idk
+    }
+
+    public void drawRadioButtons() {
+        row1 = new JRadioButton();
+        row1.setBounds(360, 590, 20, 20);
+        row1.setVisible(true);
+        this.add(row1);
+
+        row2 = new JRadioButton();
+        row2.setBounds(360, 640, 20, 20);
+        row2.setVisible(true);
+        this.add(row2);
+
+        row3 = new JRadioButton();
+        row3.setBounds(360, 690, 20, 20);
+        row3.setVisible(true);
+        this.add(row3);
+
+        row4 = new JRadioButton();
+        row4.setBounds(360, 740, 20, 20);
+        row4.setVisible(true);
+        this.add(row4);
+
+        row5 = new JRadioButton();
+        row5.setBounds(360, 790, 20, 20);
+        row5.setVisible(true);
+        this.add(row5);
+
+        floorLineButton = new JRadioButton();
+        floorLineButton.setBounds(360, 840, 20, 20);
+        floorLineButton.setVisible(true);
+        this.add(floorLineButton);
+
+        this.setVisible(true);
     }
 
     public void mousePressed(MouseEvent e){}
