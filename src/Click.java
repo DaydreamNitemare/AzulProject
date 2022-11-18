@@ -200,7 +200,7 @@ public class Click {
             }
         }
         if(drawSuccessful) {
-            current.setCanDraw(false);
+            //current.setCanDraw(false);
             current.setCanPlay(true);
         }
 
