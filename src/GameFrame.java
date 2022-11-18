@@ -51,13 +51,6 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         game.deal();
         game.getCurrentPlayer().setCanDraw(true);
 
-        row1 = new JRadioButton(); row2 = new JRadioButton(); row3 = new JRadioButton(); row4 = new JRadioButton();
-        row5 = new JRadioButton(); floorLineButton = new JRadioButton();
-
-        ButtonGroup group = new ButtonGroup();
-
-        group.add(row1); group.add(row2); group.add(row3); group.add(row4); group.add(row5); group.add(floorLineButton);
-
         drawLog(game.getCurrentPlayer().getName() + " begins the round\n\n");
 
         this.setVisible(true);
@@ -568,6 +561,10 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         floorLineButton.setBounds(360, 840, 20, 20);
         floorLineButton.setVisible(true);
         this.add(floorLineButton);
+
+        ButtonGroup group = new ButtonGroup();
+
+        group.add(row1); group.add(row2); group.add(row3); group.add(row4); group.add(row5); group.add(floorLineButton);
 
         this.setVisible(true);
     }
