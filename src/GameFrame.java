@@ -25,7 +25,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
     JRadioButton row1, row2, row3, row4, row5, floorLineButton;
     ButtonGroup group;
 
-    JPanel logPanel, radioButtonPanel;
+    JPanel logPanel;
     JScrollPane log;
     JTextArea logTxt;
     ImageIcon icon;
@@ -56,12 +56,9 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         logPanel = new JPanel();
         this.add(logPanel);
 
-        radioButtonPanel = new JPanel();
-        //radioButtonPanel.setVisible(false);
-        this.add(radioButtonPanel);
-
         drawLog(game.getCurrentPlayer().getName() + " begins the round\n\n");
-        drawRadioButtons();
+
+        //componentPanel = new JPanel();
 
         //this.add(componentPanel);
         this.setVisible(true);
@@ -151,7 +148,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         addRow=game.getCurrentPlayer().getPoints();
         if(game.getCurrentPlayer().getPoints()==0){
             g.fillRect(440,397,28,28);
-            }
+        }
         else g.fillRect(441+addCol,430+addRow,28,28);  // 31 pixels right per point and 33 down for next row
         //one tile
         g.drawImage(one,437,728,49,49,null);
@@ -475,10 +472,10 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
             g.drawString("- 0", 90, 598);
             g.drawString("- 0", 90, 656);
         }
-
         drawLog(logTxt.getText());
 
-        drawRadioButtons();
+        if(game.getCurrentPlayer().canPlay())
+            drawRadioButtons();
     }
 
     /************************* ACTION PERFORMED ********************/
@@ -529,10 +526,9 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
 
             repaint();
 
-            //();
             //below here, write the code that will display the JRadioButtons to have the player choose the rows.
             //then, include a check to see if there are no more tiles to then end the round/game
-          }
+        }
 
     }
     public void drawLog(String s) //this method ensures the log remains on the frame after a repaint
@@ -554,6 +550,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         logTxt.setVisible(true);
 
         log = new JScrollPane(logTxt);
+        log.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         log.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         log.setPreferredSize(new Dimension(200, 312));
@@ -565,50 +562,41 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
     }
 
     public void drawRadioButtons() {
-        this.remove(radioButtonPanel);
-
-        radioButtonPanel = new JPanel();
-        radioButtonPanel.setBounds(370, 620, 10, 280);
-        radioButtonPanel.setPreferredSize(new Dimension(370, 620));
-        radioButtonPanel.setLayout(new FlowLayout());
-
         row1 = new JRadioButton();
-        //row1.setBounds(360, 590, 20, 20);
-        //row1.setVisible(true);
-        radioButtonPanel.add(row1);
+        row1.setBounds(360, 590, 20, 20);
+        row1.setVisible(true);
+        this.add(row1);
 
         row2 = new JRadioButton();
-        //row2.setBounds(360, 640, 20, 20);
-        //row2.setVisible(true);
-        radioButtonPanel.add(row2);
+        row2.setBounds(360, 640, 20, 20);
+        row2.setVisible(true);
+        this.add(row2);
 
         row3 = new JRadioButton();
-        //row3.setBounds(360, 690, 20, 20);
-        //row3.setVisible(true);
-        radioButtonPanel.add(row3);
+        row3.setBounds(360, 690, 20, 20);
+        row3.setVisible(true);
+        this.add(row3);
 
         row4 = new JRadioButton();
-        //row4.setBounds(360, 740, 20, 20);
-        //row4.setVisible(true);
-        radioButtonPanel.add(row4);
+        row4.setBounds(360, 740, 20, 20);
+        row4.setVisible(true);
+        this.add(row4);
 
         row5 = new JRadioButton();
-        //row5.setBounds(360, 790, 20, 20);
-        //row5.setVisible(true);
-        radioButtonPanel.add(row5);
+        row5.setBounds(360, 790, 20, 20);
+        row5.setVisible(true);
+        this.add(row5);
 
         floorLineButton = new JRadioButton();
-        //floorLineButton.setBounds(360, 840, 20, 20);
-        //floorLineButton.setVisible(true);
-        radioButtonPanel.add(floorLineButton);
+        floorLineButton.setBounds(360, 840, 20, 20);
+        floorLineButton.setVisible(true);
+        this.add(floorLineButton);
 
         ButtonGroup group = new ButtonGroup();
 
         group.add(row1); group.add(row2); group.add(row3); group.add(row4); group.add(row5); group.add(floorLineButton);
 
-        radioButtonPanel.setVisible(true);
-
-        this.add(radioButtonPanel);
+        this.setVisible(true);
     }
 
     public void mousePressed(MouseEvent e){}
