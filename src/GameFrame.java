@@ -26,6 +26,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
     JScrollPane log;
     JTextArea logTxt;
     ImageIcon icon;
+    boolean r1, r2, r3, r4, r5, r6;
     public GameFrame() //constructor
     {
         this.setSize(1440, 1024);
@@ -49,6 +50,8 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         game = new Game();
         game.deal();
         game.getCurrentPlayer().setCanDraw(true);
+
+        r1 = false; r2 = false; r3 = false; r4 = false; r5 = false; r6 = false;
 
         logPanel = new JPanel();
         this.add(logPanel);
@@ -467,6 +470,31 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
             g.drawString("- 0", 90, 656);
         }
 
+        //this will draw the make-shift radio buttons lol
+        if(game.getCurrentPlayer().canPlay())
+        {
+            g.setColor(Color.black);
+            g.drawRect(361, 628, 30, 30);
+            g.drawRect(361, 685, 30, 30);
+            g.drawRect(361, 742, 30, 30);
+            g.drawRect(361, 799, 30, 30);
+            g.drawRect(361, 856, 30, 30);
+            g.drawRect(361, 945, 30, 30);
+
+            if(r1)
+                g.fillRect(361, 628, 30, 30);
+            if(r2)
+                g.fillRect(361, 685, 30, 30);
+            if(r3)
+                g.fillRect(361, 742, 30, 30);
+            if(r4)
+                g.fillRect(361, 799, 30, 30);
+            if(r5)
+                g.fillRect(361, 856, 30, 30);
+            if(r6)
+                g.fillRect(361, 945, 30, 30);
+        }
+
         drawLog(logTxt.getText());
     }
 
@@ -488,14 +516,13 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         System.out.println("loc of click is (" + x + " , " + y + ")");
 
 
-        if(game.getCurrentPlayer().canDraw())
-        {
+        if (game.getCurrentPlayer().canDraw()) {
             Click c = new Click(x, y, game);
             TreeMap<Boolean, int[]> temp = c.draw(game.getFactories());
 
             boolean successful = temp.containsKey(true);
 
-            if(!successful)
+            if (!successful)
                 return;
 
             ArrayList<Tile> tempHolder = game.getCurrentPlayer().getHolder();
@@ -505,11 +532,10 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
                     + tempHolder.get(0).getColorName() + " tile(s)\n\n");
 
 
-            for(int i = 0; i < 5; i++)
-            {
+            for (int i = 0; i < 5; i++) {
                 Tile t = new Tile(i);
 
-                if(temp.get(true)[i] != 0)
+                if (temp.get(true)[i] != 0)
                     logTxt.setText(logTxt.getText() + temp.get(true)[i] + " " + t.getColorName()
                             + " tile(s) were/was put into the factory floor\n\n");
             }
@@ -517,9 +543,69 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
             logTxt.setText(logTxt.getText() + "Please choose which row to place your tiles in\n\n");
 
             repaint();
+        }
 
-            //below here, write the code that will display the JRadioButtons to have the player choose the rows.
-            //then, include a check to see if there are no more tiles to then end the round/game
+        //this below is the code for the make-shift Radio Buttons
+
+        if (game.getCurrentPlayer().canPlay())
+        {
+            if(x >= 361 && x <= 391)
+            {
+                if(y >= 628 && y <= 658) {
+                    r1 = true;
+                    r2 = false;
+                    r3 = false;
+                    r4 = false;
+                    r5 = false;
+                    r6 = false;
+                    repaint();
+                }
+                else if(y >= 685 && y <= 715) {
+                    r1 = false;
+                    r2 = true;
+                    r3 = false;
+                    r4 = false;
+                    r5 = false;
+                    r6 = false;
+                    repaint();
+                }
+                else if(y >= 742 && y <= 772) {
+                    r1 = false;
+                    r2 = false;
+                    r3 = true;
+                    r4 = false;
+                    r5 = false;
+                    r6 = false;
+                    repaint();
+                }
+                else if(y >= 799 && y <= 829) {
+                    r1 = false;
+                    r2 = false;
+                    r3 = false;
+                    r4 = true;
+                    r5 = false;
+                    r6 = false;
+                    repaint();
+                }
+                else if(y >= 856 && y <= 886) {
+                    r1 = false;
+                    r2 = false;
+                    r3 = false;
+                    r4 = false;
+                    r5 = true;
+                    r6 = false;
+                    repaint();
+                }
+                else if(y >= 945 && y <= 975) {
+                    r1 = false;
+                    r2 = false;
+                    r3 = false;
+                    r4 = false;
+                    r5 = false;
+                    r6 = true;
+                    repaint();
+                }
+            }
         }
 
     }
