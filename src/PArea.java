@@ -54,5 +54,34 @@ public class PArea {
 
         return holder;
     }
+    public boolean rowIsFull(int row)
+    {
+        for(int i = 0; i < area[row].length; i++)
+            if(area[row][i] == 5)
+                return false;
+
+        return true;
+    }
+
+    public void clearRow(int row)
+    {
+        for(int i = 0; i < area[row].length; i++)
+            area[row][i] = 5;
+    }
+
+    public int colorInRow(int row)
+    {
+        return area[row][0];
+    }
+
+    public boolean isValidPlacement(int color, int row, Wall wall)
+    {
+        if(row == 5)
+            return true;
+
+        if(!rowIsFull(row) && (color == colorInRow(row) || colorInRow(row) == 5) && !wall.hasTilePlaced(row, color))
+            return true;
+        return false;
+    }
 
 }

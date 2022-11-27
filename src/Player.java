@@ -16,6 +16,8 @@ public class Player {
         w = new Wall();
         fl = new FloorLine();
         holder = new ArrayList<Tile>();
+        canPlay = false;
+        canDraw = false;
     }
 
     public int getPoints() //returns the number of points a player has

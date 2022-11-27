@@ -76,4 +76,9 @@ public class Wall {
         totalScore+=1;
         return totalScore;
     }
+
+    public boolean hasTilePlaced(int row, int color)
+    {
+        return pWall[row][(color + row) % 5] != 5;
+    }
 }

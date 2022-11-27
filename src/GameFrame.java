@@ -20,8 +20,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
 {
 
     Game game;
-    BufferedImage gameBack,blue,yellow,red,black,white,one;
-    JButton nextButton, submitButton;
+    BufferedImage gameBack, submitButton, nextButton, blue, red, white, black, yellow, one;
     JPanel logPanel;
     JScrollPane log;
     JTextArea logTxt;
@@ -39,6 +38,8 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
             //where all the BufferedImage variables will be instantiated
             gameBack = ImageIO.read(GameFrame.class.getResource("/images/gameBackground.png"));
             icon = new ImageIcon(ImageIO.read(GameFrame.class.getResource("/images/azulIconImage.PNG")));
+            submitButton = ImageIO.read(GameFrame.class.getResource("/images/submit.png"));
+            nextButton = ImageIO.read(GameFrame.class.getResource("/images/next.png"));
         } catch (Exception E) {
             System.out.println("Error with instantiating the images in GameFrame");
             return;
@@ -57,7 +58,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         this.add(logPanel);
 
         drawLog(game.getCurrentPlayer().getName() + " begins the round\n\n");
-        ;
+
         this.setVisible(true);
     }
 
@@ -462,7 +463,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         //
         //trash text
         //
-        if(game.getTrashes().getTrash()!=null) {
+        if(game.getTrash().getTrash()!=null) {
             g.drawString("- 0", 90, 424);
             g.drawString("- 0", 90, 482);
             g.drawString("- 0", 90, 540);
@@ -473,6 +474,8 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         //this will draw the make-shift radio buttons lol
         if(game.getCurrentPlayer().canPlay())
         {
+            g.drawImage(submitButton, 215, 820, 100, 50, null);
+
             g.setColor(Color.black);
             g.drawRect(361, 628, 30, 30);
             g.drawRect(361, 685, 30, 30);
@@ -495,6 +498,9 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
                 g.fillRect(361, 945, 30, 30);
         }
 
+        if(!game.getCurrentPlayer().canPlay() && !game.getCurrentPlayer().canDraw())
+            g.drawImage(nextButton, 215, 820, 100, 50, null);
+
         drawLog(logTxt.getText());
     }
 
@@ -502,7 +508,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
 
     public void actionPerformed(ActionEvent e) //really only necessary for the next player and submit buttons
     {
-        //don't forget to add ActionListeners for the JButtons and JRadioButtons
+
     }
 
 
@@ -606,6 +612,107 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
                     repaint();
                 }
             }
+
+            if(x >= 215 && x <= 315 && y >= 820 && y <= 870)
+            {
+                int holderLength = game.getCurrentPlayer().getHolder().size();
+                String holderColor = game.getCurrentPlayer().getHolder().get(0).getColorName();
+
+                if(r1)
+                {
+                    if(game.getCurrentPlayer().getArea().isValidPlacement(game.getCurrentPlayer().getHolder().get(0).getColor(), 0, game.getCurrentPlayer().getWall()))
+                    {
+                        System.out.println("this is hit right here");
+                        game.getCurrentPlayer().setPArea(0, game.getTrash());
+                        logTxt.setText(logTxt.getText() + holderLength + " " + holderColor + " tile(s) were placed\n\n");
+                        game.getCurrentPlayer().setCanPlay(false);
+                        repaint();
+                        r1 = false;
+                    }
+                    else {
+                        logTxt.setText(logTxt.getText() + "please choose a valid placement\n\n");
+                        repaint();
+                    }
+                }
+                else if(r2)
+                {
+                    if(game.getCurrentPlayer().getArea().isValidPlacement(game.getCurrentPlayer().getHolder().get(0).getColor(), 1, game.getCurrentPlayer().getWall()))
+                    {
+                        game.getCurrentPlayer().setPArea(1, game.getTrash());
+                        logTxt.setText(logTxt.getText() + holderLength + " " + holderColor + " tile(s) were placed\n\n");
+                        game.getCurrentPlayer().setCanPlay(false);
+                        repaint();
+                        r2 = false;
+                    }
+                    else {
+                        logTxt.setText(logTxt.getText() + "please choose a valid placement\n\n");
+                        repaint();
+                    }
+                }
+                else if(r3)
+                {
+                    if(game.getCurrentPlayer().getArea().isValidPlacement(game.getCurrentPlayer().getHolder().get(0).getColor(), 2, game.getCurrentPlayer().getWall()))
+                    {
+                        game.getCurrentPlayer().setPArea(2, game.getTrash());
+                        logTxt.setText(logTxt.getText() + holderLength + " " + holderColor + " tile(s) were placed\n\n");
+                        game.getCurrentPlayer().setCanPlay(false);
+                        repaint();
+                        r3 = false;
+                    }
+                    else {
+                        logTxt.setText(logTxt.getText() + "please choose a valid placement\n\n");
+                        repaint();
+                    }
+                }
+                else if(r4)
+                {
+                    if(game.getCurrentPlayer().getArea().isValidPlacement(game.getCurrentPlayer().getHolder().get(0).getColor(), 3, game.getCurrentPlayer().getWall()))
+                    {
+                        game.getCurrentPlayer().setPArea(3, game.getTrash());
+                        logTxt.setText(logTxt.getText() + holderLength + " " + holderColor + " tile(s) were placed\n\n");
+                        game.getCurrentPlayer().setCanPlay(false);
+                        repaint();
+                        r4 = false;
+                    }
+                    else {
+                        logTxt.setText(logTxt.getText() + "please choose a valid placement\n\n");
+                        repaint();
+                    }
+                }
+                if(r5)
+                {
+                    if(game.getCurrentPlayer().getArea().isValidPlacement(game.getCurrentPlayer().getHolder().get(0).getColor(), 4, game.getCurrentPlayer().getWall()))
+                    {
+                        game.getCurrentPlayer().setPArea(4, game.getTrash());
+                        logTxt.setText(logTxt.getText() + holderLength + " " + holderColor + " tile(s) were placed\n\n");
+                        game.getCurrentPlayer().setCanPlay(false);
+                        repaint();
+                        r5 = false;
+                    }
+                    else {
+                        logTxt.setText(logTxt.getText() + "please choose a valid placement\n\n");
+                        repaint();
+                    }
+                }
+                else if(r6)
+                {
+                    game.getCurrentPlayer().setPArea(5, game.getTrash());
+                    logTxt.setText(logTxt.getText() + holderLength + " " + holderColor + " tile(s) were placed\n\n");
+                    game.getCurrentPlayer().setCanPlay(false);
+                    repaint();
+                    r6 = false;
+                }
+                x = 0;
+                y = 0;
+            }
+        }
+
+        if(!game.getCurrentPlayer().canPlay && !game.getCurrentPlayer().canDraw() && x >= 215 && x <= 315 && y >= 820 && y <= 870)
+        {
+            game.nextPlayer();
+            logTxt.setText(logTxt.getText() + game.getCurrentPlayer().getName()+"'s turn\n\n");
+            game.getCurrentPlayer().setCanDraw(true);
+            repaint();
         }
 
     }
@@ -629,7 +736,6 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
 
         log = new JScrollPane(logTxt);
         log.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-
         log.setPreferredSize(new Dimension(200, 312));
 
         logPanel.add(log);

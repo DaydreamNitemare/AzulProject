@@ -73,5 +73,5 @@ public class Game {
     {
         return floor;
     }
-    public Trash getTrashes(){ return trash; }
+    public Trash getTrash(){ return trash; }
 }
