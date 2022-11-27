@@ -31,6 +31,9 @@ public class Game {
         turnNum %= 4;
         currentPlayer = players[turnNum];
     }
+    public int getTurnNum(){
+        return turnNum;
+    }
 
     public void endRound()
     {

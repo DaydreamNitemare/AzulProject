@@ -20,7 +20,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
 {
 
     Game game;
-    BufferedImage gameBack, submitButton, nextButton, blue, red, white, black, yellow, one;
+    BufferedImage gameBack, submitButton, nextButton, blue, red, white, black, yellow, one, p1, p2, p3, p4;
     JPanel logPanel;
     JScrollPane log;
     JTextArea logTxt;
@@ -40,6 +40,10 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
             icon = new ImageIcon(ImageIO.read(GameFrame.class.getResource("/images/azulIconImage.PNG")));
             submitButton = ImageIO.read(GameFrame.class.getResource("/images/submit.png"));
             nextButton = ImageIO.read(GameFrame.class.getResource("/images/next.png"));
+            p1 = ImageIO.read(GameFrame.class.getResource("/images/p1azul.jpg"));
+            p2 = ImageIO.read(GameFrame.class.getResource("/images/p2azul.jpg"));
+            p3 = ImageIO.read(GameFrame.class.getResource("/images/p3azul.jpg"));
+            p4 = ImageIO.read(GameFrame.class.getResource("/images/p4azul.jpg"));
         } catch (Exception E) {
             System.out.println("Error with instantiating the images in GameFrame");
             return;
@@ -66,6 +70,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
     ///game.getFactory(0).getTilesPresent().get(0).getImage()  (this is how to get each image)
     public void paint(Graphics g)
     {
+
         //background for the whole game
         g.drawImage(gameBack,0,30,getWidth(),getHeight() - 30,null);
 
@@ -502,6 +507,30 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
             g.drawImage(nextButton, 215, 820, 100, 50, null);
 
         drawLog(logTxt.getText());
+        if(game.getTurnNum()==0){
+            g.drawImage(p1, 480, 396, 100, 28, null);
+            g.drawImage(p2, 1150, 695, 50, 15, null);
+            g.drawImage(p3, 1150, 363, 50, 15, null);
+            g.drawImage(p4, 1150, 30, 50, 15, null);
+        }
+        else if(game.getTurnNum()==1){
+            g.drawImage(p2, 480, 396, 100, 28, null);
+            g.drawImage(p3, 1150, 695, 50, 15, null);
+            g.drawImage(p4, 1150, 363, 50, 15, null);
+            g.drawImage(p1, 1150, 30, 50, 15, null);
+        }
+        else if(game.getTurnNum()==2){
+            g.drawImage(p3, 480, 396, 100, 28, null);
+            g.drawImage(p4, 1150, 695, 50, 15, null);
+            g.drawImage(p1, 1150, 363, 50, 15, null);
+            g.drawImage(p2, 1150, 30, 50, 15, null);
+        }
+        else if(game.getTurnNum()==3){
+            g.drawImage(p4, 480, 396, 100, 28, null);
+            g.drawImage(p1, 1150, 695, 50, 15, null);
+            g.drawImage(p2, 1150, 363, 50, 15, null);
+            g.drawImage(p3, 1150, 30, 50, 15, null);
+        }
     }
 
     /************************* ACTION PERFORMED ********************/
