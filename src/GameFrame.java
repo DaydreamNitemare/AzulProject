@@ -9,13 +9,6 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
-/*
-I left this class off working on the log.
-It gets added when the frame first appears but disappears every time repaint is called, even though the drawLog()
-method is present inside paint. I need to fix this. After this issue is resolved, the JRadioButtons take 
-priority. 
- */
-
 public class GameFrame extends JFrame implements ActionListener, MouseListener
 {
 
@@ -503,9 +496,11 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
                 g.fillRect(361, 945, 30, 30);
         }
 
+        //this draws the "Next" button when a player's turn ends
         if(!game.getCurrentPlayer().canPlay() && !game.getCurrentPlayer().canDraw())
             g.drawImage(nextButton, 215, 820, 100, 50, null);
 
+        //this draws the player's names
         drawLog(logTxt.getText());
         if(game.getTurnNum()==0){
             g.drawImage(p1, 480, 396, 100, 28, null);
@@ -551,7 +546,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         System.out.println("loc of click is (" + x + " , " + y + ")");
 
 
-        if (game.getCurrentPlayer().canDraw()) {
+        if (game.getCurrentPlayer().canDraw()) { //here is what allows a player to draw
             Click c = new Click(x, y, game);
             TreeMap<Boolean, int[]> temp = c.draw(game.getFactories());
 
@@ -582,7 +577,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
 
         //this below is the code for the make-shift Radio Buttons
 
-        if (game.getCurrentPlayer().canPlay())
+        if (game.getCurrentPlayer().canPlay()) //this allows a player to select a radio button and submit their choice
         {
             if(x >= 361 && x <= 391)
             {
@@ -642,7 +637,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
                 }
             }
 
-            if(x >= 215 && x <= 315 && y >= 820 && y <= 870)
+            if(x >= 215 && x <= 315 && y >= 820 && y <= 870) // choice submission
             {
                 int holderLength = game.getCurrentPlayer().getHolder().size();
                 String holderColor = game.getCurrentPlayer().getHolder().get(0).getColorName();
