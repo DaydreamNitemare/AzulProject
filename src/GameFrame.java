@@ -147,8 +147,9 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         }
         else g.fillRect(441+addCol,430+addRow,28,28);  // 31 pixels right per point and 33 down for next row
         //one tile
-        g.drawImage(one,437,728,49,49,null);
-
+        if(game.getCurrentPlayer().hasOneTile()) {
+            g.drawImage(one, 437, 728, 49, 49, null);
+        }
 
         /************************** WALL AREA ******************/
         // row 0
@@ -247,11 +248,12 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         int addCol1,addRow1;
         addCol1=0;
         addRow1=0;
-        if(game.getCurrentPlayer().getPoints()==0){         // need to add get other player method
+        if(game.getPrevPlayer().getPoints()==0){         // need to add get other player method
             g.fillRect(1118,30,15,15);
         }
         else g.fillRect(1118+addCol1,47+addRow1,15,15);//add 15 for next column, add 17 for next row
         //one tile
+        if(game.getPrevPlayer().hasOneTile())
         g.drawImage(one,1118,201,25,25,null);
         //row 0
         g.drawImage(black,1281,147,25,25,null);
@@ -323,11 +325,12 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         int addCol2,addRow2;
         addCol2=0;
         addRow2=0;
-        if(game.getCurrentPlayer().getPoints()==0){  //still need to add get other player method
+        if(game.getMidPlayer().getPoints()==0){  //still need to add get other player method
             g.fillRect(1118,361,15,15);
         }
         else g.fillRect(1118+addCol2,379+addRow2,15,15);//add 15 for next column, add 17 for next row
         //one tile
+        if(game.getMidPlayer().hasOneTile())
         g.drawImage(one,1118,533,25,25,null);
         //row 0
         g.drawImage(black,1281,479,25,25,null);
@@ -399,11 +402,12 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         int addCol3,addRow3;
         addCol3=0;
         addRow3=0;
-        if(game.getCurrentPlayer().getPoints()==0){
+        if(game.getNextPlayer().getPoints()==0){
             g.fillRect(1117,693,15,15);
         }
         else g.fillRect(1119+addCol2,711+addRow3,15,15);//add 15 for next column, add 17 for next row
         //one tile
+        if(game.getNextPlayer().hasOneTile())
         g.drawImage(one,1118,863,25,25,null);
         //row 0
         g.drawImage(black,1281,811,25,25,null);

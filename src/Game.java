@@ -77,4 +77,15 @@ public class Game {
         return floor;
     }
     public Trash getTrash(){ return trash; }
+
+    public Player getPrevPlayer(){
+        return players[(turnNum+3)%4];
+    }
+    public Player getMidPlayer(){
+        return players[(turnNum+2)%4];
+    }
+    public Player getNextPlayer(){
+        return players[(turnNum++)%4];
+    }
+
 }
