@@ -186,27 +186,46 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
 
         /************ PAREA ****************/
 
-        //row 0
-        //
+        //This for loop here is what draws out the player's entire PArea. Surprisingly, this is all you need
+        int yPos = 621;
+        for(int i = 0; i < 5; i++)
+        {
+            int xPos = 665;
+            for(int j = 0; j < i + 1; j++)
+            {
+                if(game.getCurrentPlayer().getArea().getArea()[i][j] != 5)
+                {
+                    Tile temp = new Tile(game.getCurrentPlayer().getArea().getArea()[i][j]);
+                    g.drawImage(temp.getImage(), xPos, yPos, 49, 49, null);
+                    xPos -= 57;
+                }
+            }
+
+            yPos += 55;
+        }
+
+        /* I commented this out because we may need it for reference later
         g.drawImage(black,665,621,49,49,null);
         //row 1
         g.drawImage(white,607,673,49,49,null);
         g.drawImage(white,665,673,49,49,null);
         //row 2
-        g.drawImage(red,551,730,49,49,null);
-        g.drawImage(red,607,730,49,49,null);
-        g.drawImage(red,665,730,49,49,null);
+        g.drawImage(red,553,725,49,49,null);
+        g.drawImage(red,607,725,49,49,null);
+        g.drawImage(red,665,725,49,49,null);
         //row 3
-        g.drawImage(blue,494,787,49,49,null);
-        g.drawImage(blue,551,787,49,49,null);
-        g.drawImage(blue,607,787,49,49,null);
-        g.drawImage(blue,665,787,49,49,null);
+        g.drawImage(blue,495,777,49,49,null);
+        g.drawImage(blue,553,777,49,49,null);
+        g.drawImage(blue,607,777,49,49,null);
+        g.drawImage(blue,665,777,49,49,null);
         //row 4
-        g.drawImage(yellow,439,844,49,49,null);
-        g.drawImage(yellow,494,844,49,49,null);
-        g.drawImage(yellow,551,844,49,49,null);
-        g.drawImage(yellow,607,844,49,49,null);
-        g.drawImage(yellow,665,844,49,49,null);
+        g.drawImage(yellow,437,829,49,49,null);
+        g.drawImage(yellow,495,829,49,49,null);
+        g.drawImage(yellow,553,829,49,49,null);
+        g.drawImage(yellow,607,829,49,49,null);
+        g.drawImage(yellow,665,829,49,49,null);
+        */
+
         //
         ////floor line
         //
