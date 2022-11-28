@@ -12,6 +12,17 @@ public class Wall {
     public int[][] getWall(){
         return pWall;
     }
+
+    public Tile[][] getTileWall(){
+        Tile[][]pTWall = new Tile[5][5];
+        for(int x=0;x<5;x++){
+            for(int y=0;y<5;y++){
+                Tile temp= new Tile(pWall[x][y]);
+                pTWall[x][y]=temp;
+            }
+        }
+        return pTWall;
+    }
     public int set(int row, int col){
         int p=0;
         pWall[row][col]=2;
