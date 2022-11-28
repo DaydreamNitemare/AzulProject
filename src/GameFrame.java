@@ -231,7 +231,6 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         ////floor line
         //
         Tile[]fTLine=game.getCurrentPlayer().getFloorLine().getFloorTLine();
-
         g.drawImage(fTLine[0].getImage(), 437, 940, 49, 49, null);
         g.drawImage(fTLine[1].getImage(), 499, 940, 49, 49, null);
         g.drawImage(fTLine[2].getImage(), 561, 940, 49, 49, null);
