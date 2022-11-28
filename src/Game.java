@@ -79,13 +79,16 @@ public class Game {
     public Trash getTrash(){ return trash; }
 
     public Player getPrevPlayer(){
-        return players[(turnNum+3)%4];
+        int temp=turnNum+3;
+        return players[(temp)%4];
     }
     public Player getMidPlayer(){
-        return players[(turnNum+2)%4];
+        int temp= turnNum+2;
+        return players[(temp)%4];
     }
     public Player getNextPlayer(){
-        return players[(turnNum++)%4];
+        int temp= turnNum+1;
+        return players[(temp)%4];
     }
 
 }
