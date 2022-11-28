@@ -486,11 +486,11 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         //trash text
         //
         if(game.getTrash().getTrash()!=null) {
-            g.drawString("- 0", 90, 424);
-            g.drawString("- 0", 90, 482);
-            g.drawString("- 0", 90, 540);
-            g.drawString("- 0", 90, 598);
-            g.drawString("- 0", 90, 656);
+            g.drawString("- " + game.getTrash().getNumOfEachColor()[0], 90, 424);
+            g.drawString("- " + game.getTrash().getNumOfEachColor()[1], 90, 482);
+            g.drawString("- " + game.getTrash().getNumOfEachColor()[2], 90, 540);
+            g.drawString("- " + game.getTrash().getNumOfEachColor()[3], 90, 598);
+            g.drawString("- " + game.getTrash().getNumOfEachColor()[4], 90, 656);
         }
 
         //this will draw the make-shift radio buttons lol
@@ -675,7 +675,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
                         r1 = false;
                     }
                     else {
-                        logTxt.setText(logTxt.getText() + "please choose a valid placement\n\n");
+                        logTxt.setText("please choose a valid placement\n\n" + logTxt.getText());
                         repaint();
                     }
                 }
@@ -690,7 +690,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
                         r2 = false;
                     }
                     else {
-                        logTxt.setText(logTxt.getText() + "please choose a valid placement\n\n");
+                        logTxt.setText("please choose a valid placement\n\n" + logTxt.getText());
                         repaint();
                     }
                 }
@@ -699,13 +699,13 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
                     if(game.getCurrentPlayer().getArea().isValidPlacement(game.getCurrentPlayer().getHolder().get(0).getColor(), 2, game.getCurrentPlayer().getWall()))
                     {
                         game.getCurrentPlayer().setPArea(2, game.getTrash());
-                        logTxt.setText(logTxt.getText() + holderLength + " " + holderColor + " tile(s) were placed\n\n");
+                        logTxt.setText(holderLength + " " + holderColor + " tile(s) were placed\n\n" + logTxt.getText() );
                         game.getCurrentPlayer().setCanPlay(false);
                         repaint();
                         r3 = false;
                     }
                     else {
-                        logTxt.setText(logTxt.getText() + "please choose a valid placement\n\n");
+                        logTxt.setText("please choose a valid placement\n\n" + logTxt.getText());
                         repaint();
                     }
                 }
@@ -714,13 +714,13 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
                     if(game.getCurrentPlayer().getArea().isValidPlacement(game.getCurrentPlayer().getHolder().get(0).getColor(), 3, game.getCurrentPlayer().getWall()))
                     {
                         game.getCurrentPlayer().setPArea(3, game.getTrash());
-                        logTxt.setText(logTxt.getText() + holderLength + " " + holderColor + " tile(s) were placed\n\n");
+                        logTxt.setText(holderLength + " " + holderColor + " tile(s) were placed\n\n" + logTxt.getText() );
                         game.getCurrentPlayer().setCanPlay(false);
                         repaint();
                         r4 = false;
                     }
                     else {
-                        logTxt.setText(logTxt.getText() + "please choose a valid placement\n\n");
+                        logTxt.setText("please choose a valid placement\n\n" + logTxt.getText());
                         repaint();
                     }
                 }
@@ -729,7 +729,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
                     if(game.getCurrentPlayer().getArea().isValidPlacement(game.getCurrentPlayer().getHolder().get(0).getColor(), 4, game.getCurrentPlayer().getWall()))
                     {
                         game.getCurrentPlayer().setPArea(4, game.getTrash());
-                        logTxt.setText(logTxt.getText() + holderLength + " " + holderColor + " tile(s) were placed\n\n");
+                        logTxt.setText(holderLength + " " + holderColor + " tile(s) were placed\n\n" + logTxt.getText() );
                         game.getCurrentPlayer().setCanPlay(false);
                         repaint();
                         r5 = false;
@@ -742,7 +742,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
                 else if(r6)
                 {
                     game.getCurrentPlayer().setPArea(5, game.getTrash());
-                    logTxt.setText(logTxt.getText() + holderLength + " " + holderColor + " tile(s) were placed\n\n");
+                    logTxt.setText(holderLength + " " + holderColor + " tile(s) were placed\n\n" + logTxt.getText() );
                     game.getCurrentPlayer().setCanPlay(false);
                     repaint();
                     r6 = false;

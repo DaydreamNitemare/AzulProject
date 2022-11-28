@@ -18,4 +18,18 @@ public class Trash {
     public Tile removeFromTrash(int pos) {
         return trashArray.remove(pos);
     }
+
+    public int[] getNumOfEachColor()
+    {
+        int[] temp = {0, 0, 0, 0, 0};
+        for(int i = 0; i < 5; i++)
+        {
+            for(int j = 0; j < trashArray.size(); j++)
+            {
+                if(trashArray.get(j).getColor() == i)
+                    temp[i]++;
+            }
+        }
+        return temp;
+    }
 }

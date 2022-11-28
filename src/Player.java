@@ -93,8 +93,11 @@ public class Player {
                     i--;
             }
         else {
-            for (int i = 0; i < holder.size(); i++)
+            for (int i = 0; i < holder.size(); i++) {
                 fl.add(holder.remove(0), t);
+                if(holder.size() >= 1)
+                    i--;
+            }
         }
     }
 
