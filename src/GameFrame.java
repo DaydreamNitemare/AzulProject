@@ -755,7 +755,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         if(!game.getCurrentPlayer().canPlay && !game.getCurrentPlayer().canDraw() && x >= 215 && x <= 315 && y >= 820 && y <= 870)
         {
             game.nextPlayer();
-            logTxt.setText("-----------------------\n" + game.getCurrentPlayer().getName()+"'s turn\n" + "-----------------------\n\n"+ logTxt.getText());
+            logTxt.setText(game.getCurrentPlayer().getName()+"'s turn\n" + "______________________________\n\n"+ logTxt.getText());
             game.getCurrentPlayer().setCanDraw(true);
             repaint();
         }
