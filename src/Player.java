@@ -129,10 +129,4 @@ public class Player {
     public boolean canPlay() {
         return canPlay;
     }
-
-    public void score(){
-        for(int i =0; i<5; i++){
-
-        }
-    }
 }
