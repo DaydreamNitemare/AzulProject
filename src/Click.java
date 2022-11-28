@@ -169,13 +169,13 @@ public class Click {
             drawSuccessful = true;
         }
         int[] lol = game.getFactoryFloor().getTileCount();
-        if(x>40 && x<90 && y>122 && y<170){
+        if(x>40 && x<90 && y>65 && y<112){
             if(lol[0]!=0){
                 game.getFactoryFloor().remove(current, 0);
                 drawSuccessful=true;
             }
         }
-        if(x>40 && x<90 && y>65 && y<112){
+        if(x>40 && x<90 && y>122 && y<170){
             if(lol[1]!=0){
                 game.getFactoryFloor().remove(current, 1);
                 drawSuccessful=true;
