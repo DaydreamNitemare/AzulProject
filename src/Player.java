@@ -87,7 +87,10 @@ public class Player {
                 else
                     fl.add(holder.get(0), t);
 
+                System.out.println("A tile was just placed");
                 holder.remove(0);
+                if(holder.size() >= 1)
+                    i--;
             }
         else {
             for (int i = 0; i < holder.size(); i++)
