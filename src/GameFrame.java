@@ -576,20 +576,17 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
 
             ArrayList<Tile> tempHolder = game.getCurrentPlayer().getHolder();
 
-            logTxt.setText(logTxt.getText() + game.getCurrentPlayer().getName()
-                    + " got " + tempHolder.size() + " "
-                    + tempHolder.get(0).getColorName() + " tile(s)\n\n");
+            logTxt.setText(game.getCurrentPlayer().getName() + " got " + tempHolder.size() + " " + tempHolder.get(0).getColorName() + " tile(s)\n\n" + logTxt.getText());
 
 
             for (int i = 0; i < 5; i++) {
                 Tile t = new Tile(i);
 
                 if (temp.get(true)[i] != 0)
-                    logTxt.setText(logTxt.getText() + temp.get(true)[i] + " " + t.getColorName()
-                            + " tile(s) were/was put into the factory floor\n\n");
+                    logTxt.setText( temp.get(true)[i] + " " + t.getColorName() + " tile(s) were/was put into the \nfactory floor\n\n"+ logTxt.getText());
             }
 
-            logTxt.setText(logTxt.getText() + "Please choose which row to place your tiles in\n\n");
+            logTxt.setText( "Please choose which row to place \nyour tiles in\n\n" + logTxt.getText());
 
             repaint();
         }
@@ -667,7 +664,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
                     {
                         System.out.println("this is hit right here");
                         game.getCurrentPlayer().setPArea(0, game.getTrash());
-                        logTxt.setText(logTxt.getText() + holderLength + " " + holderColor + " tile(s) were placed\n\n");
+                        logTxt.setText(holderLength + " " + holderColor + " tile(s) were placed\n\n" + logTxt.getText());
                         game.getCurrentPlayer().setCanPlay(false);
                         repaint();
                         r1 = false;
@@ -682,7 +679,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
                     if(game.getCurrentPlayer().getArea().isValidPlacement(game.getCurrentPlayer().getHolder().get(0).getColor(), 1, game.getCurrentPlayer().getWall()))
                     {
                         game.getCurrentPlayer().setPArea(1, game.getTrash());
-                        logTxt.setText(logTxt.getText() + holderLength + " " + holderColor + " tile(s) were placed\n\n");
+                        logTxt.setText(holderLength + " " + holderColor + " tile(s) were placed\n\n" + logTxt.getText() );
                         game.getCurrentPlayer().setCanPlay(false);
                         repaint();
                         r2 = false;
@@ -753,7 +750,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         if(!game.getCurrentPlayer().canPlay && !game.getCurrentPlayer().canDraw() && x >= 215 && x <= 315 && y >= 820 && y <= 870)
         {
             game.nextPlayer();
-            logTxt.setText(logTxt.getText() + game.getCurrentPlayer().getName()+"'s turn\n\n");
+            logTxt.setText("-----------------------\n" + game.getCurrentPlayer().getName()+"'s turn\n" + "-----------------------\n\n"+ logTxt.getText());
             game.getCurrentPlayer().setCanDraw(true);
             repaint();
         }
@@ -776,6 +773,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         logTxt.setLineWrap(true);
         logTxt.setEditable(false);
         logTxt.setVisible(true);
+
 
         log = new JScrollPane(logTxt);
         log.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
