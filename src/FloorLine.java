@@ -6,7 +6,16 @@ public class FloorLine {
     {
         floorLine = new ArrayList<Tile>();
     }
-
+    public Tile[] getFloorTLine(){
+        Tile[]temp=new Tile[7];
+        for(int x=0;x<floorLine.size();x++){
+            temp[x]=floorLine.get(x);
+        }
+        for(int x=floorLine.size();x<temp.length;x++){
+            temp[x]=new Tile(5);
+        }
+        return temp;
+    }
     /*
     this below adds a tile to a players floor line. If the floor line is filled, it would then put the tile
     into the given trash.
