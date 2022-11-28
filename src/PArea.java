@@ -11,6 +11,15 @@ public class PArea {
         area[3] = new int[]{5, 5, 5, 5};
         area[4] = new int[]{5, 5, 5, 5, 5};
     }
+    public Tile[][] getTileArea(){
+        Tile[][]pTArea = new Tile[5][];
+        pTArea[0]= new Tile[]{new Tile(area[0][0])};
+        pTArea[1]= new Tile[]{new Tile(area[1][0]),new Tile(area[1][1])};
+        pTArea[2]= new Tile[]{new Tile(area[2][0]),new Tile(area[2][1]),new Tile(area[2][2])};
+        pTArea[3]= new Tile[]{new Tile(area[3][0]),new Tile(area[3][1]),new Tile(area[3][2]),new Tile(area[3][3])};
+        pTArea[4]= new Tile[]{new Tile(area[4][0]),new Tile(area[4][1]),new Tile(area[4][2]),new Tile(area[4][3]),new Tile(area[4][4])};
+        return pTArea;
+    }
 
     public int[][] getArea() //returns the play area matrix
     {

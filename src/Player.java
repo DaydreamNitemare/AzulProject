@@ -81,7 +81,7 @@ public class Player {
      */
     public void setPArea(int row, Trash t) {
         if (row != 5)
-            for (int i = 0; i < holder.size(); i++) {
+            for (int i = 0; i <= holder.size(); i++) {
                 if (a.getRowSpace(row).get(1) > 0)
                     a.setArea(row, holder.get(0).getColor(), a.getRowSpace(row).get(1));
                 else

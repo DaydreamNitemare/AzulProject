@@ -153,35 +153,36 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         /************************** WALL AREA ******************/
         // row 0
         //
-        g.drawImage(black,750,621,49,49,null);
-        g.drawImage(black,807,621,49,49,null);
-        g.drawImage(black,864,621,49,49,null);
-        g.drawImage(black,919,621,49,49,null);
-        g.drawImage(black,976,621,49,49,null);
+        Tile[][]PTileWall=game.getCurrentPlayer().getWall().getTileWall();
+        g.drawImage(PTileWall[0][0].getImage(),750,621,49,49,null);
+        g.drawImage(PTileWall[0][1].getImage(),807,621,49,49,null);
+        g.drawImage(PTileWall[0][2].getImage(),864,621,49,49,null);
+        g.drawImage(PTileWall[0][3].getImage(),919,621,49,49,null);
+        g.drawImage(PTileWall[0][4].getImage(),976,621,49,49,null);
         //row 1
-        g.drawImage(white,750,673,49,49,null);
-        g.drawImage(white,806,673,49,49,null);
-        g.drawImage(white,864,673,49,49,null);
-        g.drawImage(white,919,673,49,49,null);
-        g.drawImage(white,975,674,49,49,null);
+        g.drawImage(PTileWall[1][0].getImage(),750,673,49,49,null);
+        g.drawImage(PTileWall[1][1].getImage(),806,673,49,49,null);
+        g.drawImage(PTileWall[1][2].getImage(),864,673,49,49,null);
+        g.drawImage(PTileWall[1][3].getImage(),919,673,49,49,null);
+        g.drawImage(PTileWall[1][4].getImage(),975,674,49,49,null);
         //row 2
-        g.drawImage(red,749,730,49,49,null);
-        g.drawImage(red,807,730,49,49,null);
-        g.drawImage(red,864,730,49,49,null);
-        g.drawImage(red,919,730,49,49,null);
-        g.drawImage(red,975,730,49,49,null);
+        g.drawImage(PTileWall[2][0].getImage(),749,730,49,49,null);
+        g.drawImage(PTileWall[2][1].getImage(),807,730,49,49,null);
+        g.drawImage(PTileWall[2][2].getImage(),864,730,49,49,null);
+        g.drawImage(PTileWall[2][3].getImage(),919,730,49,49,null);
+        g.drawImage(PTileWall[2][4].getImage(),975,730,49,49,null);
         //row 3
-        g.drawImage(blue,749,787,49,49,null);
-        g.drawImage(blue,805,787,49,49,null);
-        g.drawImage(blue,863,787,49,49,null);
-        g.drawImage(blue,919,787,49,49,null);
-        g.drawImage(blue,975,787,49,49,null);
+        g.drawImage(PTileWall[3][0].getImage(),749,787,49,49,null);
+        g.drawImage(PTileWall[3][1].getImage(),805,787,49,49,null);
+        g.drawImage(PTileWall[3][2].getImage(),863,787,49,49,null);
+        g.drawImage(PTileWall[3][3].getImage(),919,787,49,49,null);
+        g.drawImage(PTileWall[3][4].getImage(),975,787,49,49,null);
         //row 4
-        g.drawImage(yellow,749,844,49,49,null);
-        g.drawImage(yellow,805,844,49,49,null);
-        g.drawImage(yellow,863,844,49,49,null);
-        g.drawImage(yellow,919,844,49,49,null);
-        g.drawImage(yellow,975,844,49,49,null);
+        g.drawImage(PTileWall[4][0].getImage(),749,844,49,49,null);
+        g.drawImage(PTileWall[4][1].getImage(),805,844,49,49,null);
+        g.drawImage(PTileWall[4][2].getImage(),863,844,49,49,null);
+        g.drawImage(PTileWall[4][3].getImage(),919,844,49,49,null);
+        g.drawImage(PTileWall[4][4].getImage(),975,844,49,49,null);
 
 
         /************ PAREA ****************/
@@ -229,14 +230,14 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         //
         ////floor line
         //
-        g.drawImage(black,437,940,49,49,null);
-        g.drawImage(black,499,940,49,49,null);
-        g.drawImage(black,561,940,49,49,null);
-        g.drawImage(black,623,940,49,49,null);
-        g.drawImage(black,684,940,49,49,null);
-        g.drawImage(black,746,940,49,49,null);
-        g.drawImage(black,808,940,49,49,null);
-
+        Tile[]fTLine=game.getCurrentPlayer().getFloorLine().getFloorTLine();
+        g.drawImage(fTLine[0].getImage(), 437, 940, 49, 49, null);
+        g.drawImage(fTLine[1].getImage(), 499, 940, 49, 49, null);
+        g.drawImage(fTLine[2].getImage(), 561, 940, 49, 49, null);
+        g.drawImage(fTLine[3].getImage(), 623, 940, 49, 49, null);
+        g.drawImage(fTLine[4].getImage(), 684, 940, 49, 49, null);
+        g.drawImage(fTLine[5].getImage(), 746, 940, 49, 49, null);
+        g.drawImage(fTLine[6].getImage(), 808, 940, 49, 49, null);
 
         /**************** OTHER PLAYER BOARDS ******************/
 
