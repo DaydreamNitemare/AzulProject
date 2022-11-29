@@ -37,6 +37,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
             p2 = ImageIO.read(GameFrame.class.getResource("/images/p2azul.jpg"));
             p3 = ImageIO.read(GameFrame.class.getResource("/images/p3azul.jpg"));
             p4 = ImageIO.read(GameFrame.class.getResource("/images/p4azul.jpg"));
+            one=ImageIO.read(GameFrame.class.getResource("/images/oneTile.png"));
         } catch (Exception E) {
             System.out.println("Error with instantiating the images in GameFrame");
             return;
@@ -132,8 +133,6 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
             g.drawImage(game.getFactories()[8].getTile(2).getImage(), 807, 332, 49, 49, null);
             g.drawImage(game.getFactories()[8].getTile(3).getImage(), 856, 332, 49, 49, null);
         }
-        //
-
 
         /********************* ACTUAL BOARD **************************/
 
@@ -176,7 +175,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         }
         //one tile
         if(game.getCurrentPlayer().hasOneTile()) {
-            g.drawImage(one, 437, 728, 49, 49, null);
+            g.drawImage(one, 489, 651, 49, 49, null);
         }
 
         /************************** WALL AREA ******************/
@@ -298,7 +297,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         else if(game.getPrevPlayer().getPoints()<61){
             int temp=((addCol1)%41);
             temp*=15;
-            g.fillRect(1118+temp,81,15,15);
+            g.fillRect(1118+temp,82,15,15);
         }
         else if(game.getPrevPlayer().getPoints()<81){
             int temp=((addCol1)%61);
@@ -310,9 +309,11 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
                 temp*=15;
                 g.fillRect(1118+temp,115,15,15);//add 15 for next column, add 17 for next roq
         }
+        //
         //one tile
-        if(game.getPrevPlayer().hasOneTile())
-        g.drawImage(one,1118,201,25,25,null);
+        //
+        //if(game.getPrevPlayer().hasOneTile())
+        //g.drawImage(one,1144,167,25,25,null);
         //row 0
         Tile[][]topWall=game.getPrevPlayer().getWall().getTileWall();
         g.drawImage(topWall[0][0].getImage(),1281,147,25,25,null);
@@ -384,15 +385,54 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         //
         g.setColor(Color.BLACK);
         int addCol2,addRow2;
-        addCol2=0;
-        addRow2=0;
-        if(game.getMidPlayer().getPoints()==0){  //still need to add get other player method
+        addCol2=game.getMidPlayer().getPoints();
+        addRow2=332;
+        /*if(game.getMidPlayer().getPoints()==0){  //still need to add get other player method
             g.fillRect(1118,361,15,15);
         }
         else g.fillRect(1118+addCol2,379+addRow2,15,15);//add 15 for next column, add 17 for next row
+        */
+        if(game.getMidPlayer().getPoints()==0){
+            g.fillRect(1118,30+addRow2,15,15);
+        }
+        else if(game.getMidPlayer().getPoints()<21){
+            int temp=addCol2;
+            temp-=1;
+            temp*=15;
+            if(addCol2>=8)
+                temp+=3;
+            if(addCol2>=15)
+                temp+=2;
+            if(addCol2>=19)
+                temp+=2;
+            g.fillRect(1118+temp,47+addRow2,15,15);//add 15 for next column, add 17 for next row
+        }
+        else if(game.getMidPlayer().getPoints()<41){
+            int temp=((addCol2)%21);
+
+            temp*=15;
+            g.fillRect(1118+temp,64+addRow2,15,15);
+        }
+        else if(game.getMidPlayer().getPoints()<61){
+            int temp=((addCol2)%41);
+            temp*=15;
+            g.fillRect(1118+temp,82+addRow2,15,15);
+        }
+        else if(game.getMidPlayer().getPoints()<81){
+            int temp=((addCol2)%61);
+            temp*=15;
+            g.fillRect(1118+temp,98+addRow2,15,15);
+        }
+        else {
+            int temp=((addCol2)%81);
+            temp*=15;
+            g.fillRect(1118+temp,115+addRow2,15,15);//add 15 for next column, add 17 for next roq
+        }
+        //
         //one tile
-        if(game.getMidPlayer().hasOneTile())
-        g.drawImage(one,1118,533,25,25,null);
+        //
+        //if(game.getMidPlayer().hasOneTile())
+        //g.drawImage(one,1144,499,25,25,null);
         //row 0
         Tile[][]midWall=game.getMidPlayer().getWall().getTileWall();
         g.drawImage(midWall[0][0].getImage(),1281,479,25,25,null);
@@ -464,15 +504,54 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         //
         g.setColor(Color.BLACK);
         int addCol3,addRow3;
-        addCol3=0;
-        addRow3=0;
-        if(game.getNextPlayer().getPoints()==0){
+        addCol3=game.getNextPlayer().getPoints();
+        addRow3=664;
+       /* if(game.getNextPlayer().getPoints()==0){
             g.fillRect(1117,693,15,15);
         }
         else g.fillRect(1118+addCol2,710+addRow3,15,15);//add 15 for next column, add 17 for next row
+        */
+        if(game.getMidPlayer().getPoints()==0){
+            g.fillRect(1118,30+addRow3,15,15);
+        }
+        else if(game.getMidPlayer().getPoints()<21){
+            int temp=addCol3;
+            temp-=1;
+            temp*=15;
+            if(addCol3>=8)
+                temp+=3;
+            if(addCol3>=15)
+                temp+=2;
+            if(addCol3>=19)
+                temp+=2;
+            g.fillRect(1118+temp,47+addRow3,15,15);//add 15 for next column, add 17 for next row
+        }
+        else if(game.getMidPlayer().getPoints()<41){
+            int temp=((addCol3)%21);
+
+            temp*=15;
+            g.fillRect(1118+temp,64+addRow3,15,15);
+        }
+        else if(game.getMidPlayer().getPoints()<61){
+            int temp=((addCol3)%41);
+            temp*=15;
+            g.fillRect(1118+temp,82+addRow3,15,15);
+        }
+        else if(game.getMidPlayer().getPoints()<81){
+            int temp=((addCol3)%61);
+            temp*=15;
+            g.fillRect(1118+temp,98+addRow3,15,15);
+        }
+        else {
+            int temp=((addCol3)%81);
+            temp*=15;
+            g.fillRect(1118+temp,115+addRow3,15,15);//add 15 for next column, add 17 for next roq
+        }
+        //
         //one tile
-        if(game.getNextPlayer().hasOneTile())
-        g.drawImage(one,1118,863,25,25,null);
+        //
+        //if(game.getNextPlayer().hasOneTile())
+       // g.drawImage(one,1144,831,35,35,null);
         //row 0
         Tile[][]BotWall=game.getCurrentPlayer().getWall().getTileWall();
         g.drawImage(BotWall[0][0].getImage(),1281,811,25,25,null);
