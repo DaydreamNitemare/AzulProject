@@ -169,34 +169,40 @@ public class Click {
             drawSuccessful = true;
         }
         int[] lol = game.getFactoryFloor().getTileCount();
-        if(x>40 && x<90 && y>65 && y<112){
-            if(lol[0]!=0){
-                game.getFactoryFloor().remove(current, 0);
-                drawSuccessful=true;
+        if(x>40 && x<90 && y>65 && y<340){
+            if(x>40 && x<90 && y>65 && y<112){
+                if(lol[0]!=0){
+                    game.getFactoryFloor().remove(current, 0);
+                    drawSuccessful=true;
+                }
             }
-        }
-        if(x>40 && x<90 && y>122 && y<170){
-            if(lol[1]!=0){
-                game.getFactoryFloor().remove(current, 1);
-                drawSuccessful=true;
+            if(x>40 && x<90 && y>122 && y<170){
+                if(lol[1]!=0){
+                    game.getFactoryFloor().remove(current, 1);
+                    drawSuccessful=true;
+                }
             }
-        }
-        if(x>40 && x<90 && y>179 && y<225){
-            if(lol[2]!=0){
-                game.getFactoryFloor().remove(current, 2);
-                drawSuccessful=true;
+            if(x>40 && x<90 && y>179 && y<225){
+                if(lol[2]!=0){
+                    game.getFactoryFloor().remove(current, 2);
+                    drawSuccessful=true;
+                }
             }
-        }
-        if(x>40 && x<90 && y>235 && y<284){
-            if(lol[3]!=0){
-                game.getFactoryFloor().remove(current, 3);
-                drawSuccessful=true;
+            if(x>40 && x<90 && y>235 && y<284){
+                if(lol[3]!=0){
+                    game.getFactoryFloor().remove(current, 3);
+                    drawSuccessful=true;
+                }
             }
-        }
-        if(x>40 && x<90 && y>292 && y<340){
-            if(lol[4]!=0){
-                game.getFactoryFloor().remove(current, 4);
-                drawSuccessful=true;
+            if(x>40 && x<90 && y>292 && y<340){
+                if(lol[4]!=0){
+                    game.getFactoryFloor().remove(current, 4);
+                    drawSuccessful=true;
+                }
+            }
+            if(game.getFactoryFloor().hasOneTile()){
+                game.getFactoryFloor().changeOneTile();
+                game.getCurrentPlayer().getFloorLine().add(new Tile(6), game.getTrash());
             }
         }
         if(drawSuccessful) {

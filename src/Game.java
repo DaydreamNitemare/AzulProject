@@ -18,6 +18,7 @@ public class Game {
         floor = new Floor();
         bag = new Bag();
         trash = new Trash();
+        players[turnNum].changeOneTile();
     }
 
     public Player getCurrentPlayer()

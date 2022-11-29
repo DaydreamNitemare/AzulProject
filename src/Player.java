@@ -105,13 +105,7 @@ public class Player {
         return oneTile;
     }
 
-    public void getOneTile() {
-        oneTile = true;
-    }
-
-    public void removeOneTile() {
-        oneTile = false;
-    }
+    public void changeOneTile(){oneTile= !oneTile;}
 
     public void setCanDraw(boolean x) {
         canDraw = x;

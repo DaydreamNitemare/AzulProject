@@ -25,6 +25,8 @@ class Tile {
                 case 4:
                     tileImage = ImageIO.read(Tile.class.getResource("/images/whiteTile.png"));
                     break;
+                case 6:
+                    tileImage = ImageIO.read(Tile.class.getResource("/images/oneTile.png"));
             }
         }
         catch(Exception E)

@@ -173,10 +173,12 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
             temp *= 29;
             g.fillRect(441 + temp, 572, 28, 28);
         }
+        //
         //one tile
-        if(game.getCurrentPlayer().hasOneTile()) {
+        //
+        /*if(game.getCurrentPlayer().hasOneTile()) {
             g.drawImage(one, 489, 651, 49, 49, null);
-        }
+        }*/
 
         /************************** WALL AREA ******************/
         // row 0
@@ -696,6 +698,11 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
             g.drawImage(p2, 1150, 363, 50, 15, null);
             g.drawImage(p3, 1150, 30, 50, 15, null);
         }
+        if(game.getCurrentPlayer().hasOneTile()){
+            g.drawImage(one, 495, 655, 49, 49, null);
+        }else if(game.getFactoryFloor().hasOneTile()){
+            g.drawImage(one, 210, 180, 49, 49, null);
+        }
     }
 
     /************************* ACTION PERFORMED ********************/
@@ -719,7 +726,10 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         if (game.getCurrentPlayer().canDraw()) { //here is what allows a player to draw
             Click c = new Click(x, y, game);
             TreeMap<Boolean, int[]> temp = c.draw(game.getFactories());
-
+            if(game.getCurrentPlayer().hasOneTile()){
+                game.getFactoryFloor().changeOneTile();
+                game.getCurrentPlayer().changeOneTile();
+            }
             boolean successful = temp.containsKey(true);
 
             if (!successful)

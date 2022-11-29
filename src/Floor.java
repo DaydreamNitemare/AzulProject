@@ -1,7 +1,7 @@
 public class Floor
 {
     int numBlue, numWhite, numBlack, numRed, numYellow;
-
+    boolean oneTile;
     public Floor() //constructor
     {
         numBlue = 0;
@@ -98,5 +98,11 @@ public class Floor
     public int[] getTileCount()
     {
         return new int[]{numBlue, numYellow, numRed, numBlack, numWhite};
+    }
+    public void changeOneTile(){
+        oneTile = !oneTile;
+    }
+    public boolean hasOneTile(){
+        return oneTile;
     }
 }
