@@ -256,68 +256,71 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         if(game.getPrevPlayer().hasOneTile())
         g.drawImage(one,1118,201,25,25,null);
         //row 0
-        g.drawImage(black,1281,147,25,25,null);
-        g.drawImage(black,1311,147,25,25,null);
-        g.drawImage(black,1341,147,25,25,null);
-        g.drawImage(black,1371,147,25,25,null);
-        g.drawImage(black,1401,147,25,25,null);
+        Tile[][]topWall=game.getPrevPlayer().getWall().getTileWall();
+        g.drawImage(topWall[0][0].getImage(),1281,147,25,25,null);
+        g.drawImage(topWall[0][1].getImage(),1311,147,25,25,null);
+        g.drawImage(topWall[0][2].getImage(),1341,147,25,25,null);
+        g.drawImage(topWall[0][3].getImage(),1371,147,25,25,null);
+        g.drawImage(topWall[0][4].getImage(),1401,147,25,25,null);
         //row 1
-        g.drawImage(white,1281,178,25,25,null);
-        g.drawImage(white,1311,178,25,25,null);
-        g.drawImage(white,1341,178,25,25,null);
-        g.drawImage(white,1371,178,25,25,null);
-        g.drawImage(white,1401,178,25,25,null);
+        g.drawImage(topWall[1][0].getImage(),1281,178,25,25,null);
+        g.drawImage(topWall[1][1].getImage(),1311,178,25,25,null);
+        g.drawImage(topWall[1][2].getImage(),1341,178,25,25,null);
+        g.drawImage(topWall[1][3].getImage(),1371,178,25,25,null);
+        g.drawImage(topWall[1][4].getImage(),1401,178,25,25,null);
         //row 2
-        g.drawImage(red,1281,206,25,25,null);
-        g.drawImage(red,1311,206,25,25,null);
-        g.drawImage(red,1341,206,25,25,null);
-        g.drawImage(red,1371,206,25,25,null);
-        g.drawImage(red,1401,206,25,25,null);
+        g.drawImage(topWall[2][0].getImage(),1281,206,25,25,null);
+        g.drawImage(topWall[2][1].getImage(),1311,206,25,25,null);
+        g.drawImage(topWall[2][2].getImage(),1341,206,25,25,null);
+        g.drawImage(topWall[2][3].getImage(),1371,206,25,25,null);
+        g.drawImage(topWall[2][4].getImage(),1401,206,25,25,null);
         //row 3
-        g.drawImage(blue,1281,236,25,25,null);
-        g.drawImage(blue,1311,236,25,25,null);
-        g.drawImage(blue,1341,236,25,25,null);
-        g.drawImage(blue,1371,236,25,25,null);
-        g.drawImage(blue,1401,236,25,25,null);
+        g.drawImage(topWall[3][0].getImage(),1281,236,25,25,null);
+        g.drawImage(topWall[3][1].getImage(),1311,236,25,25,null);
+        g.drawImage(topWall[3][2].getImage(),1341,236,25,25,null);
+        g.drawImage(topWall[3][3].getImage(),1371,236,25,25,null);
+        g.drawImage(topWall[3][4].getImage(),1401,236,25,25,null);
         //row 4
-        g.drawImage(yellow,1281,265,25,25,null);
-        g.drawImage(yellow,1311,265,25,25,null);
-        g.drawImage(yellow,1341,265,25,25,null);
-        g.drawImage(yellow,1371,265,25,25,null);
-        g.drawImage(yellow,1401,265,25,25,null);
+        g.drawImage(topWall[4][0].getImage(),1281,265,25,25,null);
+        g.drawImage(topWall[4][1].getImage(),1311,265,25,25,null);
+        g.drawImage(topWall[4][2].getImage(),1341,265,25,25,null);
+        g.drawImage(topWall[4][3].getImage(),1371,265,25,25,null);
+        g.drawImage(topWall[4][4].getImage(),1401,265,25,25,null);
         //
         //the wall
         //
         //row 0
-        g.drawImage(black,1235,147,25,25,null);
+        Tile[][]topPA=game.getPrevPlayer().getArea().getTileArea();
+        g.drawImage(topPA[0][0].getImage(),1235,147,25,25,null);
         //row 1
-        g.drawImage(white,1205,178,25,25,null);
-        g.drawImage(white,1235,178,25,25,null);
+        g.drawImage(topPA[1][1].getImage(),1205,178,25,25,null);
+        g.drawImage(topPA[1][0].getImage(),1235,178,25,25,null);
         //row 2
-        g.drawImage(red,1176,206,25,25,null);
-        g.drawImage(red,1205,206,25,25,null);
-        g.drawImage(red,1235,206,25,25,null);
+        g.drawImage(topPA[2][2].getImage(),1176,206,25,25,null);
+        g.drawImage(topPA[2][1].getImage(),1205,206,25,25,null);
+        g.drawImage(topPA[2][0].getImage(),1235,206,25,25,null);
         //row 3
-        g.drawImage(blue,1145,236,25,25,null);
-        g.drawImage(blue,1176,236,25,25,null);
-        g.drawImage(blue,1205,236,25,25,null);
-        g.drawImage(blue,1235,236,25,25,null);
+        g.drawImage(topPA[3][3].getImage(),1145,236,25,25,null);
+        g.drawImage(topPA[3][2].getImage(),1176,236,25,25,null);
+        g.drawImage(topPA[3][1].getImage(),1205,236,25,25,null);
+        g.drawImage(topPA[3][0].getImage(),1235,236,25,25,null);
         //row 4
-        g.drawImage(yellow,1116,265,25,25,null);
-        g.drawImage(yellow,1145,265,25,25,null);
-        g.drawImage(yellow,1176,265,25,25,null);
-        g.drawImage(yellow,1205,265,25,25,null);
-        g.drawImage(yellow,1235,265,25,25,null);
+        g.drawImage(topPA[4][4].getImage(),1116,265,25,25,null);
+        g.drawImage(topPA[4][3].getImage(),1145,265,25,25,null);
+        g.drawImage(topPA[4][2].getImage(),1176,265,25,25,null);
+        g.drawImage(topPA[4][1].getImage(),1205,265,25,25,null);
+        g.drawImage(topPA[4][0].getImage(),1235,265,25,25,null);
         //
         ////floor line
         //
-        g.drawImage(black,1116,318,25,25,null);
-        g.drawImage(black,1149,318,25,25,null);
-        g.drawImage(black,1182,318,25,25,null);
-        g.drawImage(black,1214,318,25,25,null);
-        g.drawImage(black,1247,318,25,25,null);
-        g.drawImage(black,1279,318,25,25,null);
-        g.drawImage(black,1312,318,25,25,null);
+        Tile[]topLine=game.getPrevPlayer().getFloorLine().getFloorTLine();
+        g.drawImage(topLine[0].getImage(),1116,318,25,25,null);
+        g.drawImage(topLine[1].getImage(),1149,318,25,25,null);
+        g.drawImage(topLine[2].getImage(),1182,318,25,25,null);
+        g.drawImage(topLine[3].getImage(),1214,318,25,25,null);
+        g.drawImage(topLine[4].getImage(),1247,318,25,25,null);
+        g.drawImage(topLine[5].getImage(),1279,318,25,25,null);
+        g.drawImage(topLine[6].getImage(),1312,318,25,25,null);
         //
         ////middle board
         //
@@ -333,68 +336,71 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         if(game.getMidPlayer().hasOneTile())
         g.drawImage(one,1118,533,25,25,null);
         //row 0
-        g.drawImage(black,1281,479,25,25,null);
-        g.drawImage(black,1311,479,25,25,null);
-        g.drawImage(black,1341,479,25,25,null);
-        g.drawImage(black,1371,479,25,25,null);
-        g.drawImage(black,1401,479,25,25,null);
+        Tile[][]midWall=game.getMidPlayer().getWall().getTileWall();
+        g.drawImage(midWall[0][0].getImage(),1281,479,25,25,null);
+        g.drawImage(midWall[0][1].getImage(),1311,479,25,25,null);
+        g.drawImage(midWall[0][2].getImage(),1341,479,25,25,null);
+        g.drawImage(midWall[0][3].getImage(),1371,479,25,25,null);
+        g.drawImage(midWall[0][4].getImage(),1401,479,25,25,null);
         //row 1
-        g.drawImage(white,1281,510,25,25,null);
-        g.drawImage(white,1311,510,25,25,null);
-        g.drawImage(white,1341,510,25,25,null);
-        g.drawImage(white,1371,510,25,25,null);
-        g.drawImage(white,1401,510,25,25,null);
+        g.drawImage(midWall[1][0].getImage(),1281,510,25,25,null);
+        g.drawImage(midWall[1][1].getImage(),1311,510,25,25,null);
+        g.drawImage(midWall[1][2].getImage(),1341,510,25,25,null);
+        g.drawImage(midWall[1][3].getImage(),1371,510,25,25,null);
+        g.drawImage(midWall[1][4].getImage(),1401,510,25,25,null);
         //row 2
-        g.drawImage(red,1281,538,25,25,null);
-        g.drawImage(red,1311,538,25,25,null);
-        g.drawImage(red,1341,538,25,25,null);
-        g.drawImage(red,1371,538,25,25,null);
-        g.drawImage(red,1401,538,25,25,null);
+        g.drawImage(midWall[2][0].getImage(),1281,538,25,25,null);
+        g.drawImage(midWall[2][1].getImage(),1311,538,25,25,null);
+        g.drawImage(midWall[2][2].getImage(),1341,538,25,25,null);
+        g.drawImage(midWall[2][3].getImage(),1371,538,25,25,null);
+        g.drawImage(midWall[2][4].getImage(),1401,538,25,25,null);
         //row 3
-        g.drawImage(blue,1281,568,25,25,null);
-        g.drawImage(blue,1311,568,25,25,null);
-        g.drawImage(blue,1341,568,25,25,null);
-        g.drawImage(blue,1371,568,25,25,null);
-        g.drawImage(blue,1401,568,25,25,null);
+        g.drawImage(midWall[3][0].getImage(),1281,568,25,25,null);
+        g.drawImage(midWall[3][1].getImage(),1311,568,25,25,null);
+        g.drawImage(midWall[3][2].getImage(),1341,568,25,25,null);
+        g.drawImage(midWall[3][3].getImage(),1371,568,25,25,null);
+        g.drawImage(midWall[3][4].getImage(),1401,568,25,25,null);
         //row 4
-        g.drawImage(yellow,1281,597,25,25,null);
-        g.drawImage(yellow,1311,597,25,25,null);
-        g.drawImage(yellow,1341,597,25,25,null);
-        g.drawImage(yellow,1371,597,25,25,null);
-        g.drawImage(yellow,1401,597,25,25,null);
+        g.drawImage(midWall[4][0].getImage(),1281,597,25,25,null);
+        g.drawImage(midWall[4][1].getImage(),1311,597,25,25,null);
+        g.drawImage(midWall[4][2].getImage(),1341,597,25,25,null);
+        g.drawImage(midWall[4][3].getImage(),1371,597,25,25,null);
+        g.drawImage(midWall[4][4].getImage(),1401,597,25,25,null);
         //
-        //the wall
+        //player area
         //
         //row 0
-        g.drawImage(black,1235,479,25,25,null);
+        Tile[][]midPA=game.getMidPlayer().getArea().getTileArea();
+        g.drawImage(midPA[0][0].getImage(),1235,479,25,25,null);
         //row 1
-        g.drawImage(white,1205,510,25,25,null);
-        g.drawImage(white,1235,510,25,25,null);
+        g.drawImage(midPA[1][1].getImage(),1205,510,25,25,null);
+        g.drawImage(midPA[1][0].getImage(),1235,510,25,25,null);
         //row 2
-        g.drawImage(red,1176,538,25,25,null);
-        g.drawImage(red,1205,538,25,25,null);
-        g.drawImage(red,1235,538,25,25,null);
+        g.drawImage(midPA[2][2].getImage(),1176,538,25,25,null);
+        g.drawImage(midPA[2][1].getImage(),1205,538,25,25,null);
+        g.drawImage(midPA[2][0].getImage(),1235,538,25,25,null);
         //row 3
-        g.drawImage(blue,1145,568,25,25,null);
-        g.drawImage(blue,1176,568,25,25,null);
-        g.drawImage(blue,1205,568,25,25,null);
-        g.drawImage(blue,1235,568,25,25,null);
+        g.drawImage(midPA[3][3].getImage(),1145,568,25,25,null);
+        g.drawImage(midPA[3][2].getImage(),1176,568,25,25,null);
+        g.drawImage(midPA[3][1].getImage(),1205,568,25,25,null);
+        g.drawImage(midPA[3][0].getImage(),1235,568,25,25,null);
         //row 4
-        g.drawImage(yellow,1116,597,25,25,null);
-        g.drawImage(yellow,1145,597,25,25,null);
-        g.drawImage(yellow,1176,597,25,25,null);
-        g.drawImage(yellow,1205,597,25,25,null);
-        g.drawImage(yellow,1235,597,25,25,null);
+        g.drawImage(midPA[4][4].getImage(),1116,597,25,25,null);
+        g.drawImage(midPA[4][3].getImage(),1145,597,25,25,null);
+        g.drawImage(midPA[4][2].getImage(),1176,597,25,25,null);
+        g.drawImage(midPA[4][1].getImage(),1205,597,25,25,null);
+        g.drawImage(midPA[4][0].getImage(),1235,597,25,25,null);
         //
         ////floor line
         //
-        g.drawImage(black,1116,650,25,25,null);
-        g.drawImage(black,1149,650,25,25,null);
-        g.drawImage(black,1182,650,25,25,null);
-        g.drawImage(black,1214,650,25,25,null);
-        g.drawImage(black,1247,650,25,25,null);
-        g.drawImage(black,1279,650,25,25,null);
-        g.drawImage(black,1312,650,25,25,null);
+        Tile[]midLine=game.getMidPlayer().getFloorLine().getFloorTLine();
+        g.drawImage(midLine[0].getImage(),1116,650,25,25,null);
+        g.drawImage(midLine[1].getImage(),1149,650,25,25,null);
+        g.drawImage(midLine[2].getImage(),1182,650,25,25,null);
+        g.drawImage(midLine[3].getImage(),1214,650,25,25,null);
+        g.drawImage(midLine[4].getImage(),1247,650,25,25,null);
+        g.drawImage(midLine[5].getImage(),1279,650,25,25,null);
+        g.drawImage(midLine[6].getImage(),1312,650,25,25,null);
         //
         ////bottom board
         //
@@ -410,68 +416,71 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         if(game.getNextPlayer().hasOneTile())
         g.drawImage(one,1118,863,25,25,null);
         //row 0
-        g.drawImage(black,1281,811,25,25,null);
-        g.drawImage(black,1311,811,25,25,null);
-        g.drawImage(black,1341,811,25,25,null);
-        g.drawImage(black,1371,811,25,25,null);
-        g.drawImage(black,1401,811,25,25,null);
+        Tile[][]BotWall=game.getCurrentPlayer().getWall().getTileWall();
+        g.drawImage(BotWall[0][0].getImage(),1281,811,25,25,null);
+        g.drawImage(BotWall[0][1].getImage(),1311,811,25,25,null);
+        g.drawImage(BotWall[0][2].getImage(),1341,811,25,25,null);
+        g.drawImage(BotWall[0][3].getImage(),1371,811,25,25,null);
+        g.drawImage(BotWall[0][4].getImage(),1401,811,25,25,null);
         //row 1
-        g.drawImage(white,1281,842,25,25,null);
-        g.drawImage(white,1311,842,25,25,null);
-        g.drawImage(white,1341,842,25,25,null);
-        g.drawImage(white,1371,842,25,25,null);
-        g.drawImage(white,1401,842,25,25,null);
+        g.drawImage(BotWall[1][0].getImage(),1281,842,25,25,null);
+        g.drawImage(BotWall[1][1].getImage(),1311,842,25,25,null);
+        g.drawImage(BotWall[1][2].getImage(),1341,842,25,25,null);
+        g.drawImage(BotWall[1][3].getImage(),1371,842,25,25,null);
+        g.drawImage(BotWall[1][4].getImage(),1401,842,25,25,null);
         //row 2
-        g.drawImage(red,1281,870,25,25,null);
-        g.drawImage(red,1311,870,25,25,null);
-        g.drawImage(red,1341,870,25,25,null);
-        g.drawImage(red,1371,870,25,25,null);
-        g.drawImage(red,1401,870,25,25,null);
+        g.drawImage(BotWall[2][0].getImage(),1281,870,25,25,null);
+        g.drawImage(BotWall[2][1].getImage(),1311,870,25,25,null);
+        g.drawImage(BotWall[2][2].getImage(),1341,870,25,25,null);
+        g.drawImage(BotWall[2][3].getImage(),1371,870,25,25,null);
+        g.drawImage(BotWall[2][4].getImage(),1401,870,25,25,null);
         //row 3
-        g.drawImage(blue,1281,900,25,25,null);
-        g.drawImage(blue,1311,900,25,25,null);
-        g.drawImage(blue,1341,900,25,25,null);
-        g.drawImage(blue,1371,900,25,25,null);
-        g.drawImage(blue,1401,900,25,25,null);
+        g.drawImage(BotWall[3][0].getImage(),1281,900,25,25,null);
+        g.drawImage(BotWall[3][1].getImage(),1311,900,25,25,null);
+        g.drawImage(BotWall[3][2].getImage(),1341,900,25,25,null);
+        g.drawImage(BotWall[3][3].getImage(),1371,900,25,25,null);
+        g.drawImage(BotWall[3][4].getImage(),1401,900,25,25,null);
         //row 4
-        g.drawImage(yellow,1281,929,25,25,null);
-        g.drawImage(yellow,1311,929,25,25,null);
-        g.drawImage(yellow,1341,929,25,25,null);
-        g.drawImage(yellow,1371,929,25,25,null);
-        g.drawImage(yellow,1401,929,25,25,null);
+        g.drawImage(BotWall[4][0].getImage(),1281,929,25,25,null);
+        g.drawImage(BotWall[4][1].getImage(),1311,929,25,25,null);
+        g.drawImage(BotWall[4][2].getImage(),1341,929,25,25,null);
+        g.drawImage(BotWall[4][3].getImage(),1371,929,25,25,null);
+        g.drawImage(BotWall[4][4].getImage(),1401,929,25,25,null);
         //
-        //the wall
+        //the area
         //
         //row 0
-        g.drawImage(black,1235,811,25,25,null);
+        Tile[][]botPA=game.getNextPlayer().getArea().getTileArea();
+        g.drawImage(botPA[0][0].getImage(),1235,811,25,25,null);
         //row 1
-        g.drawImage(white,1205,842,25,25,null);
-        g.drawImage(white,1235,842,25,25,null);
+        g.drawImage(botPA[1][1].getImage(),1205,842,25,25,null);
+        g.drawImage(botPA[1][0].getImage(),1235,842,25,25,null);
         //row 2
-        g.drawImage(red,1176,870,25,25,null);
-        g.drawImage(red,1205,870,25,25,null);
-        g.drawImage(red,1235,870,25,25,null);
+        g.drawImage(botPA[2][2].getImage(),1176,870,25,25,null);
+        g.drawImage(botPA[2][1].getImage(),1205,870,25,25,null);
+        g.drawImage(botPA[2][0].getImage(),1235,870,25,25,null);
         //row 3
-        g.drawImage(blue,1145,900,25,25,null);
-        g.drawImage(blue,1176,900,25,25,null);
-        g.drawImage(blue,1205,900,25,25,null);
-        g.drawImage(blue,1235,900,25,25,null);
+        g.drawImage(botPA[3][3].getImage(),1145,900,25,25,null);
+        g.drawImage(botPA[3][2].getImage(),1176,900,25,25,null);
+        g.drawImage(botPA[3][1].getImage(),1205,900,25,25,null);
+        g.drawImage(botPA[3][0].getImage(),1235,900,25,25,null);
         //row 4
-        g.drawImage(yellow,1116,929,25,25,null);
-        g.drawImage(yellow,1145,929,25,25,null);
-        g.drawImage(yellow,1176,929,25,25,null);
-        g.drawImage(yellow,1205,929,25,25,null);
-        g.drawImage(yellow,1235,929,25,25,null);
+        g.drawImage(botPA[4][4].getImage(),1116,929,25,25,null);
+        g.drawImage(botPA[4][3].getImage(),1145,929,25,25,null);
+        g.drawImage(botPA[4][2].getImage(),1176,929,25,25,null);
+        g.drawImage(botPA[4][1].getImage(),1205,929,25,25,null);
+        g.drawImage(botPA[4][0].getImage(),1235,929,25,25,null);
         //
         ////floor line
         //
-        g.drawImage(black,1116,978,25,25,null);
-        g.drawImage(black,1149,978,25,25,null);
-        g.drawImage(black,1182,978,25,25,null);
-        g.drawImage(black,1214,978,25,25,null);
-        g.drawImage(black,1247,978,25,25,null);
-        g.drawImage(black,1279,978,25,25,null);
-        g.drawImage(black,1312,978,25,25,null);
+        Tile[]botLine=game.getNextPlayer().getFloorLine().getFloorTLine();
+        g.drawImage(botLine[0].getImage(),1116,978,25,25,null);
+        g.drawImage(botLine[1].getImage(),1149,978,25,25,null);
+        g.drawImage(botLine[2].getImage(),1182,978,25,25,null);
+        g.drawImage(botLine[3].getImage(),1214,978,25,25,null);
+        g.drawImage(botLine[4].getImage(),1247,978,25,25,null);
+        g.drawImage(botLine[5].getImage(),1279,978,25,25,null);
+        g.drawImage(botLine[6].getImage(),1312,978,25,25,null);
         //
         //floor text
         //
@@ -675,7 +684,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
                         r1 = false;
                     }
                     else {
-                        logTxt.setText("please choose a valid placement\n\n" + logTxt.getText());
+                        logTxt.setText("Please choose a valid placement\n\n" + logTxt.getText());
                         repaint();
                     }
                 }
@@ -690,7 +699,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
                         r2 = false;
                     }
                     else {
-                        logTxt.setText("please choose a valid placement\n\n" + logTxt.getText());
+                        logTxt.setText("Please choose a valid placement\n\n" + logTxt.getText());
                         repaint();
                     }
                 }
@@ -705,7 +714,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
                         r3 = false;
                     }
                     else {
-                        logTxt.setText("please choose a valid placement\n\n" + logTxt.getText());
+                        logTxt.setText("Please choose a valid placement\n\n" + logTxt.getText());
                         repaint();
                     }
                 }
@@ -735,7 +744,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
                         r5 = false;
                     }
                     else {
-                        logTxt.setText(logTxt.getText() + "please choose a valid placement\n\n");
+                        logTxt.setText(logTxt.getText() + "Please choose a valid placement\n\n");
                         repaint();
                     }
                 }
