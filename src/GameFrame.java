@@ -17,7 +17,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
     JPanel logPanel;
     JScrollPane log;
     JTextArea logTxt;
-    ImageIcon icon;
+    BufferedImage icon;
     boolean r1, r2, r3, r4, r5, r6;
     public GameFrame() //constructor
     {
@@ -30,7 +30,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         try {
             //where all the BufferedImage variables will be instantiated
             gameBack = ImageIO.read(GameFrame.class.getResource("/images/gameBackground.png"));
-            icon = new ImageIcon(ImageIO.read(GameFrame.class.getResource("/images/azulIconImage.PNG")));
+            icon = ImageIO.read(GameFrame.class.getResource("/images/azulIconImage.PNG"));
             submitButton = ImageIO.read(GameFrame.class.getResource("/images/submit.png"));
             nextButton = ImageIO.read(GameFrame.class.getResource("/images/next.png"));
             p1 = ImageIO.read(GameFrame.class.getResource("/images/p1azul.jpg"));
@@ -44,7 +44,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         }
 
         this.addMouseListener(this);
-        this.setIconImage(icon.getImage());
+        this.setIconImage(icon);
 
         game = new Game();
         game.deal();

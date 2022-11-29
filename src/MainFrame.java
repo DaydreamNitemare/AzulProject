@@ -17,7 +17,7 @@ public class MainFrame extends JFrame implements MouseListener {
 
     //add the BufferedImages here. Make sure to add them onto the GitHub pls
     BufferedImage title,startback;
-    ImageIcon icon;
+    BufferedImage icon;
     JButton start; //start button. Feel free to add more buttons here but one at a time to not get confused.
     public MainFrame() //constructor
     {
@@ -32,7 +32,7 @@ public class MainFrame extends JFrame implements MouseListener {
             //where all of the BufferedImage variables will be instantiated
 
             startback= ImageIO.read(MainFrame.class.getResource("/images/startbackground.png"));
-            icon = new ImageIcon(ImageIO.read(MainFrame.class.getResource("/images/azulIconImage.PNG")));
+            icon = ImageIO.read(MainFrame.class.getResource("/images/azulIconImage.PNG"));
 
         }
         catch (Exception E) {
@@ -40,7 +40,7 @@ public class MainFrame extends JFrame implements MouseListener {
             return;
         }
 
-        this.setIconImage(icon.getImage());
+        this.setIconImage(icon);
 
         this.setVisible(true);
         addMouseListener(this);
