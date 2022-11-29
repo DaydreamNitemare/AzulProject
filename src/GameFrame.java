@@ -140,12 +140,40 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         g.setColor(Color.BLACK);
         int addCol=0;
         int addRow=0;
-        addCol=(game.getCurrentPlayer().getPoints()*31)%21;
-        addRow=game.getCurrentPlayer().getPoints();
+        //addCol=(game.getCurrentPlayer().getPoints()*31)%21;
+
         if(game.getCurrentPlayer().getPoints()==0){
             g.fillRect(440,397,28,28);
         }
-        else g.fillRect(441+addCol,430+addRow,28,28);  // 31 pixels right per point and 33 down for next row
+        // 31 pixels right per point and 33 down for next row
+        else if(game.getCurrentPlayer().getPoints()<21) {
+            int temp = game.getCurrentPlayer().getPoints()-1;
+            temp*=29;
+            if(game.getCurrentPlayer().getPoints()>=15){
+                temp+=3;
+            }
+            g.fillRect(441 + temp, 430, 28, 28);
+        }
+        else if(game.getCurrentPlayer().getPoints()<41) {
+            int temp = game.getCurrentPlayer().getPoints() % 21;
+            temp *= 29;
+            g.fillRect(441 + temp, 465, 28, 28);
+        }
+        else if(game.getCurrentPlayer().getPoints()<61) {
+            int temp = game.getCurrentPlayer().getPoints() % 41;
+            temp *= 29;
+            g.fillRect(441 + temp, 499, 28, 28);
+        }
+        else if(game.getCurrentPlayer().getPoints()<81) {
+            int temp = game.getCurrentPlayer().getPoints() % 61;
+            temp *= 29;
+            g.fillRect(441 + temp, 534, 28, 28);
+        }
+        else {
+            int temp = game.getCurrentPlayer().getPoints() % 81;
+            temp *= 29;
+            g.fillRect(441 + temp, 572, 28, 28);
+        }
         //one tile
         if(game.getCurrentPlayer().hasOneTile()) {
             g.drawImage(one, 437, 728, 49, 49, null);
@@ -245,13 +273,43 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         //top board
 
         g.setColor(Color.BLACK);
-        int addCol1,addRow1;
-        addCol1=0;
-        addRow1=0;
-        if(game.getPrevPlayer().getPoints()==0){         // need to add get other player method
+        int addCol1=game.getPrevPlayer().getPoints();
+        if(game.getPrevPlayer().getPoints()==0){
             g.fillRect(1118,30,15,15);
         }
-        else g.fillRect(1118+addCol1,47+addRow1,15,15);//add 15 for next column, add 17 for next row
+        else if(game.getPrevPlayer().getPoints()<21){
+            int temp=addCol1;
+            temp-=1;
+            temp*=15;
+            if(addCol1>=8)
+                temp+=3;
+            if(addCol1>=15)
+                temp+=2;
+            if(addCol1>=19)
+                temp+=2;
+            g.fillRect(1118+temp,47,15,15);//add 15 for next column, add 17 for next row
+        }
+        else if(game.getPrevPlayer().getPoints()<41){
+            int temp=((addCol1)%21);
+
+            temp*=15;
+            g.fillRect(1118+temp,64,15,15);
+        }
+        else if(game.getPrevPlayer().getPoints()<61){
+            int temp=((addCol1)%41);
+            temp*=15;
+            g.fillRect(1118+temp,81,15,15);
+        }
+        else if(game.getPrevPlayer().getPoints()<81){
+            int temp=((addCol1)%61);
+            temp*=15;
+            g.fillRect(1118+temp,98,15,15);
+        }
+        else {
+                int temp=((addCol1)%81);
+                temp*=15;
+                g.fillRect(1118+temp,115,15,15);//add 15 for next column, add 17 for next roq
+        }
         //one tile
         if(game.getPrevPlayer().hasOneTile())
         g.drawImage(one,1118,201,25,25,null);
@@ -411,7 +469,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         if(game.getNextPlayer().getPoints()==0){
             g.fillRect(1117,693,15,15);
         }
-        else g.fillRect(1119+addCol2,711+addRow3,15,15);//add 15 for next column, add 17 for next row
+        else g.fillRect(1118+addCol2,710+addRow3,15,15);//add 15 for next column, add 17 for next row
         //one tile
         if(game.getNextPlayer().hasOneTile())
         g.drawImage(one,1118,863,25,25,null);
