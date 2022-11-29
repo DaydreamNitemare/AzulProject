@@ -31,7 +31,7 @@ public class MainFrame extends JFrame implements MouseListener {
         {
             //where all of the BufferedImage variables will be instantiated
 
-            startback= ImageIO.read(MainFrame.class.getResource("/images/startBackground.png"));
+            startback= ImageIO.read(MainFrame.class.getResource("/images/startbackground.png"));
             icon = new ImageIcon(ImageIO.read(MainFrame.class.getResource("/images/azulIconImage.PNG")));
 
         }
