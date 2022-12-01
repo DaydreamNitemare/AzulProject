@@ -513,10 +513,10 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         }
         else g.fillRect(1118+addCol2,710+addRow3,15,15);//add 15 for next column, add 17 for next row
         */
-        if(game.getMidPlayer().getPoints()==0){
+        if(game.getNextPlayer().getPoints()==0){
             g.fillRect(1118,30+addRow3,15,15);
         }
-        else if(game.getMidPlayer().getPoints()<21){
+        else if(game.getNextPlayer().getPoints()<21){
             int temp=addCol3;
             temp-=1;
             temp*=15;
@@ -528,18 +528,18 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
                 temp+=2;
             g.fillRect(1118+temp,47+addRow3,15,15);//add 15 for next column, add 17 for next row
         }
-        else if(game.getMidPlayer().getPoints()<41){
+        else if(game.getNextPlayer().getPoints()<41){
             int temp=((addCol3)%21);
 
             temp*=15;
             g.fillRect(1118+temp,64+addRow3,15,15);
         }
-        else if(game.getMidPlayer().getPoints()<61){
+        else if(game.getNextPlayer().getPoints()<61){
             int temp=((addCol3)%41);
             temp*=15;
             g.fillRect(1118+temp,82+addRow3,15,15);
         }
-        else if(game.getMidPlayer().getPoints()<81){
+        else if(game.getNextPlayer().getPoints()<81){
             int temp=((addCol3)%61);
             temp*=15;
             g.fillRect(1118+temp,98+addRow3,15,15);
@@ -555,7 +555,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         //if(game.getNextPlayer().hasOneTile())
         // g.drawImage(one,1144,831,35,35,null);
         //row 0
-        Tile[][]BotWall=game.getCurrentPlayer().getWall().getTileWall();
+        Tile[][]BotWall=game.getNextPlayer().getWall().getTileWall();
         g.drawImage(BotWall[0][0].getImage(),1281,811,25,25,null);
         g.drawImage(BotWall[0][1].getImage(),1311,811,25,25,null);
         g.drawImage(BotWall[0][2].getImage(),1341,811,25,25,null);
