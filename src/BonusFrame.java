@@ -10,7 +10,7 @@ public class BonusFrame extends JFrame implements MouseListener
 
     Game game;
 
-    BufferedImage icon, background;
+    BufferedImage icon, background, next;
 
     public BonusFrame(Game g)
     {
@@ -22,8 +22,9 @@ public class BonusFrame extends JFrame implements MouseListener
 
         try
         {
-            icon = ImageIO.read(GameFrame.class.getResource("/images/azulIconImage.PNG"));
-            background = ImageIO.read(GameFrame.class.getResource("/images/bonusBackground.png"));
+            icon = ImageIO.read(BonusFrame.class.getResource("/images/azulIconImage.PNG"));
+            background = ImageIO.read(BonusFrame.class.getResource("/images/bonusBackground.png"));
+            next = ImageIO.read(BonusFrame.class.getResource("/images/next.png"));
         }
         catch(Exception E)
         {
