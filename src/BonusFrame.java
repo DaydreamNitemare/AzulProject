@@ -34,6 +34,8 @@ public class BonusFrame extends JFrame implements MouseListener
         this.addMouseListener(this);
         this.setIconImage(icon);
 
+        game = g;
+
         this.setVisible(true);
 
 
@@ -41,16 +43,25 @@ public class BonusFrame extends JFrame implements MouseListener
 
     public void paint(Graphics g)
     {
-        g.drawImage(background, 0, 30, 1440, 994, null);
+        g.drawImage(background, 0, 30, 1440, 994, null); //draws the background
 
-
+        g.drawImage(next, 670, 497, 100, 50, null);
     }
 
 
     @Override
     public void mouseClicked(MouseEvent e)
     {
+        int x = e.getX();
+        int y = e.getY();
 
+        System.out.println("loc of click is " + x + " , " + y);
+
+        if(x >= 670 && x <= 770 && y >= 497 && y <= 547)
+        {
+            this.dispose();
+            //new EndFrame(); //not done yet will do in a minute
+        }
     }
 
     public void mousePressed(MouseEvent e) {}
