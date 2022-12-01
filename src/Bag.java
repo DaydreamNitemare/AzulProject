@@ -3,33 +3,34 @@ import java.util.Collections;
 
 public class Bag {
     ArrayList<Tile> bag;
-
+    ArrayList<Tile> dumbSolution;
     public Bag () { //constructor
         bag = new ArrayList<>();
+        dumbSolution = new ArrayList<>();
         /*
         this section here gives the bag 20 of each color tile
         */
 
         for (int i = 0; i < 20; i++) {
-            bag.add(new Tile(0));
+            dumbSolution.add(new Tile(0));
         }
 
         for (int i = 0; i < 20; i++) {
-            bag.add(new Tile(1));
+            dumbSolution.add(new Tile(1));
         }
 
         for (int i = 0; i < 20; i++) {
-            bag.add(new Tile(2));
+            dumbSolution.add(new Tile(2));
         }
 
         for (int i = 0; i < 20; i++) {
-            bag.add(new Tile(3));
+            dumbSolution.add(new Tile(3));
         }
 
         for (int i = 0; i < 20; i++) {
-            bag.add(new Tile(4));
+            dumbSolution.add(new Tile(4));
         }
-
+        bag.addAll(dumbSolution);
         Collections.shuffle(bag); //shuffles the bag
     }
 
@@ -44,12 +45,9 @@ public class Bag {
 
     public void ifEmpty (Trash t) //what to do when the bag runs out of Tiles
     {
-        int count = t.getTrash().size();
-        for(int i = 0; i < count; i++)
-        {
-            bag.add(t.removeFromTrash(0));
-        }
 
-        Collections.shuffle(bag);
+        bag.addAll(dumbSolution);
+        t.removeFromTrash();
+        Collections.shuffle(bag); //shuffles the bag
     }
 }
