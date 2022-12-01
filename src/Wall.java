@@ -1,13 +1,15 @@
 import java.util.*;
 public class Wall {
     private int[][] pWall;
-    public Wall(){
+    Player p;
+    public Wall(Player player){
         pWall = new int[5][5];
         for(int r=0; r<5; r++){
             for(int c =0;c<5;c++){
                 pWall[r][c]=5;
             }
         }
+        p=player;
     }
     public int[][] getWall(){
         return pWall;
@@ -23,9 +25,9 @@ public class Wall {
         }
         return pTWall;
     }
-    public int set(int row, int col){
+    public int set(int row, int col, int color){
         int p=0;
-        pWall[row][col]=2;
+        pWall[row][col]=color;
         return p; //score later lol
     }
     public int scoreRight(int r, int c, int points){
@@ -73,7 +75,8 @@ public class Wall {
         return i;
     }
     public int score(int r, int c){
-        pWall[r][c]=1;
+        int z = p.getArea().getArea()[r][0];
+        pWall[r][c] = z;
         for(int[] x : pWall){
             for(int y : x){
                 System.out.print(y);

@@ -15,7 +15,7 @@ public class Player {
     {
         name = n;
         a = new PArea();
-        w = new Wall();
+        w = new Wall(this);
         fl = new FloorLine();
         holder = new ArrayList<Tile>();
         canPlay = false;
