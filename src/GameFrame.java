@@ -58,6 +58,12 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         drawLog(game.getCurrentPlayer().getName() + " begins the round\n\n");
 
         this.setVisible(true);
+
+        if(!game.checkGameEnd())
+        {
+            new BonusFrame(game);
+            this.dispose();
+        }
     }
 
     /***************** PAINT *********************/
@@ -973,7 +979,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
                 if(game.checkGameEnd())
                 {
                     this.dispose();
-                    //new BonusFrame();
+                    new BonusFrame(game);
                 }
 
                 game.endRound();
