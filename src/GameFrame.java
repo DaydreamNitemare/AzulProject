@@ -669,7 +669,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         }
 
         //this draws the "Next" button when a player's turn ends
-        if(!game.getCurrentPlayer().canPlay() && !game.getCurrentPlayer().canDraw())
+        if(!game.getCurrentPlayer().canPlay() && !game.getCurrentPlayer().canDraw() || game.hasRoundEnded())
             g.drawImage(nextButton, 215, 820, 100, 50, null);
 
         //this draws the player's names
@@ -726,10 +726,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         if (game.getCurrentPlayer().canDraw()) { //here is what allows a player to draw
             Click c = new Click(x, y, game);
             TreeMap<Boolean, int[]> temp = c.draw(game.getFactories());
-            if(game.getCurrentPlayer().hasOneTile()){
-                game.getFactoryFloor().changeOneTile();
-                game.getCurrentPlayer().changeOneTile();
-            }
+
             boolean successful = temp.containsKey(true);
 
             if (!successful)
@@ -905,15 +902,77 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
                 }
                 x = 0;
                 y = 0;
+
+                if(game.allFactoriesEmpty() && game.getFactoryFloor().isEmpty())
+                {
+                    game.setRoundCondition(true);
+                }
             }
         }
 
-        if(!game.getCurrentPlayer().canPlay && !game.getCurrentPlayer().canDraw() && x >= 215 && x <= 315 && y >= 820 && y <= 870)
+        if(!game.getCurrentPlayer().canPlay && !game.getCurrentPlayer().canDraw() && x >= 215 && x <= 315 && y >= 820 && y <= 870 && !game.hasRoundEnded())
         {
             game.nextPlayer();
             logTxt.setText(game.getCurrentPlayer().getName()+"'s turn\n" + "______________________________\n\n"+ logTxt.getText());
             game.getCurrentPlayer().setCanDraw(true);
             repaint();
+        }
+
+        if(x >= 215 && x <= 315 && y >= 820 && y <= 870 && game.hasRoundEnded())
+        {
+            if(!game.getCurrentPlayer().hasBeenScored())
+            {
+                if(game.getCurrentPlayer().getRowOfScoring() == 0)
+                    logTxt.setText("Scoring for " + game.getCurrentPlayer().getName() + "\n" + "______________________________\n\n" + logTxt.getText());
+
+                if(game.getCurrentPlayer().getRowOfScoring() != 5)
+                {
+                    if (game.getCurrentPlayer().getArea().getRowSpace(game.getCurrentPlayer().getRowOfScoring()).get(1) == 0) {
+                        int col = (game.getCurrentPlayer().getArea().getRowSpace(game.getCurrentPlayer().getRowOfScoring()).get(0) + game.getCurrentPlayer().getRowOfScoring()) % 5;
+                        String color = new Tile(game.getCurrentPlayer().getArea().getRowSpace(game.getCurrentPlayer().getRowOfScoring()).get(0)).getColorName();
+
+                        logTxt.setText(game.getCurrentPlayer().getWall().score(game.getCurrentPlayer().getRowOfScoring(), col) + "points added to " + game.getCurrentPlayer().getName() + " score for the " + color + " tile placement in row " + (game.getCurrentPlayer().getRowOfScoring() + 1) + "\n\n" + logTxt.getText());
+
+                        game.getCurrentPlayer().addPoints(game.getCurrentPlayer().getWall().score(game.getCurrentPlayer().getRowOfScoring(), col));
+
+                        for (int j = 0; j < game.getCurrentPlayer().getRowOfScoring(); j++)
+                            game.getTrash().addToTrash(new Tile(game.getCurrentPlayer().getArea().getRowSpace(game.getCurrentPlayer().getRowOfScoring()).get(0)));
+
+                        game.getCurrentPlayer().getArea().clearRow(game.getCurrentPlayer().getRowOfScoring());
+
+                        repaint();
+                    } else {
+                        logTxt.setText("Row " + (game.getCurrentPlayer().getRowOfScoring() + 1) + " cannot be scored\n\n" + logTxt.getText());
+                        repaint();
+                    }
+                }
+                else
+                {
+                    int ptsRem = game.getCurrentPlayer().getFloorLine().score();
+                    logTxt.setText(Math.abs(ptsRem) + " points removed from floor line tiles\n\n" + logTxt.getText());
+
+                    game.getCurrentPlayer().addPoints(ptsRem);
+
+                    if(game.getCurrentPlayer().getPoints() <0)
+                        game.getCurrentPlayer().addPoints(Math.abs(game.getCurrentPlayer().getPoints()));
+                    if(game.getCurrentPlayer().getPoints() > 100)
+                        game.getCurrentPlayer().addPoints(-(game.getCurrentPlayer().getPoints() - 100));
+
+                    repaint();
+                }
+
+                game.getCurrentPlayer().setRowOfScoring(game.getCurrentPlayer().getRowOfScoring() + 1);
+
+                if(game.getCurrentPlayer().getRowOfScoring() == 6)
+                    game.getCurrentPlayer().setHasBeenScored(true);
+            }
+            else if(!game.getNextPlayer().hasBeenScored())
+                game.nextPlayer();
+            else
+            {
+                game.endRound();
+                repaint();
+            }
         }
 
     }

@@ -8,6 +8,7 @@ public class Game {
     Bag bag;
     Player currentPlayer;
     Trash trash;
+    boolean phase;
     public Game()
     {
 
@@ -19,6 +20,7 @@ public class Game {
         bag = new Bag();
         trash = new Trash();
         players[turnNum].changeOneTile();
+        phase = false;
     }
 
     public Player getCurrentPlayer()
@@ -39,11 +41,25 @@ public class Game {
     public void endRound()
     {
         for (int i = 0; i < players.length; i++) {
-            if (players[i].oneTile) {
+            if (players[i].hasOneTileInFloorLine()) {
                 turnNum = i;
                 currentPlayer = players[i];
+                players[i].setCanDraw(true);
+                players[i].setCanPlay(false);
+                players[i].changeOneTile();
             }
+            else
+            {
+                players[i].setCanDraw(false);
+                players[i].setCanPlay(false);
+            }
+
+            players[i].setHasBeenScored(false);
+            players[i].setRowOfScoring(0);
         }
+
+        phase = false;
+
         deal();
 
     }
@@ -90,6 +106,28 @@ public class Game {
     public Player getNextPlayer(){
         int temp= turnNum+1;
         return players[(temp)%4];
+    }
+
+    public boolean allFactoriesEmpty()
+    {
+        boolean temp = true;
+        for(int i =0; i < factories.length; i++)
+        {
+            if(!factories[i].isEmpty())
+                temp = false;
+        }
+
+        return temp;
+    }
+
+    public void setRoundCondition(boolean condition)
+    {
+        phase = condition;
+    }
+
+    public boolean hasRoundEnded()
+    {
+        return phase;
     }
 
 }

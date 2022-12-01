@@ -6,8 +6,10 @@ public class Player {
     Wall w; //gives the player a wall
     FloorLine fl; //gives the player a FloorLine
     int points; //number of points a player has
-    boolean canPlay, canDraw, oneTile; //whether or not a player can draw tiles or is playing tiles
+    boolean canPlay, canDraw, oneTile, oneTileInFloorLine; //whether or not a player can draw tiles or is playing tiles
     ArrayList<Tile> holder; //where the tiles a player just picked up are stored
+    boolean hasBeenScored;
+    int rowOfScoring;
 
     public Player(String n) //constructor
     {
@@ -18,6 +20,10 @@ public class Player {
         holder = new ArrayList<Tile>();
         canPlay = false;
         canDraw = false;
+        hasBeenScored = false;
+        rowOfScoring = 0;
+        oneTile = false;
+        oneTileInFloorLine = false;
     }
 
     public int getPoints() //returns the number of points a player has
@@ -107,6 +113,17 @@ public class Player {
 
     public void changeOneTile(){oneTile= !oneTile;}
 
+    public boolean hasOneTileInFloorLine()
+    {
+        return oneTileInFloorLine;
+    }
+
+    public void changeOneTileInFloorLine()
+    {
+        oneTileInFloorLine = !oneTileInFloorLine;
+    }
+
+
     public void setCanDraw(boolean x) {
         canDraw = x;
     }
@@ -122,5 +139,25 @@ public class Player {
 
     public boolean canPlay() {
         return canPlay;
+    }
+
+    public int getRowOfScoring()
+    {
+        return rowOfScoring;
+    }
+
+    public void setRowOfScoring(int x)
+    {
+        rowOfScoring = x;
+    }
+
+    public boolean hasBeenScored()
+    {
+        return hasBeenScored;
+    }
+
+    public void setHasBeenScored(boolean n)
+    {
+        hasBeenScored = n;
     }
 }

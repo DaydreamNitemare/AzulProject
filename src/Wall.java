@@ -73,6 +73,7 @@ public class Wall {
         return i;
     }
     public int score(int r, int c){
+        pWall[r][c]=1;
         for(int[] x : pWall){
             for(int y : x){
                 System.out.print(y);
