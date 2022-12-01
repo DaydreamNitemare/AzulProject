@@ -15,8 +15,8 @@ public class Trash {
         trashArray.add(t);
     }
 
-    public Tile removeFromTrash(int pos) {
-        return trashArray.remove(pos);
+    public void removeFromTrash() {
+        trashArray = new ArrayList<>();
     }
 
     public int[] getNumOfEachColor()
