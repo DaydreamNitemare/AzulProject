@@ -13,16 +13,78 @@ public class Wall {
         return pWall;
     }
 
+
     public Tile[][] getTileWall(){
         Tile[][]pTWall = new Tile[5][5];
+        /*
         for(int x=0;x<5;x++){
             for(int y=0;y<5;y++){
-                Tile temp= new Tile(pWall[x][y]);
-                pTWall[x][y]=temp;
+                if(pWall[x][y] != 5)
+                {
+                    Tile temp = null;
+                    if(x == y)
+                        temp = new Tile(0);
+                    else if(x == 0)
+                    {
+                        temp = switch (y) {
+                            case 1 -> new Tile(1);
+                            case 2 -> new Tile(2);
+                            case 3 -> new Tile(3);
+                            case 4 -> new Tile(4);
+                            default -> temp;
+                        };
+                    }
+                    else if(x == 1)
+                    {
+                        temp = switch (y) {
+                            case 0 -> new Tile(4);
+                            case 2 -> new Tile(1);
+                            case 3 -> new Tile(2);
+                            case 4 -> new Tile(3);
+                            default -> temp;
+                        };
+                    }
+                    else if(x == 2)
+                    {
+                        temp = switch (y) {
+                            case 0 -> new Tile(3);
+                            case 1 -> new Tile(4);
+                            case 3 -> new Tile(1);
+                            case 4 -> new Tile(2);
+                            default -> temp;
+                        };
+                    }
+                    else if(x == 3)
+                    {
+                        temp = switch (y) {
+                            case 0 -> new Tile(2);
+                            case 1 -> new Tile(3);
+                            case 2 -> new Tile(4);
+                            case 4 -> new Tile(1);
+                            default -> temp;
+                        };
+                    }
+                    else
+                    {
+                        temp = switch (y) {
+                            case 0 -> new Tile(1);
+                            case 1 -> new Tile(2);
+                            case 2 -> new Tile(3);
+                            case 3 -> new Tile(4);
+                            default -> temp;
+                        };
+                    }
+
+                    pTWall[x][y] = temp;
+                }
+                else
+                    pTWall[x][y] = null;
             }
-        }
+        }*/
         return pTWall;
     }
+
+
     public int set(int row, int col){
         int p=0;
         pWall[row][col]=2;

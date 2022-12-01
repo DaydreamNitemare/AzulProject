@@ -951,7 +951,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
                     int ptsRem = game.getCurrentPlayer().getFloorLine().score();
                     logTxt.setText(Math.abs(ptsRem) + " points removed from floor line tiles\n\n" + logTxt.getText());
 
-                    game.getCurrentPlayer().addPoints(ptsRem);
+                    game.getCurr
 
                     if(game.getCurrentPlayer().getPoints() <0)
                         game.getCurrentPlayer().addPoints(Math.abs(game.getCurrentPlayer().getPoints()));
