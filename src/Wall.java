@@ -118,4 +118,56 @@ public class Wall {
 
         return false;
     }
+
+    public int[] bonusPointsEarned()
+    {
+        int[] temp = {0, 0, 0};
+
+        for(int i = 0; i < 5; i ++)
+        {
+            boolean rowFilled = true;
+            for(int j = 0; j < 5; j++)
+            {
+                if(pWall[i][j] == 5)
+                    rowFilled = false;
+            }
+            if(rowFilled)
+                temp[0] += 2;
+        }
+
+        for(int j = 0; j < 5; j++)
+        {
+            boolean columnFilled = true;
+            for(int i = 0; i < 5; i++)
+            {
+                if(pWall[i][j] == 5)
+                    columnFilled = false;
+            }
+            if(columnFilled)
+                temp[1] += 7;
+        }
+
+        for(int i = 0; i < 5; i++)
+        {
+            boolean allOfOneColor = true;
+            ArrayList<Integer> row1 = new ArrayList<>();
+            ArrayList<Integer> row2 = new ArrayList<>();
+            ArrayList<Integer> row3 = new ArrayList<>();
+            ArrayList<Integer> row4 = new ArrayList<>();
+            ArrayList<Integer> row5 = new ArrayList<>();
+            for(int j = 0; j < 5; j++)
+            {
+                row1.add(pWall[0][j]);
+                row2.add(pWall[1][j]);
+                row3.add(pWall[2][j]);
+                row4.add(pWall[3][j]);
+                row5.add(pWall[4][j]);
+            }
+
+            if(row1.contains(i) && row2.contains(i) && row3.contains(i) && row4.contains(i) && row5.contains(i))
+                temp[2] += 10;
+        }
+
+        return temp;
+    }
 }
