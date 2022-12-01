@@ -200,11 +200,18 @@ public class Click {
                     drawSuccessful=true;
                 }
             }
-            if(game.getFactoryFloor().hasOneTile()){
-                game.getFactoryFloor().changeOneTile();
-                game.getCurrentPlayer().getFloorLine().add(new Tile(6), game.getTrash());
+            if(drawSuccessful){
+                if(game.getFactoryFloor().hasOneTile()){
+                    game.getFactoryFloor().changeOneTile();
+                    game.getCurrentPlayer().getFloorLine().add(new Tile(6), game.getTrash());
+                }
             }
         }
+        if(drawSuccessful)
+            if(game.getCurrentPlayer().hasOneTile()){
+                game.getFactoryFloor().changeOneTile();
+                game.getCurrentPlayer().changeOneTile();
+            }
         if(drawSuccessful) {
             current.setCanDraw(false);
             current.setCanPlay(true);
