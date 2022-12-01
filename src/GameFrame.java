@@ -307,9 +307,9 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
             g.fillRect(1118+temp,98,15,15);
         }
         else {
-                int temp=((addCol1)%81);
-                temp*=15;
-                g.fillRect(1118+temp,115,15,15);//add 15 for next column, add 17 for next roq
+            int temp=((addCol1)%81);
+            temp*=15;
+            g.fillRect(1118+temp,115,15,15);//add 15 for next column, add 17 for next roq
         }
         //
         //one tile
@@ -553,7 +553,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
         //one tile
         //
         //if(game.getNextPlayer().hasOneTile())
-       // g.drawImage(one,1144,831,35,35,null);
+        // g.drawImage(one,1144,831,35,35,null);
         //row 0
         Tile[][]BotWall=game.getCurrentPlayer().getWall().getTileWall();
         g.drawImage(BotWall[0][0].getImage(),1281,811,25,25,null);
@@ -951,7 +951,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
                     int ptsRem = game.getCurrentPlayer().getFloorLine().score();
                     logTxt.setText(Math.abs(ptsRem) + " points removed from floor line tiles\n\n" + logTxt.getText());
 
-                    game.getCurr
+                    game.getCurrentPlayer().addPoints(ptsRem);
 
                     if(game.getCurrentPlayer().getPoints() <0)
                         game.getCurrentPlayer().addPoints(Math.abs(game.getCurrentPlayer().getPoints()));
