@@ -204,6 +204,7 @@ public class Click {
                 if(game.getFactoryFloor().hasOneTile()){
                     game.getFactoryFloor().changeOneTile();
                     game.getCurrentPlayer().getFloorLine().add(new Tile(6), game.getTrash());
+                    game.getCurrentPlayer().changeOneTileInFloorLine();
                 }
             }
         }
