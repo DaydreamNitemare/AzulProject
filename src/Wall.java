@@ -93,4 +93,21 @@ public class Wall {
     {
         return pWall[row][(color + row) % 5] != 5;
     }
+
+    public boolean rowIsFull()
+    {
+        for(int i = 0; i < 5; i ++)
+        {
+            boolean temp = true;
+            for(int j = 0; j < 5; j++)
+            {
+                if(pWall[i][j] == 5)
+                    temp = false;
+            }
+            if(temp)
+                return temp;
+        }
+
+        return false;
+    }
 }

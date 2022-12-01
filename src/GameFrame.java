@@ -970,7 +970,14 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
                 game.nextPlayer();
             else
             {
+                if(game.checkGameEnd())
+                {
+                    this.dispose();
+                    //new BonusFrame();
+                }
+
                 game.endRound();
+                logTxt.setText(game.getCurrentPlayer().getName() + " begins the round\n\n");
                 repaint();
             }
         }

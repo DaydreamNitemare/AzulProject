@@ -46,7 +46,8 @@ public class Game {
                 currentPlayer = players[i];
                 players[i].setCanDraw(true);
                 players[i].setCanPlay(false);
-                players[i].changeOneTile();
+                players[i].setOneTileTrue();
+                players[i].changeOneTileInFloorLine();
             }
             else
             {
@@ -130,4 +131,7 @@ public class Game {
         return phase;
     }
 
+    public boolean checkGameEnd() {
+        return players[0].getWall().rowIsFull() || players[1].getWall().rowIsFull() || players[2].getWall().rowIsFull() || players[3].getWall().rowIsFull();
+    }
 }

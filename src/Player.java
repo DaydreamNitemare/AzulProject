@@ -160,4 +160,10 @@ public class Player {
     {
         hasBeenScored = n;
     }
+
+    public void setOneTileTrue()
+    {
+        oneTile = true;
+    }
+
 }
