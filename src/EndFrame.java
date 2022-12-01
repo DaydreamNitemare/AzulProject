@@ -5,14 +5,13 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 
-public class BonusFrame extends JFrame implements MouseListener
+public class EndFrame extends JFrame implements MouseListener
 {
 
+    BufferedImage icon, background, next;
     Game game;
 
-    BufferedImage icon, background, next;
-
-    public BonusFrame(Game g)
+    public EndFrame(Game g)
     {
         this.setSize(1440, 1024);
         this.setResizable(false);
@@ -22,9 +21,9 @@ public class BonusFrame extends JFrame implements MouseListener
 
         try
         {
-            icon = ImageIO.read(BonusFrame.class.getResource("/images/azulIconImage.PNG"));
-            background = ImageIO.read(BonusFrame.class.getResource("/images/bonusBackground.png"));
-            next = ImageIO.read(BonusFrame.class.getResource("/images/next.png"));
+            icon = ImageIO.read(EndFrame.class.getResource("/images/azulIconImage.PNG"));
+            background = ImageIO.read(EndFrame.class.getResource("/images/justBackground.png"));
+            next = ImageIO.read(EndFrame.class.getResource("/images/next.png"));
         }
         catch(Exception E)
         {
@@ -37,17 +36,14 @@ public class BonusFrame extends JFrame implements MouseListener
         game = g;
 
         this.setVisible(true);
-
-
     }
 
     public void paint(Graphics g)
     {
         g.drawImage(background, 0, 30, 1440, 994, null); //draws the background
 
-        g.drawImage(next, 670, 497, 100, 50, null);
+        g.drawImage(next, 670, 797, 100, 50, null); //draws next button
     }
-
 
     @Override
     public void mouseClicked(MouseEvent e)
@@ -57,10 +53,10 @@ public class BonusFrame extends JFrame implements MouseListener
 
         System.out.println("loc of click is (" + x + " , " + y + ")");
 
-        if(x >= 670 && x <= 770 && y >= 497 && y <= 547)
+        if(x >= 670 && x <= 770 && y >= 797 && y <= 847)
         {
             this.dispose();
-            new EndFrame(game); //not done yet will do in a minute
+            new MainFrame();
         }
     }
 
