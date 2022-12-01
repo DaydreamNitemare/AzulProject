@@ -37,7 +37,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
             p2 = ImageIO.read(GameFrame.class.getResource("/images/p2azul.jpg"));
             p3 = ImageIO.read(GameFrame.class.getResource("/images/p3azul.jpg"));
             p4 = ImageIO.read(GameFrame.class.getResource("/images/p4azul.jpg"));
-            one=ImageIO.read(GameFrame.class.getResource("/images/oneTile.png"));
+            one = ImageIO.read(GameFrame.class.getResource("/images/oneTile.png"));
         } catch (Exception E) {
             System.out.println("Error with instantiating the images in GameFrame");
             return;

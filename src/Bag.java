@@ -44,7 +44,8 @@ public class Bag {
 
     public void ifEmpty (Trash t) //what to do when the bag runs out of Tiles
     {
-        for(int i = 0; i < t.getTrash().size() - 1; i++)
+        int count = t.getTrash().size();
+        for(int i = 0; i < count; i++)
         {
             bag.add(t.removeFromTrash(0));
         }
