@@ -84,10 +84,15 @@ public class Wall {
             System.out.println();
         }
         int totalScore=0;
+        int tempScore = totalScore;
         totalScore+=scoreRight(r, c, 0);
+        if (tempScore-totalScore<0){ totalScore++; tempScore=totalScore;}
         totalScore+=scoreLeft(r, c, 0);
+        if (tempScore-totalScore<0){ totalScore++; tempScore=totalScore;}
         totalScore+=scoreUp(r, c, 0);
+        if (tempScore-totalScore<0){ totalScore++; tempScore=totalScore;}
         totalScore+=scoreDown(r, c, 0);
+        if (tempScore-totalScore<0){ totalScore++; tempScore=totalScore;}
         totalScore+=1;
         return totalScore;
     }
