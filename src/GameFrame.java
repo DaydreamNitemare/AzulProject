@@ -29,7 +29,7 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
 
         try {
             //where all the BufferedImage variables will be instantiated
-            gameBack = ImageIO.read(GameFrame.class.getResource("/images/gameBackground.png"));
+            gameBack = ImageIO.read(GameFrame.class.getResource("/images/gamebackground.png"));
             icon = ImageIO.read(GameFrame.class.getResource("/images/azulIconImage.PNG"));
             submitButton = ImageIO.read(GameFrame.class.getResource("/images/submit.png"));
             nextButton = ImageIO.read(GameFrame.class.getResource("/images/next.png"));
