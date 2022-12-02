@@ -75,6 +75,8 @@ public class Wall {
         return i;
     }
     public int score(int r, int c){
+        boolean rAdd, lAdd, dAdd, uAdd;
+        rAdd=lAdd=dAdd=uAdd=false;
         int z = p.getArea().getArea()[r][0];
         pWall[r][c] = z;
         for(int[] x : pWall){
@@ -86,14 +88,16 @@ public class Wall {
         int totalScore=0;
         int tempScore = totalScore;
         totalScore+=scoreRight(r, c, 0);
-        if (tempScore-totalScore<0){ totalScore++; tempScore=totalScore;}
+        if (tempScore-totalScore<0 && !lAdd){ totalScore++; tempScore=totalScore; rAdd=true;}
         totalScore+=scoreLeft(r, c, 0);
-        if (tempScore-totalScore<0){ totalScore++; tempScore=totalScore;}
+        if (tempScore-totalScore<0 && !rAdd){ totalScore++; tempScore=totalScore; lAdd=true;}
         totalScore+=scoreUp(r, c, 0);
-        if (tempScore-totalScore<0){ totalScore++; tempScore=totalScore;}
+        if (tempScore-totalScore<0 && !dAdd){ totalScore++; tempScore=totalScore; uAdd=true;}
         totalScore+=scoreDown(r, c, 0);
-        if (tempScore-totalScore<0){ totalScore++; tempScore=totalScore;}
-        totalScore+=1;
+        if (tempScore-totalScore<0 && !uAdd){ totalScore++; tempScore=totalScore; dAdd=true;}
+        if(!dAdd && !uAdd && !rAdd && !lAdd){
+            totalScore++;
+        }
         return totalScore;
     }
 

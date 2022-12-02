@@ -59,11 +59,11 @@ public class GameFrame extends JFrame implements ActionListener, MouseListener
 
         this.setVisible(true);
 
-        if(!game.checkGameEnd())
+        /*if(!game.checkGameEnd())
         {
             new BonusFrame(game);
             this.dispose();
-        }
+        }*/
     }
 
     /***************** PAINT *********************/
