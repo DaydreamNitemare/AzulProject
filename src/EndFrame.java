@@ -27,7 +27,7 @@ public class EndFrame extends JFrame implements MouseListener
         }
         catch(Exception E)
         {
-            System.out.println("Error with instantiating images in BonusFrame class");
+            System.out.println("Error with instantiating images in EndFrame class");
         }
 
         this.addMouseListener(this);
