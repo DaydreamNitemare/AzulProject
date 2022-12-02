@@ -134,4 +134,67 @@ public class Game {
     public boolean checkGameEnd() {
         return players[0].getWall().rowIsFull() || players[1].getWall().rowIsFull() || players[2].getWall().rowIsFull() || players[3].getWall().rowIsFull();
     }
+
+    public String getWinner()
+    {
+        ArrayList<Player> temp = new ArrayList<>();
+        int max = Integer.MIN_VALUE;
+
+        for(int i = 0; i < 4; i++) //checks if a player won based off of points alone and puts them into an ArrayList
+        {
+            if(players[i].getPoints() > max)
+            {
+                max = players[i].getPoints();
+                temp.clear();
+                temp.add(players[i]);
+            }
+            else if(players[i].getPoints() == max)
+            {
+                temp.add(players[i]);
+            }
+        }
+
+        if(temp.size() == 2)
+        {
+            int holder = temp.get(0).getWall().numRowsCompleted() - temp.get(1) .getWall().numRowsCompleted();
+
+            if(holder == 0)
+                return temp.get(0).getName() + " and " + temp.get(1).getName() + " tie with " + temp.get(0).getPoints() + " points and " + temp.get(0).getWall().numRowsCompleted() + " rows completed!";
+            if(holder > 0)
+                temp.remove(1);
+            else
+                temp.remove(0);
+        }
+        else if(temp.size() >= 3)
+        {
+            ArrayList <Player> tempTwo = new ArrayList<>();
+
+            int maxTwo = Integer.MIN_VALUE;
+
+            for(int i = 0; i < temp.size(); i++) //checks if a player won based off of points alone and puts them into an ArrayList
+            {
+                if(players[i].getWall().numRowsCompleted() > maxTwo)
+                {
+                    maxTwo = players[i].getPoints();
+                    tempTwo.clear();
+                    tempTwo.add(players[i]);
+                }
+                else if(players[i].getWall().numRowsCompleted() == maxTwo)
+                {
+                    tempTwo.add(players[i]);
+                }
+            }
+
+            if(tempTwo.size() == 1)
+                return tempTwo.get(0).getName() + " wins! with " + tempTwo.get(0).getPoints() + " points and " + tempTwo.get(0).getWall().numRowsCompleted() + " rows completed!";
+            if(tempTwo.size() == 2)
+                return tempTwo.get(0).getName() + " and " + tempTwo.get(1).getName() + " tie with " + tempTwo.get(0).getPoints() + " points and " + tempTwo.get(0).getWall().numRowsCompleted() + " rows completed!";
+            if(tempTwo.size() == 3)
+                return tempTwo.get(0).getName() + ", " + tempTwo.get(1).getName() + " and " + tempTwo.get(2).getName() + " tie with " + tempTwo.get(0).getPoints() + " points and " + temp.get(0).getWall().numRowsCompleted() + " rows completed!";
+            if(tempTwo.size() == 4)
+                return "All players tie with " + tempTwo.get(0).getPoints() + " points and " + tempTwo.get(0).getWall().numRowsCompleted() + " rows completed!";
+        }
+
+        return temp.get(0).getName() + " wins! with " + temp.get(0).getPoints() + " points and " + temp.get(0).getWall().numRowsCompleted() + " rows completed!";
+    }
 }
