@@ -159,7 +159,7 @@ public class Game {
             int holder = temp.get(0).getWall().numRowsCompleted() - temp.get(1) .getWall().numRowsCompleted();
 
             if(holder == 0)
-                return temp.get(0).getName() + " and " + temp.get(1).getName() + " tie with " + temp.get(0).getPoints() + " points and " + temp.get(0).getWall().numRowsCompleted() + " rows completed!";
+                return temp.get(0).getName() + " and " + temp.get(1).getName() + " tie with " + temp.get(0).getPoints() + " points and \n" + temp.get(0).getWall().numRowsCompleted() + " rows completed!";
             if(holder > 0)
                 temp.remove(1);
             else
@@ -187,11 +187,11 @@ public class Game {
             }
 
             if(tempTwo.size() == 1)
-                return tempTwo.get(0).getName() + " wins! with " + tempTwo.get(0).getPoints() + " points and " + tempTwo.get(0).getWall().numRowsCompleted() + " rows completed!";
+                return tempTwo.get(0).getName() + " wins! with " + tempTwo.get(0).getPoints() + " points and \n" + tempTwo.get(0).getWall().numRowsCompleted() + " rows completed!";
             if(tempTwo.size() == 2)
-                return tempTwo.get(0).getName() + " and " + tempTwo.get(1).getName() + " tie with " + tempTwo.get(0).getPoints() + " points and " + tempTwo.get(0).getWall().numRowsCompleted() + " rows completed!";
+                return tempTwo.get(0).getName() + " and " + tempTwo.get(1).getName() + " tie with " + tempTwo.get(0).getPoints() + " points and \n" + tempTwo.get(0).getWall().numRowsCompleted() + " rows completed!";
             if(tempTwo.size() == 3)
-                return tempTwo.get(0).getName() + ", " + tempTwo.get(1).getName() + " and " + tempTwo.get(2).getName() + " tie with " + tempTwo.get(0).getPoints() + " points and " + tempTwo.get(0).getWall().numRowsCompleted() + " rows completed!";
+                return tempTwo.get(0).getName() + ", " + tempTwo.get(1).getName() + " and " + tempTwo.get(2).getName() + " tie with " + tempTwo.get(0).getPoints() + " points and \n" + tempTwo.get(0).getWall().numRowsCompleted() + " rows completed!";
             if(tempTwo.size() == 4)
                 return "All players tie with " + tempTwo.get(0).getPoints() + " points and " + tempTwo.get(0).getWall().numRowsCompleted() + " rows completed!";
         }
