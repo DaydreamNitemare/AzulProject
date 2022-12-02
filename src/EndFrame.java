@@ -44,7 +44,7 @@ public class EndFrame extends JFrame implements MouseListener
 
         g.drawImage(next, 670, 797, 100, 50, null); //draws next button
 
-        g.setFont(new Font("Comic Sans", Font.BOLD, 42));
+        g.setFont(new Font("Comic Sans", Font.BOLD, 36));
         g.drawString(game.getWinner(), 200, 200);
     }
 
