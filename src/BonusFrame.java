@@ -43,15 +43,11 @@ public class BonusFrame extends JFrame implements MouseListener
 
         game = g;
 
+        game.getPlayers()[0].addPoints(game.getPlayers()[0].getWall().bonusPointsEarned()[0] + game.getPlayers()[0].getWall().bonusPointsEarned()[1] + game.getPlayers()[0].getWall().bonusPointsEarned()[2]);
+        game.getPlayers()[1].addPoints(game.getPlayers()[1].getWall().bonusPointsEarned()[0] + game.getPlayers()[1].getWall().bonusPointsEarned()[1] + game.getPlayers()[1].getWall().bonusPointsEarned()[2]);
+        game.getPlayers()[2].addPoints(game.getPlayers()[2].getWall().bonusPointsEarned()[0] + game.getPlayers()[2].getWall().bonusPointsEarned()[1] + game.getPlayers()[2].getWall().bonusPointsEarned()[2]);
+
         this.setVisible(true);
-
-
-
-
-
-
-
-
     }
 
     public void paint(Graphics g)
@@ -59,6 +55,29 @@ public class BonusFrame extends JFrame implements MouseListener
         g.drawImage(background, 0, 30, 1440, 994, null); //draws the background
 
         g.drawImage(next, 670, 497, 100, 50, null);
+
+        g.setFont(new Font("Comic Sans",Font.BOLD,12));
+        g.drawString(game.getPlayers()[0].getWall().bonusPointsEarned()[0] + " points earned for completing rows.", 425, 150);
+        g.drawString(game.getPlayers()[0].getWall().bonusPointsEarned()[1] + " points earned for completing columns.", 425, 175);
+        g.drawString(game.getPlayers()[0].getWall().bonusPointsEarned()[2] + " points earned for collecting all tiles of one color.", 425, 200);
+
+        g.drawString(game.getPlayers()[1].getWall().bonusPointsEarned()[0] + " points earned for completing rows.", 800, 150);
+        g.drawString(game.getPlayers()[1].getWall().bonusPointsEarned()[1] + " points earned for completing columns.", 780, 175);
+        g.drawString(game.getPlayers()[1].getWall().bonusPointsEarned()[2] + " points earned for collecting all tiles of one color.", 730, 200);
+
+        g.drawString(game.getPlayers()[2].getWall().bonusPointsEarned()[0] + " points earned for completing rows.", 425, 650);
+        g.drawString(game.getPlayers()[2].getWall().bonusPointsEarned()[1] + " points earned for completing columns.", 425, 675);
+        g.drawString(game.getPlayers()[2].getWall().bonusPointsEarned()[2] + " points earned for collecting all tiles of one color.", 425, 700);
+
+        g.drawString(game.getPlayers()[3].getWall().bonusPointsEarned()[0] + " points earned for completing rows.", 800, 650);
+        g.drawString(game.getPlayers()[3].getWall().bonusPointsEarned()[1] + " points earned for completing columns.", 780, 675);
+        g.drawString(game.getPlayers()[3].getWall().bonusPointsEarned()[2] + " points earned for collecting all tiles of one color.", 730, 700);
+
+        g.setFont(new Font("Comic Sans", Font.BOLD, 42));
+        g.drawString("Player 1", 175, 100);
+        g.drawString("Player 2", 1100, 100);
+        g.drawString("Player 3", 175, 600);
+        g.drawString("Player 4", 1100, 600);
 
 
         g.setColor(Color.BLACK);
@@ -113,7 +132,7 @@ public class BonusFrame extends JFrame implements MouseListener
         Tile[][]topWall=playArr[0].getWall().getTileWall();
         for(int x=0;x<5;x++){
             for(int y=0;y<5;y++){
-            g.drawImage(topWall[x][y].getImage(),1281-firstRow+(x*30),147+firstCol+(y*30),25,25,null);
+            g.drawImage(topWall[y][x].getImage(),1281-firstRow+(x*30),147+firstCol+(y*30),25,25,null);
             }
         }
         Tile[][]topPA=playArr[0].getArea().getTileArea();
@@ -128,13 +147,13 @@ public class BonusFrame extends JFrame implements MouseListener
         //
          firstRow=94;
          firstCol=91;
-        Tile[][]secondWall=playArr[0].getWall().getTileWall();
+        Tile[][]secondWall=playArr[1].getWall().getTileWall();
         for(int x=0;x<5;x++){
             for(int y=0;y<5;y++){
-                g.drawImage(topWall[x][y].getImage(),1281-firstRow+(x*30),147+firstCol+(y*30),25,25,null);
+                g.drawImage(topWall[y][x].getImage(),1281-firstRow+(x*30),147+firstCol+(y*30),25,25,null);
             }
         }
-        Tile[][]secondPA=playArr[0].getArea().getTileArea();
+        Tile[][]secondPA=playArr[1].getArea().getTileArea();
         for(int x=0;x<5;x++){
             for(int y=0;y<x+1;y++){
                 g.drawImage(topPA[x][y].getImage(),1235-firstRow-(y*30),147+firstCol+(x*30),25,25,null);
@@ -186,13 +205,13 @@ public class BonusFrame extends JFrame implements MouseListener
 
         firstRow=1026;
         firstCol=591;
-        Tile[][]thirdWall=playArr[0].getWall().getTileWall();
+        Tile[][]thirdWall=playArr[2].getWall().getTileWall();
         for(int x=0;x<5;x++){
             for(int y=0;y<5;y++){
-                g.drawImage(thirdWall[x][y].getImage(),1281-firstRow+(x*30),147+firstCol+(y*30),25,25,null);
+                g.drawImage(thirdWall[y][x].getImage(),1281-firstRow+(x*30),147+firstCol+(y*30),25,25,null);
             }
         }
-        Tile[][]thirdPA=playArr[0].getArea().getTileArea();
+        Tile[][]thirdPA=playArr[2].getArea().getTileArea();
         for(int x=0;x<5;x++){
             for(int y=0;y<x+1;y++){
                 g.drawImage(thirdPA[x][y].getImage(),1235-firstRow-(y*30),147+firstCol+(x*30),25,25,null);
@@ -278,13 +297,13 @@ public class BonusFrame extends JFrame implements MouseListener
             g.fillRect(1118+temp-firstRow,115+firstCol,15,15);//add 15 for next column, add 17 for next roq
         }
         //wall
-        Tile[][]fourthWall=playArr[0].getWall().getTileWall();
+        Tile[][]fourthWall=playArr[3].getWall().getTileWall();
         for(int x=0;x<5;x++){
             for(int y=0;y<5;y++){
-                g.drawImage(fourthWall[x][y].getImage(),1281-firstRow+(x*30),147+firstCol+(y*30),25,25,null);
+                g.drawImage(fourthWall[y][x].getImage(),1281-firstRow+(x*30),147+firstCol+(y*30),25,25,null);
             }
         }
-        Tile[][]fourthPA=playArr[0].getArea().getTileArea();
+        Tile[][]fourthPA=playArr[3].getArea().getTileArea();
         for(int x=0;x<5;x++){
             for(int y=0;y<x+1;y++){
                 g.drawImage(fourthPA[x][y].getImage(),1235-firstRow-(y*30),147+firstCol+(x*30),25,25,null);
