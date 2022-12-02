@@ -175,7 +175,8 @@ public class Game {
             {
                 if(players[i].getWall().numRowsCompleted() > maxTwo)
                 {
-                    maxTwo = players[i].getPoints();
+                    maxTwo = players[i].getWall().numRowsCompleted();
+                    //System.out.println(maxTwo);
                     tempTwo.clear();
                     tempTwo.add(players[i]);
                 }
@@ -190,7 +191,7 @@ public class Game {
             if(tempTwo.size() == 2)
                 return tempTwo.get(0).getName() + " and " + tempTwo.get(1).getName() + " tie with " + tempTwo.get(0).getPoints() + " points and " + tempTwo.get(0).getWall().numRowsCompleted() + " rows completed!";
             if(tempTwo.size() == 3)
-                return tempTwo.get(0).getName() + ", " + tempTwo.get(1).getName() + " and " + tempTwo.get(2).getName() + " tie with " + tempTwo.get(0).getPoints() + " points and " + temp.get(0).getWall().numRowsCompleted() + " rows completed!";
+                return tempTwo.get(0).getName() + ", " + tempTwo.get(1).getName() + " and " + tempTwo.get(2).getName() + " tie with " + tempTwo.get(0).getPoints() + " points and " + tempTwo.get(0).getWall().numRowsCompleted() + " rows completed!";
             if(tempTwo.size() == 4)
                 return "All players tie with " + tempTwo.get(0).getPoints() + " points and " + tempTwo.get(0).getWall().numRowsCompleted() + " rows completed!";
         }
