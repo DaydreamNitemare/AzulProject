@@ -197,4 +197,7 @@ public class Game {
 
         return temp.get(0).getName() + " wins! with " + temp.get(0).getPoints() + " points and " + temp.get(0).getWall().numRowsCompleted() + " rows completed!";
     }
+    public Player[] getPlayers(){
+        return players;
+    }
 }
