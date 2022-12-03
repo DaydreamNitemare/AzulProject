@@ -46,6 +46,7 @@ public class BonusFrame extends JFrame implements MouseListener
         game.getPlayers()[0].addPoints(game.getPlayers()[0].getWall().bonusPointsEarned()[0] + game.getPlayers()[0].getWall().bonusPointsEarned()[1] + game.getPlayers()[0].getWall().bonusPointsEarned()[2]);
         game.getPlayers()[1].addPoints(game.getPlayers()[1].getWall().bonusPointsEarned()[0] + game.getPlayers()[1].getWall().bonusPointsEarned()[1] + game.getPlayers()[1].getWall().bonusPointsEarned()[2]);
         game.getPlayers()[2].addPoints(game.getPlayers()[2].getWall().bonusPointsEarned()[0] + game.getPlayers()[2].getWall().bonusPointsEarned()[1] + game.getPlayers()[2].getWall().bonusPointsEarned()[2]);
+        game.getPlayers()[3].addPoints(game.getPlayers()[3].getWall().bonusPointsEarned()[0] + game.getPlayers()[3].getWall().bonusPointsEarned()[1] + game.getPlayers()[3].getWall().bonusPointsEarned()[2]);
 
         this.setVisible(true);
     }
