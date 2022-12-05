@@ -34,7 +34,7 @@ public class MenuFrame extends JFrame implements MouseListener {
     public void paint(Graphics g) {
         g.drawImage(background, 0, 0, getWidth(), getHeight(), null);
         g.setColor(Color.BLACK);
-        g.setFont(new Font("Comic Sans",Font.PLAIN,25));
+        g.setFont(new Font("Comic Sans",Font.BOLD,25));
         if(choose==0){
             g.drawString("Instructions for how the actual game is played are available online.",30,80);
             g.drawString("These instructions are meant for operating our digital version of the game.",30,130);
