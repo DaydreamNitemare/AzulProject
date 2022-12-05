@@ -39,7 +39,6 @@ public class MainFrame extends JFrame implements MouseListener {
             System.out.println("Error with instantiating the images in MainFrame");
             return;
         }
-
         this.setIconImage(icon);
 
         this.setVisible(true);
@@ -73,10 +72,14 @@ public class MainFrame extends JFrame implements MouseListener {
         //How to Play button mouselistener
         if(x>460&&x<700&&y>810&&y<870){
             System.out.println("How To Play");
+            this.dispose();
+            new MenuFrame(0);
         }
         //Credits button mouselistener
         if(x>740&&x<970&&y>810&&y<870){
             System.out.println("Credits");
+            this.dispose();
+            new MenuFrame(1);
         }
     }
 
