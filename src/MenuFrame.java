@@ -64,7 +64,6 @@ public class MenuFrame extends JFrame implements MouseListener {
 
         if(x>0&&y>0)
         {
-
             this.dispose();
             new MainFrame(); //not done yet will do in a minute
         }
