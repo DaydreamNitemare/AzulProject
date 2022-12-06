@@ -79,7 +79,7 @@ public class BonusFrame extends JFrame implements MouseListener
         g.drawString("Player 2", 1100, 100);
         g.drawString("Player 3", 175, 600);
         g.drawString("Player 4", 1100, 600);
-
+        g.drawString("Final Standings",571,374);
 
         g.setColor(Color.BLACK);
         Player[]playArr=game.getPlayers();
@@ -168,13 +168,13 @@ public class BonusFrame extends JFrame implements MouseListener
         Tile[][]topWall=playArr[0].getWall().getTileWall();
         for(int x=0;x<5;x++){
             for(int y=0;y<5;y++){
-            g.drawImage(topWall[y][x].getImage(),1281-firstRow+(x*30),147+firstCol+(y*30),25,25,null);
+                g.drawImage(topWall[y][x].getImage(),1281-firstRow+(x*30),147+firstCol+(y*30),25,25,null);
             }
         }
         Tile[][]topPA=playArr[0].getArea().getTileArea();
         for(int x=0;x<5;x++){
             for(int y=0;y<x+1;y++){
-            g.drawImage(topPA[x][y].getImage(),1235-firstRow-(y*30),147+firstCol+(x*30),25,25,null);
+                g.drawImage(topPA[x][y].getImage(),1235-firstRow-(y*30),147+firstCol+(x*30),25,25,null);
             }
         }
         //
@@ -182,8 +182,8 @@ public class BonusFrame extends JFrame implements MouseListener
         //2nd board
         //
         //
-         firstRow=94;
-         firstCol=91;
+        firstRow=94;
+        firstCol=91;
         Tile[][]secondWall=playArr[1].getWall().getTileWall();
         for(int x=0;x<5;x++){
             for(int y=0;y<5;y++){

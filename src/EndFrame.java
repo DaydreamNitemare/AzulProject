@@ -36,16 +36,24 @@ public class EndFrame extends JFrame implements MouseListener
         game = g;
 
         this.setVisible(true);
+
     }
 
     public void paint(Graphics g)
     {
+        Player[]balls=game.getPlayers();
         g.drawImage(background, 0, 30, 1440, 994, null); //draws the background
 
         g.drawImage(next, 670, 797, 100, 50, null); //draws next button
 
         g.setFont(new Font("Comic Sans", Font.BOLD, 36));
         g.drawString(game.getWinner(), 200, 200);
+
+        g.setFont(new Font("Comic Sans", Font.BOLD, 30));
+        g.drawString("Player 1 has "+game.getPlayers()[0].getPoints()+" points and "+game.getPlayers()[0].getWall().numRowsCompleted()+ " rows completed.",200,400 );
+        g.drawString("Player 2 has "+game.getPlayers()[1].getPoints()+" points and "+game.getPlayers()[1].getWall().numRowsCompleted()+ " rows completed.",200,440 );
+        g.drawString("Player 3 has "+game.getPlayers()[2].getPoints()+" points and "+game.getPlayers()[2].getWall().numRowsCompleted()+ " rows completed.",200,480 );
+        g.drawString("Player 4 has "+game.getPlayers()[3].getPoints()+" points and "+game.getPlayers()[3].getWall().numRowsCompleted()+ " rows completed.",200,520 );
     }
 
     @Override
@@ -68,3 +76,4 @@ public class EndFrame extends JFrame implements MouseListener
     public void mouseEntered(MouseEvent e) {}
     public void mouseExited(MouseEvent e) {}
 }
+
