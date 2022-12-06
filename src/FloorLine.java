@@ -54,7 +54,7 @@ public class FloorLine {
             case 6:
                 return -11;
             case 7:
-                return 14;
+                return -14;
         }
 
         return 100; //this is to satisfy the return statement and catch possible errors.
